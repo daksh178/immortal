@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+
+/* *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.show {
+  @apply z-10 opacity-100 pointer-events-auto;
+}
+.show-card {
+  @apply block opacity-100 pointer-events-auto;
+}
+
+.hide-cards {
+  @apply hidden opacity-0 pointer-events-none;
+}
+
+.clip-polygon-8 {
+  clip-path: polygon(
+    7% 0,
+    93% 0,
+    100% 7%,
+    100% 93%,
+    93% 100%,
+    7% 100%,
+    0 93%,
+    0 7%
+  );
+}
+.clip-polygon2-8 {
+  clip-path: polygon(
+    5.25% 0%,
+    95.75% 0%,
+    100% 1.25%,
+    100% 95.25%,
+    98.5% 100%,
+    5.25% 100%,
+    0% 95.75%,
+    0% 5.25%
+  );
+}
+.clip-polygon3-8 {
+  clip-path: polygon(
+    5.25% 0%,
+    95.75% 0%,
+    100% 1.25%,
+    100% 95.25%,
+    94.5% 100%,
+    5.25% 100%,
+    0% 95.75%,
+    0% 5.25%
+  );
+}
+.gradient-cube-face {
+  background: linear-gradient(
+    159.8deg,
+    rgba(0, 54, 112, 0) 3.01%,
+    #0db5e4 62.71%
+  );
+}
+
+/* ...existing code... */
+
+@font-face {
+  font-family: "SFUIDisplayMedium";
+  src: url("/Fonts/sf-ui-display-medium-58646be638f96.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SFUIDisplaySemibold";
+  src: url("/Fonts/sf-ui-display-semibold-58646eddcae92.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SFUIDisplayLight";
+  src: url("/Fonts/sf-ui-display-light-58646b33e0551.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom font utility */
+.font-sf-ui-medium {
+  font-family: "SFUIDisplayMedium", ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-sf-ui-light {
+  font-family: "SFUIDisplayLight", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom font utility */
+.font-sf-ui-semibold {
+  font-family: "SFUIDisplaySemibold", ui-sans-serif, system-ui, sans-serif;
+}
+
+.inter-bold {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.footerTitle {
+  /* font-family: 'SFUIDisplaySemiBold', sans-serif; */
+  font-weight: 500;
+  font-weight: 500;
+  line-height: 58px;
+  letter-spacing: -2%;
+  text-align: center;
+}
+
+.footerButton {
+  background: #f9f9f9;
+  box-shadow: 5.92px 5.92px 11.85px 0px #00000014;
+  width: 151px;
+  height: 50px;
+  border-radius: 40px;
+  margin: 40px 0 40px 0;
+}
+.inter-bold {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.contactText {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0.5%;
+  background: linear-gradient(180deg, #003670 0%, #0db5e4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.productText {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0.5%;
+  background: linear-gradient(180deg, #003670 0%, #0db5e4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+.footerMainDiv {
+  width: 100%;
+  background: radial-gradient(
+    180.52% 75.25% at 81.61% 0%,
+    rgba(140, 229, 255, 0.35) 5.77%,
+    /* reduce opacity here */ rgba(255, 255, 255, 0.14) 53.85%,
+    /* and here */ rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.footerLineText {
+  font-family: "SFUIDisplayThin", sans-serif;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.socialIcon {
+  width: 20px;
+  cursor: pointer;
+  height: 30px;
+}
+
+.footerBottomText {
+  font-family: "SFUIDisplayThin", sans-serif;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -2%;
+  text-align: center;
+  text-transform: capitalize;
+  position: absolute;
+  bottom: -50px;
+  color: #2c5789;
+  opacity: 0.2;
+}
+
+.footerBottomTextMobile {
+  font-family: "SFUIDisplayThin", sans-serif;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -2%;
+  text-align: center;
+  text-transform: capitalize;
+  position: absolute;
+  bottom: -10px;
+  color: #2c5789;
+  opacity: 0.2;
+}
+
+/* //protocol page */
+
+.protocolDescription {
+  font-family: SFUIDisplayMedium;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 34px;
+  line-height: 58px;
+  letter-spacing: -2%;
+  text-align: center;
+}
+
+.infoCardText {
+  font-style: Regular;
+  font-size: 26px;
+  line-height: 100%;
+  letter-spacing: 0.5%;
+}
+
+.linkText {
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 34px;
+  line-height: 58px;
+  letter-spacing: -2%;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0%;
+  text-decoration-skip-ink: auto;
+}
+
+.linkBriefText {
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -2%;
+}
+
+@media (min-width: 1700px) {
+  .scale-up-1700 {
+    transform: scale(1.15);
+  }
+}

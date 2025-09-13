@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+:root {
+  --bg: #141414;
+  --bg-200: #282828;
+  --fg: #fff;
+  --fg-100: #f1f1f1;
+  --fg-200: #a1a1a1;
+}
+
+.supplement2 section {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  background-color: white;
+  color: black;
+  overflow: hidden;
+}
+
+.supplement2 h1 {
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.supplement2 p {
+  font-weight: 500;
+}
+
+.supplementTitle {
+  font-size: 240px !important;
+}
+.supplementTitleMobile {
+  font-size: 48px !important;
+}
+
+.supplement2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.supplement2 .intro,
+.supplement2 .outro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.supplement2 .intro h1,
+.supplement2 .outro h1 {
+  width: 50%;
+  text-align: center;
+}
+
+.supplement2 .sticky-cols {
+  padding: 0.5rem;
+}
+
+.supplement2 .sticky-cols-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.supplement2 .col {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  will-change: transform;
+}
+
+.supplement2 .col h1 {
+  color: black;
+  width: 60%;
+}
+
+.supplement2 .col p {
+  color:#434343;
+  width: 60%;
+}
+
+.supplement2 .col-2 {
+  transform: translateX(100%);
+}
+
+.supplement2 .col-3 {
+  transform: translateX(100%) translateY(100%);
+  padding: 0.5rem;
+}
+
+.supplement2 .col-4 {
+  transform: translateX(100%) translateY(100%);
+}
+
+.supplement2 .col-content,
+.supplement2 .col-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.supplement2 .col-content-wrapper,
+.supplement2 .col-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 3rem;
+  overflow: hidden;
+}
+
+.supplement2 .col-content-wrapper {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.supplement2 .col-content-wrapper-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.supplement2 .col-img-1,
+.supplement2 .col-img-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.supplement2 .col-img-2 {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+}
+
+.supplement2 .col-img-2 img {
+  scale: 1.25;
+}
+
+.supplement2 .line {
+  overflow: hidden;
+}
+
+.supplement2 .line span {
+  display: block;
+  will-change: transform;
+}
+
+@media (max-width: 1000px) {
+  .supplement2 section {
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  .supplement2 .sticky-cols-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: auto;
+  }
+
+  .supplement2 .col {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    transform: none !important;
+  }
+
+  .supplement2 .col-content,
+  .supplement2 .col-img {
+    padding: 0;
+    height: 100%;
+  }
+
+  .supplement2 .col-content-wrapper,
+  .supplement2 .col-content-wrapper-2,
+  .supplement2 .col-img-wrapper {
+    height: 100%;
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .supplement2 h1 {
+    font-size: 1.5rem;
+  }
+
+  .supplement2 p {
+    font-size: 1rem;
+  }
+
+  .supplement2 .col h1,
+  .supplement2 .col p {
+    width: 100%;
+  }
+
+  .supplement2 .col-content-wrapper-2 {
+    position: relative;
+  }
+
+  .supplement2 .col-img img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.5rem;
+  }
+
+  .supplementTitle {
+    display: none;
+  }
+
+  .supplementTitleMobile {
+    display: block;
+    font-size: 2rem !important;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #2C5789;
+  }
+}
+

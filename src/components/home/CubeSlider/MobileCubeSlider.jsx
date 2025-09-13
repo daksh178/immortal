@@ -1,0 +1,257 @@
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const videoSrc = "/assets/images/3DJelly.mp4";
+const images = [
+  videoSrc,
+  "/assets/images/man-woman.png",
+  "/assets/images/3.jpg",
+];
+
+const MobileCubeSlider = () => {
+  const cubeRef = useRef(null);
+  const videoFaceRef = useRef(null);
+  const rightFaceRef = useRef(null);
+  const backFaceRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    let ctx;
+    if (
+      cubeRef.current &&
+      sectionRef.current &&
+      videoFaceRef.current &&
+      rightFaceRef.current &&
+      backFaceRef.current
+    ) {
+      ctx = gsap.context(() => {
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=300%",
+          pin: true,
+          scrub: true,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            const progress = self.progress; // 0..1
+
+            // --- CUBE ROTATION PHASES ---
+            const phase1Start = 0.0;
+            const phase1End = 0.5;
+            const phase2Start = 0.5;
+            const phase2End = 1.0;
+            const phase1DelayBack = 0;
+            const phase2DelayBack = 0;
+
+            function getPhaseProgress(progress, start, end) {
+              return Math.min(
+                Math.max((progress - start) / (end - start), 0),
+                1
+              );
+            }
+
+            let videoFaceRotateY = 0;
+            let rightFaceRotateY = 90;
+            let backFaceRotateY = 180;
+
+            if (progress < phase1End) {
+              const p1 = getPhaseProgress(progress, phase1Start, phase1End);
+
+              // Face 1 (video): 0 -> -90
+              videoFaceRotateY = 0 - 90 * p1;
+              // Face 2 (right): 90 -> 0
+              rightFaceRotateY = 90 - 90 * p1;
+              // Face 3 (back): 180 -> 90
+              let p1back = getPhaseProgress(p1, phase1DelayBack, 1);
+              backFaceRotateY = 180 - 90 * p1back;
+            } else {
+              const p2 = getPhaseProgress(progress, phase2Start, phase2End);
+
+              // Face 1 (video): -90 -> -180
+              videoFaceRotateY = -90 - 90 * p2;
+              // Face 2 (right): 0 -> -90
+              rightFaceRotateY = 0 - 90 * p2;
+              // Face 3 (back): 90 -> 0
+              let p2back = getPhaseProgress(p2, phase2DelayBack, 1);
+              backFaceRotateY = 90 - 90 * p2back;
+            }
+
+            // Opacity for back face
+            let backFaceOpacity = 1;
+            if (progress < 0.5) {
+              backFaceOpacity = 0;
+            } else {
+              // Fade in from 0.5 to 1
+              backFaceOpacity = (progress - 0.5) / 0.5;
+            }
+
+            // Apply transforms
+            gsap.set(videoFaceRef.current, {
+              transform: `rotateY(${videoFaceRotateY}deg) translateZ(200px)`,
+              opacity: 1,
+            });
+            gsap.set(rightFaceRef.current, {
+              transform: `rotateY(${rightFaceRotateY}deg) translateZ(200px)`,
+            });
+            gsap.set(backFaceRef.current, {
+              transform: `rotateY(${backFaceRotateY}deg) translateZ(200px)`,
+              opacity: backFaceOpacity, // <--- use the calculated opacity here
+            });
+          },
+        });
+
+        // Initial orientation
+        gsap.set(videoFaceRef.current, {
+          transform: "rotateY(0deg) translateZ(200px)",
+          opacity: 1,
+        });
+        gsap.set(rightFaceRef.current, {
+          transform: "rotateY(90deg) translateZ(200px)",
+        });
+        gsap.set(backFaceRef.current, {
+          transform: "rotateY(180deg) translateZ(200px)",
+        });
+      }, sectionRef);
+
+      return () => ctx && ctx.revert();
+    }
+  }, []);
+  return (
+    <section
+      ref={sectionRef}
+      id="bio"
+      className="relative w-full h-[100vh] flex justify-center items-center overflow-visible"
+    >
+      <img src="./marquee.png" className="absolute w-full -top-[60%]"></img>
+      <div className="absolute top-0  md:left-20 z-0 text-[130px] pl-0 md:pl-4 text-gray-300">
+        <p className="font-sf-ui-semibold opacity-10 text-[#2C5789]">Bio</p>
+      </div>
+      <div className="w-[200px] translate-y-1/2 md:w-[400px] scale-150  z-10 h-[200px] md:h-[300px] mx-auto relative">
+        {/* The cube itself (all faces inside) */}
+        <div
+          ref={cubeRef}
+          className="cube w-full h-full absolute transition-transform duration-700"
+          style={{
+            transformStyle: "preserve-3d",
+            left: 0,
+            top: 0,
+          }}
+        >
+          {/* Face 1: video */}
+          <div
+            ref={videoFaceRef}
+            className="cube-face clip-polygon-8 cube-face--front absolute w-full h-full bg-white overflow-visible flex items-center justify-center rounded-2xl shadow-lg"
+          >
+            <video
+              src={videoSrc}
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls={false}
+              preload="auto"
+              draggable={false}
+            />
+          </div>
+          {/* Face 2: right */}
+          <div
+            ref={rightFaceRef}
+            className="cube-face-parent absolute w-full h-full clip-polygon-8"
+            style={{
+              background:
+                "linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
+            }}
+          >
+            <div
+              className="cube-face cube-face--right absolute z-10 flex items-center justify-center clip-polygon-8"
+              style={{
+                background:
+                  "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
+                width: "99%",
+                height: "99%",
+                left: "0.5%",
+                zIndex: 40,
+              }}
+            >
+              <img
+                src={images[2]}
+                alt="Face 2"
+                style={{
+                  width: "99%",
+                  height: "99%",
+                  left: "0.5%",
+                  zIndex: 40,
+                }}
+                className="object-top object-cover"
+                draggable={false}
+              />
+            </div>
+          </div>
+          {/* Face 3: back */}
+          <div
+            ref={backFaceRef}
+            className=" absolute clip-polygon-8 w-full h-full overflow-visible flex items-center justify-center rounded-2xl shadow-lg  clip-polygon-8"
+            style={{
+              background:
+                " linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
+            }}
+          >
+            <div
+              className="clip-polygon-8 flex flex-col items-center p-2 "
+              style={{
+                background:
+                  "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
+                width: "99%",
+                height: "99%",
+                left: "0.5%",
+                backgroundColor: "white",
+              }}
+            >
+              <h1 className="text-sm sm:text-lg md:text-2xl font-bold text-black">
+                Kim Wheeler
+              </h1>
+              <p className="text-gray-700 text-[10px] sm:text-[12px] mt-2">
+                Studied Exercise Physiology and Kinesiology (Cardiac
+                Rehabilitation emphasis) for 4 years at Texas Woman’s
+                University, and ...
+                <Link className="text-[#0db5e4] font-bold" to={"/bio"}>
+                  read more
+                </Link>
+              </p>
+
+              <h1 className="text-sm sm:text-lg md:text-2xl mt-4 font-bold text-black">
+                Dan Wheeler
+              </h1>
+              <p className="text-gray-700 text-[10px] sm:text-[12px] mt-2">
+                Retired 20 year Air Force Veteran, who has over 35 years of
+                Bodybuilding experience and ...
+                <Link className="text-[#0db5e4] font-bold" to={"/bio"}>
+                  read more
+                </Link>
+              </p>
+              {/* Special left vertical bar - always on top
+  <div
+    className="h-[130px] w-[6px] absolute  !z-[999]"
+    style={{
+      background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+      clipPath:
+        "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
+      left: -2,
+      top: 120,
+      pointerEvents: "none", // optional: so it doesn't block clicks
+    }}
+  ></div> */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default MobileCubeSlider;
