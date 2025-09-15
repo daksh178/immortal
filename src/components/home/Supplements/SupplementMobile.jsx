@@ -50,11 +50,15 @@ export default function SupplementMobile() {
               {card.title}
             </h1>
             <p className="text-sm text-gray-600 mb-4">{card.description}</p>
-            <img
-              src="/seeMore.png"
-              alt="See more"
-              className="w-28 object-contain"
-            />
+            <div onClick={() => {
+              Navigate("/protocols/1");
+            }}>
+              <img
+                src="/seeMore.png"
+                alt="See more"
+                className="w-28 object-contain"
+              />
+            </div>
           </div>
 
           <h1 className="text-[60px] font-bold text-black opacity-5 absolute left-4 top-[40%] -translate-y-1/2 pointer-events-none">

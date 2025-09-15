@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,38 +9,36 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const ThreeJsComponentMobile = () => {
   const mainRef = useRef(null);
-  const leftCardsRef = useRef([]);
-  const rightCardsRef = useRef([]);
   const textRef = useRef(null);
   const splitInstance = useRef(null);
   const Navigate = useNavigate();
+  const scrollContainerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const leftCardData = [
     {
       id: 1,
       title: "Immunity Protocols",
       content:
-        "This is a clear description of the protocol to let the customer know about its benefits and usecases. They can click on the button below to know about the protocol in detail.",
+        "This is a clear description of the protocol to let the customer know about its benefits and usecases.",
     },
     {
       id: 2,
-      title: "Epstein Barr Virus Protocols ",
+      title: "Epstein Barr Virus Protocols",
       content:
-        "This is a clear description of the protocol to let the customer know about its benefits and usecases. They can click on the button below to know about the protocol in detail.",
+        "This is a clear description of the protocol to let the customer know about its benefits and usecases.",
     },
     {
       id: 3,
-      title: "IBS and gut healing Protocols ",
+      title: "IBS and Gut Healing Protocols",
       content:
-        "This is a clear description of the protocol to let the customer know about its benefits and usecases. They can click on the button below to know about the protocol in detail.",
+        "This is a clear description of the protocol to let the customer know about its benefits and usecases.",
     },
   ];
 
   useGSAP(() => {
     if (!textRef.current) return;
-
     splitInstance.current = new SplitText(textRef.current, { type: "chars" });
-
     gsap.from(splitInstance.current.chars, {
       opacity: 0.5,
       ease: "power1.inOut",
@@ -52,6 +50,19 @@ const ThreeJsComponentMobile = () => {
         scrub: true,
       },
     });
+  }, []);
+
+  // Track active card index on scroll
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    const onScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const width = container.offsetWidth;
+      const index = Math.round(scrollLeft / width);
+      setActiveIndex(index);
+    };
+    container.addEventListener("scroll", onScroll);
+    return () => container.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -69,10 +80,7 @@ const ThreeJsComponentMobile = () => {
         <h1 ref={textRef}>
           Biohacking the body to achieve LONGEVITY using science, epigenetics
           and spiritual frameworks. We are cutting edge biohackers and longevity
-          coaches, who leverage science and revolutionary research to
-          alter/change our genes for a longer, healthier, more active life
-          (along with employing spiritual connections to reveal what's within
-          and supercharge the transformation).
+          coaches...
         </h1>
       </div>
 
@@ -84,57 +92,32 @@ const ThreeJsComponentMobile = () => {
         Roadmap
       </h1>
 
-      {/* Cards Section */}
-      <div className="flex flex-wrap justify-center relative gap-6 px-6 py-6">
-        {[...leftCardData].map((card) => (
+      {/* Swipeable Cards Section */}
+      <div
+        ref={scrollContainerRef}
+        className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 py-6 scroll-smooth no-scrollbar"
+      >
+        {leftCardData.map((card, index) => (
           <div
             key={card.id}
-            onMouseMove={(e) => {
-              const cardEl = e.currentTarget;
-              const rect = cardEl.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const y = e.clientY - rect.top;
-              const centerX = rect.width / 2;
-              const centerY = rect.height / 2;
-              const rotateX = ((y - centerY) / centerY) * 10; // tilt up/down
-              const rotateY = ((x - centerX) / centerX) * 10; // tilt left/right
-
-              cardEl.style.transform = `
-                perspective(1000px)
-                rotateX(${-rotateX}deg)
-                rotateY(${rotateY}deg)
-                scale3d(1.02, 1.02, 1.02)
-              `;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = `
-                perspective(1000px)
-                rotateX(0deg)
-                rotateY(0deg)
-                scale3d(1,1,1)
-              `;
-              e.currentTarget.style.transition = "transform 0.2s ease";
-              setTimeout(() => {
-                e.currentTarget.style.transition = "";
-              }, 200);
-            }}
-            className="relative cursor-pointer w-[280px] h-[380px] bg-[url('/card.png')] bg-no-repeat bg-contain border border-white/20 backdrop-blur-md flex flex-col p-4"
-            style={{ transformStyle: "preserve-3d" }}
+            className="relative cursor-pointer flex-shrink-0 w-full max-w-[350px] h-[510px] bg-[url('/card.png')] bg-no-repeat bg-contain bg-center border border-white/20 backdrop-blur-md flex flex-col p-4 snap-center"
           >
             <img
               src="/donut.png"
               alt=""
-              className="h-[80px] w-[80px] mx-auto mt-4"
+              className="h-[120px] w-[120px] mx-auto mt-4"
             />
-            <h6 className="text-black text-lg font-semibold leading-tight mt-4">
+            <h6 className="text-black text-lg font-semibold leading-tight mt-10">
               {card.title}
             </h6>
-            <p className="mt-2 text-sm text-[#434343]">{card.content}</p>
+            <p className="mt-2 text-[14px] text-[#434343]">{card.content}</p>
 
-            <div className="absolute bottom-4 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
+            <div
+              className="absolute bottom-4 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
               onClick={() => {
                 Navigate("/protocols/1");
-              }}>
+              }}
+            >
               <h6 className="text-sm font-bold bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
                 View More
               </h6>
@@ -145,7 +128,19 @@ const ThreeJsComponentMobile = () => {
           </div>
         ))}
       </div>
-      <div className="flex mt-5 items-center justify-center gap-3 px-6 ">
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-4">
+        {leftCardData.map((_, i) => (
+          <span
+            key={i}
+            className={`w-2 h-2 rounded-full ${activeIndex === i ? "bg-[#2C5789]" : "bg-gray-300"
+              }`}
+          ></span>
+        ))}
+      </div>
+
+      <div className="flex mt-5 items-center justify-center gap-3 px-6">
         <span
           className="contactText inter-bold cursor-pointer"
           onClick={() => {
