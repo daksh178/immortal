@@ -1,4 +1,3 @@
-import React from "react";
 import Footer from "../../components/home/Footer/Footer.jsx";
 import Overlay from "../../components/home/Navbar/Overlay.jsx";
 import OverlayMobile from "../../components/home/Navbar/OverlayMobile.jsx";
@@ -283,7 +282,7 @@ const DesktopProtocol1 = () => {
         </div>
 
         <div
-          className="mx-auto mt-12 w-[80%] flex flex-col  items-center py-4 h-[160vh] bg-center bg-contain bg-no-repeat"
+          className="mx-auto mt-12 w-[80%] flex flex-col  items-center py-4 min-h-[150vh] bg-center bg-contain bg-no-repeat"
           style={{
             backgroundImage: "url('/Protocols/cardBg.png')",
             backgroundSize: "100% 100%",
@@ -578,7 +577,7 @@ const MobileProtocol1 = () => {
 
         {/* Product Cards Section */}
         <div
-          className="mx-auto mt-12 w-[90%] max-w-7xl flex flex-col items-center py-8 bg-no-repeat bg-cover bg-center"
+          className="mx-auto mt-5 max-w-7xl flex flex-col items-center py-8 bg-no-repeat bg-cover bg-center"
           style={{ backgroundImage: "url('/Protocols/cardBg.png')" }}
         >
           {[
@@ -638,33 +637,33 @@ const MobileProtocol1 = () => {
         {/* Footer */}
         <img
           src="/Protocols/footerImg.png"
-          className="w-full h-auto mt-24 mb-16 object-cover"
+          className="w-full h-auto mt-8 mb-8 object-cover"
           alt="footer"
         />
 
-        <div className="flex flex-col items-center justify-center mt-24">
+        <div className="flex flex-col items-center justify-center">
           <p
             style={{
-              fontSize: "20px",
+              fontSize: "18px",
               fontWeight: '500',
               lineHeight: "38px",
               letterSpacing: "-2%",
               textAlign: "center",
             }}
-            className="mx-auto max-w-4xl mt-8"
+            className="mx-auto max-w-4xl"
           >
             Email reimagined. Available today.
           </p>
 
           <div
-            className="cursor-pointer mt-5 w-[200px] h-[60px] rounded-[40px] flex items-center justify-start gap-4 py-[19px] pl-5"
+            className="cursor-pointer mt-5 w-[180px] h-[40px] rounded-[40px] mb-5 flex items-center justify-start gap-4 py-[19px] pl-5"
             style={{ boxShadow: "5.92px 5.92px 11.85px 0px #00000014" }}
           >
-            <h6 className="flex-1 font-bold text-[18px] leading-[100%] bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
+            <h6 className="flex-1 font-bold text-[14px] leading-[100%] bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
               Contact Us
             </h6>
             <div
-              className="w-[60px] h-[60px] rounded-full flex items-center justify-center bg-[#F9F9F9]"
+              className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#F9F9F9]"
               style={{
                 boxShadow:
                   "5.92px 5.92px 11.85px 0px #00000014 inset,-5.92px -5.92px 11.85px 0px #FFFFFF inset",

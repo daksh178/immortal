@@ -73,8 +73,8 @@ const Bio = () => {
       </div>
 
       {/* Kim Section */}
-      <div className="w-full px-4 sm:px-6 lg:px-16 xl:px-32 py-20 flex flex-col">
-        <div className="flex flex-col-reverse lg:flex-row gap-8 items-center">
+      <div className="w-full px-4 sm:px-6 lg:px-16 xl:px-8 py-5 flex flex-col">
+        <div className="flex lg:flex-row gap-8 items-center">
           <div className="lg:w-3/5 text-center lg:text-left">
             <h1
               className="text-5xl sm:text-6xl xl:text-8xl font-sf-ui-semibold text-transparent mb-2"
@@ -100,13 +100,21 @@ const Bio = () => {
             </h1>
           </div>
 
-          <div className="lg:w-2/5">
+          <div className="relative lg:w-2/5">
             <img
               src="/Bio/women.png"
               alt="Kim Wheeler"
-              className="w-full max-w-xs sm:max-w-sm mx-auto"
+              className="w-full max-w-xs sm:max-w-sm mx-auto relative z-10"
             />
+            <div
+              className="absolute bottom-0 left-0 w-full h-16 z-20 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
+              }}
+            ></div>
           </div>
+
         </div>
 
         <p className="mt-8 text-base sm:text-lg md:text-xl font-sf-ui-semibold leading-relaxed text-justify">
@@ -135,8 +143,8 @@ const Bio = () => {
       </div>
 
       {/* Dan Section */}
-      <div className="w-full px-4 sm:px-6 lg:px-16 xl:px-32 py-20 flex flex-col">
-        <div className="flex flex-col-reverse lg:flex-row gap-8 items-center">
+      <div className="w-full px-4 sm:px-6 lg:px-16 xl:px-8 py-5 flex flex-col">
+        <div className="flex lg:flex-row gap-8 items-center">
           <div className="lg:w-3/5 text-center lg:text-left">
             <h1
               className="text-5xl sm:text-6xl xl:text-8xl font-sf-ui-semibold text-transparent mb-2"
@@ -162,12 +170,19 @@ const Bio = () => {
             </h1>
           </div>
 
-          <div className="lg:w-2/5">
+          <div className="relative lg:w-2/5">
             <img
               src="/Bio/men.png"
               alt="Dan Wheeler"
-              className="w-full max-w-xs sm:max-w-sm mx-auto"
+              className="w-full max-w-xs sm:max-w-sm mx-auto relative z-10"
             />
+            <div
+              className="absolute bottom-0 left-0 w-full h-16 z-20 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
+              }}
+            ></div>
           </div>
         </div>
 

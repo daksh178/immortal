@@ -1,30 +1,36 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import HeroMobile from "../../components/home/Hero/HeroMobile.jsx";
-import MobileCubeSlider from "../../components/home/CubeSlider/MobileCubeSlider.jsx";
-import React from "react";
-import OverlayMobile from "../../components/home/Navbar/OverlayMobile.jsx";
-import SupplementMobile from "../../components/home/Supplements/SupplementMobile.jsx";
-import Supplement from "../../components/home/Supplements/Supplement.jsx";
-gsap.registerPlugin(ScrollToPlugin);
 
 import Overlay from "../../components/home/Navbar/Overlay.jsx";
+import OverlayMobile from "../../components/home/Navbar/OverlayMobile.jsx";
+
 import Hero from "../../components/home/Hero/Hero.jsx";
+import HeroMobile from "../../components/home/Hero/HeroMobile.jsx";
+
 import ThreeJsComponent from "../../components/home/3dComponent/3dComponent.jsx";
-import CubicSlider from "../../components/home/CubeSlider/CubeSlider.jsx";
-import Footer from "../../components/home/Footer/Footer.jsx";
 import ThreeJsComponentMobile from "../../components/home/3dComponent/3dComponentMobile.jsx";
+
+import CubicSlider from "../../components/home/CubeSlider/CubeSlider.jsx";
+import MobileCubeSlider from "../../components/home/CubeSlider/MobileCubeSlider.jsx";
+
+import Supplement from "../../components/home/Supplements/Supplement.jsx";
+import SupplementMobile from "../../components/home/Supplements/SupplementMobile.jsx";
+
+import Footer from "../../components/home/Footer/Footer.jsx";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Home = () => {
   const location = useLocation();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1280); // change breakpoint as needed
-  const [isMd, setIsMd] = useState(window.innerWidth < 768); // change breakpoint as needed
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
+  const [isMd, setIsMd] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1280);
+      setIsMd(window.innerWidth < 768);
     };
 
     window.addEventListener("resize", handleResize);
@@ -45,19 +51,46 @@ const Home = () => {
             ease: "linear",
           });
         }
-      }, 300); // small delay to allow DOM load
+      }, 300);
     }
   }, [location.search]);
 
   return (
-    <>
-      {isMobile ? <OverlayMobile /> : <Overlay />}
-      {isMd ? <HeroMobile /> : <Hero />}
-      {isMobile ? <ThreeJsComponentMobile /> : <ThreeJsComponent />}
-      {isMd ? <MobileCubeSlider /> : <CubicSlider />}
-      {isMobile ? <SupplementMobile /> : <Supplement />}
-      <Footer />
-    </>
+    <main className="flex flex-col w-full">
+      {/* Navbar */}
+      <header className="w-full">
+        {isMobile ? <OverlayMobile /> : <Overlay />}
+      </header>
+
+      {/* Hero Section */}
+      <section id="hero" className="w-full">
+        {isMd ? <HeroMobile /> : <Hero />}
+      </section>
+
+      {/* 3D Component */}
+      <section id="three" className="w-full">
+        {isMobile ? <ThreeJsComponentMobile /> : <ThreeJsComponent />}
+      </section>
+
+      <section>
+        <img src="./marquee.png"></img>
+      </section>
+
+      {/* Cube Slider */}
+      {/* <section id="slider" className="w-full">
+        {isMd ? <MobileCubeSlider /> : <CubicSlider />}
+      </section> */}
+
+      {/* Supplement Section */}
+      <section id="supplements" className="w-full">
+        {isMobile ? <SupplementMobile /> : <Supplement />}
+      </section>
+
+      {/* Footer */}
+      <footer className="w-full">
+        <Footer />
+      </footer>
+    </main>
   );
 };
 

@@ -120,14 +120,15 @@ const CubicSlider = () => {
       return () => ctx && ctx.revert();
     }
   }, []);
+
   return (
     <section
       ref={sectionRef}
       id="bio"
-      className="relative w-full h-[150vh]  pb-24 flex justify-center items-center overflow-visible"
+      className="relative w-full h-[150vh] mt-24 flex justify-center items-center overflow-visible"
     >
-      <img src="./marquee.png" className="absolute w-full -top-[60%]"></img>
-      <div className="absolute top-0 left-20 z-0  pl-4 text-gray-300">
+      <img src="./marquee.png" className="absolute w-full -bottom-20"></img>
+      <div className="absolute top-10 left-20 z-0 pl-4 text-gray-300">
         <p className="font-sf-ui-semibold md:text-[170px] lg:text-[200px] xl:text-[180px] lg:mt-24 xl:mt-0 opacity-10 text-[#2C5789]">
           Bio
         </p>
@@ -197,14 +198,14 @@ const CubicSlider = () => {
           {/* Face 3: back */}
           <div
             ref={backFaceRef}
-            className=" absolute clip-polygon-8 w-full h-full overflow-visible flex items-center justify-center rounded-2xl shadow-lg  clip-polygon-8"
+            className="absolute clip-polygon-8 w-full h-full overflow-visible flex items-center justify-center rounded-2xl shadow-lg clip-polygon-8"
             style={{
               background:
                 " linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
             }}
           >
             <div
-              className="clip-polygon-8 flex flex-col items-center p-5 "
+              className="clip-polygon-8 flex flex-col items-center p-5"
               style={{
                 background:
                   "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
@@ -217,7 +218,7 @@ const CubicSlider = () => {
               <h1 className="text-2xl font-bold text-black">Kim Wheeler</h1>
               <p className="text-gray-700 text-[12px] mt-2">
                 Studied Exercise Physiology and Kinesiology (Cardiac
-                Rehabilitation emphasis) for 4 years at Texas Woman’s
+                Rehabilitation emphasis) for 4 years at Texas Woman's
                 University, and then continued her education in law. Kim spent
                 much of{" "}
                 <Link className="text-[#0db5e4] font-bold" to={"/bio"}>
@@ -236,18 +237,6 @@ const CubicSlider = () => {
                   read more
                 </Link>
               </p>
-              {/* Special left vertical bar - always on top
-  <div
-    className="h-[130px] w-[6px] absolute  !z-[999]"
-    style={{
-      background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-      clipPath:
-        "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
-      left: -2,
-      top: 120,
-      pointerEvents: "none", // optional: so it doesn't block clicks
-    }}
-  ></div> */}
             </div>
           </div>
         </div>

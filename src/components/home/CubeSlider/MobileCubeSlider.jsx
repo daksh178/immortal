@@ -126,11 +126,14 @@ const MobileCubeSlider = () => {
       id="bio"
       className="relative w-full h-[100vh] flex justify-center items-center overflow-visible"
     >
-      <img src="./marquee.png" className="absolute w-full -top-[60%]"></img>
-      <div className="absolute top-0  md:left-20 z-0 text-[130px] pl-0 md:pl-4 text-gray-300">
-        <p className="font-sf-ui-semibold opacity-10 text-[#2C5789]">Bio</p>
-      </div>
-      <div className="w-[200px] translate-y-1/2 md:w-[400px] scale-150  z-10 h-[200px] md:h-[300px] mx-auto relative">
+      <img src="./marquee.png" className="absolute w-full -top-[20%]"></img>
+
+      <h1
+        className="text-[#2C5789] text-center mt-5 opacity-10 w-full text-[36px] md:text-[48px] font-sf-ui-semibold"
+      >
+        Bio
+      </h1>
+      <div className="w-[200px] translate-y-1/4 md:w-[400px] scale-150  z-10 h-[220px] md:h-[300px] mx-auto relative">
         {/* The cube itself (all faces inside) */}
         <div
           ref={cubeRef}

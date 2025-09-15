@@ -27,7 +27,7 @@
 }
 
 .supplementTitle {
-  font-size: 240px !important;
+  font-size: 220px !important;
 }
 .supplementTitleMobile {
   font-size: 48px !important;
@@ -75,7 +75,7 @@
 }
 
 .supplement2 .col p {
-  color:#434343;
+  color: #434343;
   width: 60%;
 }
 
@@ -223,7 +223,6 @@
     font-size: 2rem !important;
     text-align: center;
     margin-bottom: 1rem;
-    color: #2C5789;
+    color: #2c5789;
   }
 }
-

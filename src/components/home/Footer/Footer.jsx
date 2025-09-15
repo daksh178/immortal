@@ -1,15 +1,6 @@
-import React from "react";
-
 const Footer = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center mt-20 ">
-      {/* <h1 className="footerTitle w-full text-3xl tracking-tighter text-center font-medium">
-        Email reimagined.&nbsp;
-        <br className="sm:hidden" />
-        Available today.
-      </h1> */}
-
-
+    <div className="w-full flex flex-col items-center justify-center mt-5 ">
       <div className="footerMainDiv h-[357px] md:h-[450px] xl:h-[450px] 2xl:h-[540px]  relative flex flex-col items-center py-12 gap-5 overflow-hidden">
         <img
           src="./footerTopGradient.png"
@@ -29,7 +20,7 @@ const Footer = () => {
           <img src="/socialIcons/x.svg" className="socialIcon" />
           <img src="/socialIcons/facebook.svg" className="socialIcon" />
         </div>
-        <h1 className="footerBottomTextMobile   text-6xl sm:text-8xl lg:text-[179px] xl:text-[230px] ">
+        <h1 className="footerBottomTextMobile text-5xl sm:text-8xl lg:text-[179px] xl:text-[230px] ">
           ImmortaLIFE
         </h1>
       </div>

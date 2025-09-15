@@ -19,35 +19,20 @@ const ThreeJsComponentMobile = () => {
     {
       id: 1,
       title: "Immunity Protocols",
-      content: "This is a clear description...",
+      content:
+        "This is a clear description of the protocol to let the customer know about its benefits and usecases. They can click on the button below to know about the protocol in detail.",
     },
     {
       id: 2,
-      title: "Epstein Barr Virus Protocols",
-      content: "This is a clear description...",
+      title: "Epstein Barr Virus Protocols ",
+      content:
+        "This is a clear description of the protocol to let the customer know about its benefits and usecases. They can click on the button below to know about the protocol in detail.",
     },
     {
       id: 3,
-      title: "IBS and gut healing Protocols",
-      content: "This is a clear description...",
-    },
-  ];
-
-  const rightCardData = [
-    {
-      id: 1,
-      title: "Female hormone Protocols",
-      content: "This is a clear description...",
-    },
-    {
-      id: 2,
-      title: "Male hormone Protocols",
-      content: "This is a clear description...",
-    },
-    {
-      id: 3,
-      title: "Thyroid Protocols",
-      content: "This is a clear description...",
+      title: "IBS and gut healing Protocols ",
+      content:
+        "This is a clear description of the protocol to let the customer know about its benefits and usecases. They can click on the button below to know about the protocol in detail.",
     },
   ];
 
@@ -73,15 +58,15 @@ const ThreeJsComponentMobile = () => {
     <div
       ref={mainRef}
       id="about"
-      className="min-h-[320vh] w-full bg-white text-black overflow-hidden relative"
+      className="w-full bg-white text-black overflow-hidden"
     >
       {/* About Section */}
-      <h1 className="absolute text-[#2C5789] opacity-10 top-[1%] left-[3%] w-full text-[36px] md:text-[48px] font-sf-ui-semibold">
+      <h1 className="text-[#2C5789] text-center mt-10 opacity-10 w-full text-[36px] md:text-[48px] font-sf-ui-semibold">
         About us
       </h1>
 
-      <div className="absolute text-gray-900 text-base md:text-lg lg:text-xl font-sf-ui-medium tracking-wide w-[90%] h-auto top-32 left-4 md:left-8 md:top-44 ">
-        <h1 ref={textRef} className="max-w-3xl">
+      <div className="text-gray-900 text-center px-4 md:text-lg lg:text-xl font-sf-ui-medium tracking-wide">
+        <h1 ref={textRef}>
           Biohacking the body to achieve LONGEVITY using science, epigenetics
           and spiritual frameworks. We are cutting edge biohackers and longevity
           coaches, who leverage science and revolutionary research to
@@ -94,19 +79,16 @@ const ThreeJsComponentMobile = () => {
       {/* Roadmap Heading */}
       <h1
         id="roadmap"
-        className="absolute text-[#2C5789] opacity-10 top-[40vh] left-[5%] w-full text-[36px] md:text-[48px] font-sf-ui-semibold"
+        className="text-[#2C5789] text-center mt-5 opacity-10 w-full text-[36px] md:text-[48px] font-sf-ui-semibold"
       >
         Roadmap
       </h1>
 
       {/* Cards Section */}
-      <div className="flex flex-wrap justify-center relative gap-6 px-6 py-12 mt-[50vh]">
-        {[...leftCardData].map((card, index) => (
+      <div className="flex flex-wrap justify-center relative gap-6 px-6 py-6">
+        {[...leftCardData].map((card) => (
           <div
             key={card.id}
-            onClick={() => {
-              Navigate("/protocols/1");
-            }}
             onMouseMove={(e) => {
               const cardEl = e.currentTarget;
               const rect = cardEl.getBoundingClientRect();
@@ -136,7 +118,7 @@ const ThreeJsComponentMobile = () => {
                 e.currentTarget.style.transition = "";
               }, 200);
             }}
-            className="relative cursor-pointer w-[280px] h-[340px] bg-[url('/card.png')] bg-no-repeat bg-contain border border-white/20 backdrop-blur-md flex flex-col p-4"
+            className="relative cursor-pointer w-[280px] h-[380px] bg-[url('/card.png')] bg-no-repeat bg-contain border border-white/20 backdrop-blur-md flex flex-col p-4"
             style={{ transformStyle: "preserve-3d" }}
           >
             <img
@@ -149,7 +131,10 @@ const ThreeJsComponentMobile = () => {
             </h6>
             <p className="mt-2 text-sm text-[#434343]">{card.content}</p>
 
-            <div className="absolute bottom-4 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md">
+            <div className="absolute bottom-4 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
+              onClick={() => {
+                Navigate("/protocols/1");
+              }}>
               <h6 className="text-sm font-bold bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
                 View More
               </h6>
@@ -159,20 +144,24 @@ const ThreeJsComponentMobile = () => {
             </div>
           </div>
         ))}
-        <Link
-          to={"/protocols/1"}
-          className="w-full cursor-pointer flex justify-center pr-4 absolute -bottom-20"
+      </div>
+      <div className="flex mt-5 items-center justify-center gap-3 px-6 ">
+        <span
+          className="contactText inter-bold cursor-pointer"
+          onClick={() => {
+            Navigate("/protocols/1");
+          }}
         >
-          <button className="footerButton l relative">
-            <span className="contactText inter-bold mr-10 ">
-              View All
-              <img
-                src="/contactIcon.svg"
-                className="absolute h-full right-0 top-0"
-              ></img>
-            </span>
-          </button>
-        </Link>
+          View All
+        </span>
+        <img
+          src="/view_more.svg"
+          alt=""
+          className="h-[20px] w-[20px] cursor-pointer"
+          onClick={() => {
+            Navigate("/protocols/1");
+          }}
+        />
       </div>
     </div>
   );

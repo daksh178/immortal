@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SupplementMobile() {
+  const Navigate = useNavigate();
+
   return (
     <div className="w-full py-4">
       <div id="supplement" className="w-full text-center pl-4 text-gray-300">
@@ -60,17 +62,24 @@ export default function SupplementMobile() {
           </h1>
         </section>
       ))}
-      <Link to={"/protocols/1"} className="w-full flex justify-end pr-8 -translate-y-1/5 ">
-        <button className="footerButton l relative ">
-          <span className="contactText inter-bold mr-10 ">
-            View All{" "}
-            <img
-              src="/contactIcon.svg"
-              className="absolute h-full right-0 top-0"
-            ></img>
-          </span>{" "}
-        </button>
-      </Link>
+      <div className="flex mt-10 items-center justify-end gap-3 px-6">
+        <span
+          className="contactText inter-bold cursor-pointer"
+          onClick={() => {
+            Navigate("/protocols/1");
+          }}
+        >
+          View All
+        </span>
+        <img
+          src="/view_more.svg"
+          alt=""
+          className="h-[20px] w-[20px] cursor-pointer"
+          onClick={() => {
+            Navigate("/protocols/1");
+          }}
+        />
+      </div>
     </div>
   );
 }
