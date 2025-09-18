@@ -148,14 +148,13 @@ const CubicSlider = () => {
         id="bio"
         className="relative w-full min-h-[150vh] flex justify-center items-center overflow-visible"
       >
-        {/* <img src="./marquee.png" className="absolute w-full -bottom-20"></img> */}
         <div className="absolute top-10 left-20 z-0 pl-4 text-gray-300">
           <p className="font-sf-ui-semibold md:text-[170px] lg:text-[200px] xl:text-[180px] lg:mt-24 xl:mt-0 opacity-10 text-[#2C5789]">
             Bio
           </p>
         </div>
-        <div className="w-[400px] scale-150 xl:translate-x-[20%] -translate-y-[30%] z-10 h-[320px] mx-auto relative">
-          {/* The cube itself (all faces inside) */}
+        {/* Responsive Cube Container */}
+        <div className="w-[80vw] max-w-[400px] h-[64vw] max-h-[320px] scale-[0.7] sm:scale-100 md:scale-125 xl:scale-150 -translate-y-[10%] sm:-translate-y-[30%] z-10 mx-auto relative">
           <div
             ref={cubeRef}
             className="cube w-full h-full absolute transition-transform duration-700"
@@ -251,7 +250,15 @@ const CubicSlider = () => {
                     </div>
                   ))
                 ) : (
-                  <p className="text-gray-500 text-sm">Loading bios...</p>
+                  <div className="relative w-full max-w-md h-[400px] p-6">
+                    {/* Skeleton content */}
+                    <div className="animate-pulse space-y-4">
+                      <div className="h-5 w-2/3 bg-gray-200/80 rounded"></div>
+                      <div className="h-3 w-full bg-gray-50 rounded"></div>
+                      <div className="h-3 w-5/6 bg-gray-50 rounded"></div>
+                      <div className="h-3 w-4/6 bg-gray-50 rounded"></div>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>

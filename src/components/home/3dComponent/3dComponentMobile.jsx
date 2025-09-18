@@ -113,7 +113,7 @@ const ThreeJsComponentMobile = () => {
             <p className="mt-2 text-[14px] text-[#434343]">{card.content}</p>
 
             <div
-              className="absolute bottom-4 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
+              className="absolute bottom-10 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
               onClick={() => {
                 Navigate("/protocols/1");
               }}

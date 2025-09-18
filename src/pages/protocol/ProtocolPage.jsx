@@ -3,6 +3,7 @@ import Overlay from "../../components/home/Navbar/Overlay.jsx";
 import OverlayMobile from "../../components/home/Navbar/OverlayMobile.jsx";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ScrollToTop from "../../components/ScrollToTop/ScrollToTop.jsx";
 
 const infoCards = [
   {
@@ -91,6 +92,7 @@ export default Protocol;
 const DesktopProtocol1 = () => {
   return (
     <>
+      <ScrollToTop />
       <div className="absolute top-4 towardFadeDiv left-8">
         <img src="/logo.svg" className="w-[200px]"></img>
       </div>

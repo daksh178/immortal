@@ -1,10 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 import { useNavigate } from "react-router-dom";
-
-import { IconX } from "@tabler/icons-react";
 
 const navItems = [
   { label: "About Us", targetId: "about" },

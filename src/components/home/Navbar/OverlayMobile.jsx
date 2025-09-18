@@ -123,10 +123,6 @@ const OverlayMobile = ({ isProtocolPage, isBioPage }) => {
           onClick={() => setIsOpen(false)}
           className="z-50 absolute hover:scale-105 transition-all cursor-pointer closeButton opacity-0 top-4 right-0 text-sm  py-2 text-[#2C5789]"
         >
-          {/* <IconX
-            size={108}
-            className="hover:scale-125 hover:text-blue-500 transition-all duration-300 "
-          /> */}
           <img src="/closeMenu.png" className="w-4/5 "></img>
         </button>
 

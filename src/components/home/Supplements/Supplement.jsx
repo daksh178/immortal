@@ -181,16 +181,13 @@ export default function Supplement() {
                     {suplimentDta.length > 0 && suplimentDta[0].supplement_name}
                   </h1>
                   <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
-                    01
+                    {suplimentDta.length > 0 && suplimentDta[0].id.toString().padStart(2, "0")}
                   </h1>
                   <p className=" absolute text-lg 2xl:text-xl bottom-30">
-                    This is a clear description of the protocol to let the
-                    customer know about its benefits and usecases. They can
-                    click on the button below to know about the protocol in
-                    detail.
+                    {suplimentDta.length > 0 && suplimentDta[0].supplement_detail}
                   </p>
-                  <div className=" w-[170px] absolute bottom-4">
-                    <img src="/seeMore.png" className="object-cover" alt="" />
+                  <div className=" w-[170px] absolute bottom-4" onClick={() => Navigate("/protocols/1")}>
+                    <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" />
                   </div>
                 </div>
               </div>
@@ -200,7 +197,7 @@ export default function Supplement() {
               <div className="col-img col-img-1">
                 <div className="col-img-wrapper">
                   <img
-                    src="/team-1.png"
+                    src="/team-1.jpg"
                     alt=""
                     fill
                     style={{ objectFit: "cover" }}
@@ -231,17 +228,15 @@ export default function Supplement() {
               <div className="col-content-wrapper relative">
                 <h1 className="text-4xl 2xl:text-5xl">
                   {suplimentDta.length > 0 && suplimentDta[1].supplement_name}
-
                 </h1>
                 <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
-                  02
+                  {suplimentDta.length > 0 && suplimentDta[1].id.toString().padStart(2, "0")}
                 </h1>
                 <p className=" absolute text-lg 2xl:text-xl bottom-30">
-                  This is a clear description of the protocol to let the
-                  customer know about its benefits and usecases.
+                  {suplimentDta.length > 0 && suplimentDta[1].supplement_detail}
                 </p>
-                <div className=" w-[170px] absolute bottom-4">
-                  <img src="/seeMore.png" className="object-cover" alt="" />
+                <div className=" w-[170px] absolute bottom-4" onClick={() => Navigate("/protocols/1")}>
+                  <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" />
                 </div>
               </div>
               <div className="col-content-wrapper-2 relative">
@@ -249,11 +244,10 @@ export default function Supplement() {
                   {suplimentDta.length > 0 && suplimentDta[2].supplement_name}
                 </h1>
                 <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
-                  03
+                  {suplimentDta.length > 0 && suplimentDta[2].id.toString().padStart(2, "0")}
                 </h1>
                 <p className="absolute text-lg 2xl:text-xl bottom-30">
-                  This is a clear description of the protocol to let the
-                  customer know about its benefits and usecases.
+                  {suplimentDta.length > 0 && suplimentDta[2].supplement_detail}
                 </p>
               </div>
             </div>

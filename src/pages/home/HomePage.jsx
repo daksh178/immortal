@@ -59,7 +59,7 @@ const Home = () => {
     <main className="flex flex-col w-full">
       {/* Navbar */}
       <header className="w-full">
-        {isMobile ? <OverlayMobile /> : <Overlay />}
+        <Overlay />
       </header>
 
       {/* Hero Section */}
@@ -77,8 +77,8 @@ const Home = () => {
       </section>
 
       {/* Cube Slider */}
-      <section id="slider" className="w-full">
-        {isMd ? <MobileCubeSlider /> : <CubicSlider />}
+      <section id="slider">
+        {isMobile ? <MobileCubeSlider /> : <CubicSlider />}
       </section>
 
       {/* Supplement Section */}
