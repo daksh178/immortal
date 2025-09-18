@@ -1,13 +1,54 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import Lenis from "lenis";
 import "./supplement.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Supplement() {
   const Navigate = useNavigate();
+
+  const [suplimentDta, setsuplimentDta] = useState([]);
+
+  useEffect(() => {
+    const fetchRoadmap = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_MAIN_API}/get-supplement`, {
+          headers: { "ngrok-skip-browser-warning": "true" },
+        });
+        if (response?.data) {
+          setsuplimentDta(response.data.data.sort((a, b) => a.id - b.id).slice(0, 3));
+        }
+      } catch (error) {
+        console.error("Error fetching roadmap:", error);
+      }
+    };
+    fetchRoadmap();
+  }, []);
+
+  useEffect(() => {
+    if (suplimentDta.length === 0) return; // wait until data is loaded
+
+    const textElements = document.querySelectorAll(".col-3 h1, .col-3 p");
+
+    textElements.forEach((element) => {
+      const split = new SplitText(element, {
+        type: "lines",
+        linesClass: "line",
+      });
+      split.lines.forEach(
+        (line) => (line.innerHTML = `<span>${line.textContent}</span>`)
+      );
+    });
+
+    // Set initial positions for animation
+    gsap.set(".col-3 .col-content-wrapper .line span", { y: "0%" });
+    gsap.set(".col-3 .col-content-wrapper-2 .line span", { y: "-125%" });
+
+  }, [suplimentDta]); // runs whenever data changes
+
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -19,24 +60,6 @@ export default function Supplement() {
     });
     gsap.ticker.lagSmoothing(0);
 
-    const initTextSplit = () => {
-      const textElements = document.querySelectorAll(".col-3 h1, .col-3 p");
-
-      textElements.forEach((element) => {
-        const split = new SplitText(element, {
-          type: "lines",
-          linesClass: "line",
-        });
-        split.lines.forEach(
-          (line) => (line.innerHTML = `<span>${line.textContent}</span>`)
-        );
-      });
-    };
-
-    initTextSplit();
-
-    gsap.set(".col-3 .col-content-wrapper .line span", { y: "0%" });
-    gsap.set(".col-3 .col-content-wrapper-2 .line span", { y: "-125%" });
 
     ScrollTrigger.create({
       trigger: ".sticky-cols",
@@ -132,10 +155,6 @@ export default function Supplement() {
   return (
     <>
       <div className="supplement2">
-        {/* <section className="intro">
-          <h1>We create modern interiors that feel effortlessly personal.</h1>
-        </section> */}
-
         <div
           id="supplement"
           className=" w-full text-center  pl-4 text-gray-300"
@@ -152,14 +171,14 @@ export default function Supplement() {
               style={{
                 backgroundImage: "url('/card2.png')",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "100% 100%", // Stretch horizontally and vertically
+                backgroundSize: "100% 100%",
                 backgroundPosition: "center",
               }}
             >
               <div className="col-content">
                 <div className="col-content-wrapper relative">
                   <h1 className="text-4xl 2xl:text-5xl">
-                    Anti-aging and Longevity protocols
+                    {suplimentDta.length > 0 && suplimentDta[0].supplement_name}
                   </h1>
                   <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
                     01
@@ -204,14 +223,15 @@ export default function Supplement() {
               style={{
                 backgroundImage: "url('/card2.png')",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "100% 100%", // Stretch horizontally and vertically
+                backgroundSize: "100% 100%",
                 backgroundPosition: "center",
               }}
               className="col col-3 bg-white clip-polygon2-8"
             >
               <div className="col-content-wrapper relative">
                 <h1 className="text-4xl 2xl:text-5xl">
-                  Male Hormone Protocols
+                  {suplimentDta.length > 0 && suplimentDta[1].supplement_name}
+
                 </h1>
                 <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
                   02
@@ -225,7 +245,9 @@ export default function Supplement() {
                 </div>
               </div>
               <div className="col-content-wrapper-2 relative">
-                <h1 className="text-4xl 2xl:text-5xl">Peptide Protocols</h1>
+                <h1 className="text-4xl 2xl:text-5xl">
+                  {suplimentDta.length > 0 && suplimentDta[2].supplement_name}
+                </h1>
                 <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
                   03
                 </h1>
@@ -233,9 +255,6 @@ export default function Supplement() {
                   This is a clear description of the protocol to let the
                   customer know about its benefits and usecases.
                 </p>
-                {/* <div className=" w-[170px] absolute bottom-4">
-                  <img src="/seeMore.png" className="object-cover" alt="" />
-                </div> */}
               </div>
             </div>
 
@@ -253,10 +272,6 @@ export default function Supplement() {
             </div>
           </div>
         </section>
-
-        {/* <section className="outro">
-          <h1>Timeless design begins with a conversation.</h1>
-        </section> */}
       </div>
       <div className="flex mt-10 items-center justify-end gap-3 px-6">
         <span

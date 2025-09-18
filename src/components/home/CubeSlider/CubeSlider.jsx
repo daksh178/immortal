@@ -1,7 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +20,25 @@ const CubicSlider = () => {
   const backFaceRef = useRef(null);
   const sectionRef = useRef(null);
 
+  const [bioData, setbioData] = useState([]);
+
+  useEffect(() => {
+    const fetchRoadmap = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_MAIN_API}/get-bio`, {
+          headers: {
+            'ngrok-skip-browser-warning': 'true'
+          }
+        });
+        setbioData(response.data?.data);
+      } catch (error) {
+        console.error("Error fetching roadmap:", error);
+      }
+    };
+
+    fetchRoadmap();
+  }, []);
+
   useEffect(() => {
     let ctx;
     if (
@@ -32,7 +52,7 @@ const CubicSlider = () => {
         ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=300%",
+          end: "bottom+=150% top",
           pin: true,
           scrub: true,
           anticipatePin: 1,
@@ -122,127 +142,123 @@ const CubicSlider = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      id="bio"
-      className="relative w-full h-[150vh] mt-24 flex justify-center items-center overflow-visible"
-    >
-      <img src="./marquee.png" className="absolute w-full -bottom-20"></img>
-      <div className="absolute top-10 left-20 z-0 pl-4 text-gray-300">
-        <p className="font-sf-ui-semibold md:text-[170px] lg:text-[200px] xl:text-[180px] lg:mt-24 xl:mt-0 opacity-10 text-[#2C5789]">
-          Bio
-        </p>
-      </div>
-      <div className="w-[400px] scale-150 xl:translate-x-[20%] -translate-y-[30%] z-10 h-[300px] mx-auto relative">
-        {/* The cube itself (all faces inside) */}
-        <div
-          ref={cubeRef}
-          className="cube w-full h-full absolute transition-transform duration-700"
-          style={{
-            transformStyle: "preserve-3d",
-            left: 0,
-            top: 0,
-          }}
-        >
-          {/* Face 1: video */}
+    <div style={{ height: "3000px" }}>
+      <section
+        ref={sectionRef}
+        id="bio"
+        className="relative w-full min-h-[150vh] flex justify-center items-center overflow-visible"
+      >
+        {/* <img src="./marquee.png" className="absolute w-full -bottom-20"></img> */}
+        <div className="absolute top-10 left-20 z-0 pl-4 text-gray-300">
+          <p className="font-sf-ui-semibold md:text-[170px] lg:text-[200px] xl:text-[180px] lg:mt-24 xl:mt-0 opacity-10 text-[#2C5789]">
+            Bio
+          </p>
+        </div>
+        <div className="w-[400px] scale-150 xl:translate-x-[20%] -translate-y-[30%] z-10 h-[320px] mx-auto relative">
+          {/* The cube itself (all faces inside) */}
           <div
-            ref={videoFaceRef}
-            className="cube-face clip-polygon-8 cube-face--front absolute w-full h-full bg-white overflow-visible flex items-center justify-center rounded-2xl shadow-lg"
-          >
-            <video
-              src={videoSrc}
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-              controls={false}
-              preload="auto"
-              draggable={false}
-            />
-          </div>
-          {/* Face 2: right */}
-          <div
-            ref={rightFaceRef}
-            className="cube-face-parent absolute w-full h-full clip-polygon-8"
+            ref={cubeRef}
+            className="cube w-full h-full absolute transition-transform duration-700"
             style={{
-              background:
-                "linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
+              transformStyle: "preserve-3d",
+              left: 0,
+              top: 0,
             }}
           >
+            {/* Face 1: video */}
             <div
-              className="cube-face cube-face--right absolute z-10 flex items-center justify-center clip-polygon-8"
+              ref={videoFaceRef}
+              className="cube-face clip-polygon-8 cube-face--front absolute w-full h-full bg-white overflow-visible flex items-center justify-center rounded-2xl shadow-lg"
+            >
+              <video
+                src={videoSrc}
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls={false}
+                preload="auto"
+                draggable={false}
+              />
+            </div>
+            {/* Face 2: right */}
+            <div
+              ref={rightFaceRef}
+              className="cube-face-parent absolute w-full h-full clip-polygon-8"
               style={{
                 background:
-                  "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
-                width: "99%",
-                height: "99%",
-                left: "0.5%",
-                zIndex: 40,
+                  "linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
               }}
             >
-              <img
-                src={images[2]}
-                alt="Face 2"
+              <div
+                className="cube-face cube-face--right absolute z-10 flex items-center justify-center clip-polygon-8"
                 style={{
+                  background:
+                    "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
                   width: "99%",
                   height: "99%",
                   left: "0.5%",
                   zIndex: 40,
                 }}
-                className="object-top object-cover"
-                draggable={false}
-              />
+              >
+                <img
+                  src={images[2]}
+                  alt="Face 2"
+                  style={{
+                    width: "99%",
+                    height: "99%",
+                    left: "0.5%",
+                    zIndex: 40,
+                  }}
+                  className="object-top object-cover"
+                  draggable={false}
+                />
+              </div>
             </div>
-          </div>
-          {/* Face 3: back */}
-          <div
-            ref={backFaceRef}
-            className="absolute clip-polygon-8 w-full h-full overflow-visible flex items-center justify-center rounded-2xl shadow-lg clip-polygon-8"
-            style={{
-              background:
-                " linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
-            }}
-          >
+            {/* Face 3: back */}
             <div
-              className="clip-polygon-8 flex flex-col items-center p-5"
+              ref={backFaceRef}
+              className="absolute clip-polygon-8 w-full h-full overflow-visible flex items-center justify-center rounded-2xl shadow-lg clip-polygon-8"
               style={{
                 background:
-                  "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
-                width: "99%",
-                height: "99%",
-                left: "0.5%",
-                backgroundColor: "white",
+                  " linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
               }}
             >
-              <h1 className="text-2xl font-bold text-black">Kim Wheeler</h1>
-              <p className="text-gray-700 text-[12px] mt-2">
-                Studied Exercise Physiology and Kinesiology (Cardiac
-                Rehabilitation emphasis) for 4 years at Texas Woman's
-                University, and then continued her education in law. Kim spent
-                much of{" "}
-                <Link className="text-[#0db5e4] font-bold" to={"/bio"}>
-                  read more
-                </Link>
-              </p>
-
-              <h1 className="text-2xl mt-4 font-bold text-black">
-                Dan Wheeler
-              </h1>
-              <p className="text-gray-700 text-[12px] mt-2">
-                Retired 20 year Air Force Veteran, who has over 35 years of
-                Bodybuilding experience and personal training. Dan spent years
-                honing his Bodybuilding craft, going from a skinny boy{" "}
-                <Link className="text-[#0db5e4] font-bold" to={"/bio"}>
-                  read more
-                </Link>
-              </p>
+              <div
+                className="clip-polygon-8 flex flex-col items-center p-5"
+                style={{
+                  background:
+                    "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
+                  width: "99%",
+                  height: "99%",
+                  left: "0.5%",
+                  backgroundColor: "white",
+                }}
+              >
+                {bioData?.length > 0 ? (
+                  bioData.map((bio) => (
+                    <div key={bio.id} className="mb-4">
+                      <h1 className="text-sm sm:text-lg md:text-2xl font-bold text-black">
+                        {bio.user_name}
+                      </h1>
+                      <p className="text-gray-700 text-[10px] sm:text-[12px] mt-2 whitespace-pre-line">
+                        {bio.user_detail.substring(0, 250)}...
+                        <Link className="text-[#0db5e4] font-bold" to={"/bio"}>
+                          read more
+                        </Link>
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-gray-500 text-sm">Loading bios...</p>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <style>
-        {`
+        <style>
+          {`
           .perspective-\\[1200px\\] {
             perspective: 1200px;
           }
@@ -250,8 +266,9 @@ const CubicSlider = () => {
             transform-style: preserve-3d;
           }
         `}
-      </style>
-    </section>
+        </style>
+      </section>
+    </div>
   );
 };
 
