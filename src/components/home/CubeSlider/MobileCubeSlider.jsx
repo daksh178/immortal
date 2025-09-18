@@ -13,7 +13,7 @@ const MobileCubeSlider = () => {
             'ngrok-skip-browser-warning': 'true'
           }
         });
-        setbioData(response.data?.data);
+        setbioData(response.data?.data?.sort((a, b) => a.id - b.id));
       } catch (error) {
         console.error("Error fetching roadmap:", error);
       }
@@ -37,9 +37,26 @@ const MobileCubeSlider = () => {
           className="relative w-[90%] max-w-full mx-auto flex flex-col justify-between p-4 mb-8 rounded-2xl border border-gray-200 shadow-sm bg-white"
         >
           <div>
-            <h1 className="text-lg font-semibold text-gray-800 mb-2">
-              {bio?.user_name}
-            </h1>
+            <div className="flex justify-between items-end">
+
+              <h1 className="text-lg font-semibold text-gray-800">
+                {bio?.user_name}
+              </h1>
+              <div className="relative h-[65px]">
+                <img
+                  src={bio.user_photo}
+                  alt={bio?.user_name}
+                  className="h-full object-cover"
+                />
+                <div
+                  className="absolute bottom-0 left-0 w-full h-1/2 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFFFFF 100%)",
+                  }}
+                ></div>
+              </div>
+            </div>
             <p className="text-gray-700 text-[10px] sm:text-[12px] mt-2 whitespace-pre-line">
               {bio?.user_detail.substring(0, 250)}...
               <Link className="text-[#0db5e4] font-bold" to={"/bio"}>

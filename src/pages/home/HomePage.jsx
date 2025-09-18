@@ -73,7 +73,7 @@ const Home = () => {
       </section>
 
       <section id="img" className="w-full">
-        <img src="./marquee.png"></img>
+        <img src="./marquee.png" className="w-[100%]" />
       </section>
 
       {/* Cube Slider */}
