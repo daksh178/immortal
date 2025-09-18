@@ -52,7 +52,7 @@ const CubicSlider = () => {
         ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=3000",
+          end: "+=300%",
           pin: true,
           scrub: true,
           anticipatePin: 1,
