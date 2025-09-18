@@ -454,6 +454,7 @@ const DesktopProtocol1 = () => {
 const MobileProtocol1 = () => {
   return (
     <>
+      <ScrollToTop />
       <div className="absolute top-4 towardFadeDiv left-2 xl:left-8">
         <img src="/logo.svg" className="lg:w-[200px]"></img>
       </div>
@@ -690,6 +691,8 @@ const MobileProtocol1 = () => {
 const DesktopProtocol2 = ({ number }) => {
   return (
     <>
+      <ScrollToTop />
+
       <div className="absolute top-4 towardFadeDiv left-8">
         <img src="/logo.svg" className="w-[200px]"></img>
       </div>
@@ -978,6 +981,8 @@ const DesktopProtocol2 = ({ number }) => {
 const MobileProtocol2 = ({ number }) => {
   return (
     <>
+      <ScrollToTop />
+
       <div className="absolute top-4 towardFadeDiv left-2 xl:left-8">
         <img src="/logo.svg" className="lg:w-[200px]"></img>
       </div>

@@ -5,7 +5,9 @@ import OverlayMobile from "../../components/home/Navbar/OverlayMobile";
 import { useEffect, useState } from "react";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Bio = () => {
+  const navigate = useNavigate()
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const Bio = () => {
   return (
     <>
       <ScrollToTop />
-      <div className="absolute top-4 towardFadeDiv left-4 xl:left-8" onClick={() => console.log("object")}>
+      <div className="absolute top-4 towardFadeDiv left-4 xl:left-8">
         <img src="/logo.svg" className="w-[200px]"></img>
       </div>
       {isMobile ? (
