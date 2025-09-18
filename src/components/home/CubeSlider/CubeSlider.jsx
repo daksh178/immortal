@@ -243,7 +243,7 @@ const CubicSlider = () => {
                     </h1>
                     <p className="text-gray-700 text-[10px] sm:text-[12px] mt-2 whitespace-pre-line">
                       {bio.user_detail.substring(0, 250)}...
-                      <Link className="text-[#0db5e4] font-bold" to={"/bio"}>
+                      <Link className="text-[#0db5e4] font-bold cursor-pointer" to={"/bio"}>
                         read more
                       </Link>
                     </p>

@@ -72,14 +72,14 @@ const Home = () => {
         {isMobile ? <ThreeJsComponentMobile /> : <ThreeJsComponent />}
       </section>
 
-      {/* <section id="img" className="w-full">
-        <img src="./marquee.png" className="w-[100%]" />
-      </section> */}
-
       {/* Cube Slider */}
       <section id="slider">
         {isMobile ? <MobileCubeSlider /> : <CubicSlider />}
       </section>
+
+      {/* <section id="img" >
+        <img src="./marquee.png" className="w-full" />
+      </section> */}
 
       {/* Supplement Section */}
       <section id="supplements" className="w-full">

@@ -18,9 +18,11 @@ const Bio = () => {
   }, []);
 
   const [bioData, setbioData] = useState([]);
+  const [getting, setgetting] = useState(false)
 
   useEffect(() => {
     const fetchRoadmap = async () => {
+      setgetting(true);
       try {
         const response = await axios.get(`${import.meta.env.VITE_MAIN_API}/get-bio`, {
           headers: {
@@ -32,6 +34,8 @@ const Bio = () => {
         }
       } catch (error) {
         console.error("Error fetching roadmap:", error);
+      } finally {
+        setgetting(false);
       }
     };
 
@@ -94,48 +98,52 @@ const Bio = () => {
           />
         </div>
       </div>
+      {getting ? (
+        <div className="w-full flex justify-center items-center py-20">
+          <div className="w-12 h-12 border-4 border-[#0DB5E4] border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      ) : (
+        bioData.length > 0 && (
+          bioData?.map((bio) => (
+            <div className="w-full px-4 sm:px-6 lg:px-16 xl:px-8 py-5 flex flex-col">
+              <div className="flex lg:flex-row gap-8 items-end">
+                <div className="lg:w-3/5 text-center lg:text-left">
+                  <h1
+                    className="text-5xl sm:text-6xl xl:text-8xl font-sf-ui-semibold text-transparent mb-2"
+                    style={{
+                      background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                      backgroundClip: "text",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    {bio?.user_name}
+                  </h1>
+                </div>
 
-      {bioData.length > 0 && (
-        bioData?.map((bio) => (
-          <div className="w-full px-4 sm:px-6 lg:px-16 xl:px-8 py-5 flex flex-col">
-            <div className="flex lg:flex-row gap-8 items-center">
-              <div className="lg:w-3/5 text-center lg:text-left">
-                <h1
-                  className="text-5xl sm:text-6xl xl:text-8xl font-sf-ui-semibold text-transparent mb-2"
-                  style={{
-                    background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  {bio?.user_name}
-                </h1>
+                <div className="relative lg:w-2/5">
+                  <img
+                    src={bio?.user_photo}
+                    alt="Kim Wheeler"
+                    className="w-full max-w-xs sm:max-w-sm mx-auto relative z-10"
+                  />
+                  <div
+                    className="absolute bottom-0 left-0 w-full h-16 z-20 pointer-events-none"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
+                    }}
+                  ></div>
+                </div>
+
               </div>
 
-              <div className="relative lg:w-2/5">
-                <img
-                  src={bio?.user_photo}
-                  alt="Kim Wheeler"
-                  className="w-full max-w-xs sm:max-w-sm mx-auto relative z-10"
-                />
-                <div
-                  className="absolute bottom-0 left-0 w-full h-16 z-20 pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
-                  }}
-                ></div>
-              </div>
-
+              <p className="mt-8 text-base sm:text-lg md:text-xl font-sf-ui-semibold leading-relaxed text-justify">
+                {bio?.user_detail}
+              </p>
             </div>
-
-            <p className="mt-8 text-base sm:text-lg md:text-xl font-sf-ui-semibold leading-relaxed text-justify">
-              {bio?.user_detail}
-            </p>
-          </div>
-        ))
-      )}
+          ))
+        ))}
       <div className="flex flex-col items-center justify-center mt-24">
         <p
           style={{
