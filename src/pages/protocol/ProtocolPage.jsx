@@ -98,7 +98,7 @@ const DesktopProtocol1 = () => {
       </div>
       <Overlay isProtocolPage={true} />
       <div>
-        <div className="relative h-[200vh] w-full text-black">
+        <div className="relative w-full text-black">
           {/* Background layer (140vh) */}
           <div
             style={{
@@ -208,7 +208,7 @@ const DesktopProtocol1 = () => {
           {/* Info Cards*/}
         </div>
 
-        <div className="flex flex-col items-center  mt-15 justify-center">
+        <div className="flex flex-col items-center mt-5 justify-center">
           <div
             className="cursor-pointer w-[230px] h-[60px] mb-5 rounded-[40px] flex items-center justify-start gap-4 py-[19px] pl-5 mt-5"
             style={{ border: '1px solid #03558C' }}
@@ -463,7 +463,7 @@ const MobileProtocol1 = () => {
 
       <div className="w-full text-black overflow-x-hidden">
         {/* Hero Section */}
-        <div className="relative xl:min-h-[200vh] w-full">
+        <div className="relative w-full">
           <div
             className="absolute top-0 left-0 w-full  bg-cover bg-center z-0"
             style={{ backgroundImage: "url('/Protocols/heroBg.png')" }}
