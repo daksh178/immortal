@@ -52,7 +52,7 @@ const CubicSlider = () => {
         ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
-          end: "bottom+=150% top",
+          end: "+=3000",
           pin: true,
           scrub: true,
           anticipatePin: 1,
@@ -142,130 +142,130 @@ const CubicSlider = () => {
   }, []);
 
   return (
-    <div style={{ height: "3000px" }}>
-      <section
-        ref={sectionRef}
-        id="bio"
-        className="relative w-full min-h-[150vh] flex justify-center items-center overflow-visible"
-      >
-        <div className="absolute top-10 left-20 z-0 pl-4 text-gray-300">
-          <p className="font-sf-ui-semibold md:text-[170px] lg:text-[200px] xl:text-[180px] lg:mt-24 xl:mt-0 opacity-10 text-[#2C5789]">
-            Bio
-          </p>
-        </div>
-        {/* Responsive Cube Container */}
-        <div className="w-[80vw] max-w-[400px] h-[64vw] max-h-[320px] scale-[0.7] sm:scale-100 md:scale-125 xl:scale-150 -translate-y-[10%] sm:-translate-y-[30%] z-10 mx-auto relative">
+    // <div style={{ minHeight: "3000px", height: "max(3000px, 300vh)" }}>
+    <section
+      ref={sectionRef}
+      id="bio"
+      className="relative w-full min-h-[150vh] flex justify-center items-center overflow-visible"
+    >
+      <div className="absolute top-10 left-20 z-0 pl-4 text-gray-300">
+        <p className="font-sf-ui-semibold md:text-[170px] lg:text-[200px] xl:text-[180px] lg:mt-24 xl:mt-0 opacity-10 text-[#2C5789]">
+          Bio
+        </p>
+      </div>
+      {/* Responsive Cube Container */}
+      <div className="w-[80vw] max-w-[400px] h-[64vw] max-h-[320px] scale-[0.7] sm:scale-100 md:scale-125 xl:scale-150 -translate-y-[10%] sm:-translate-y-[30%] z-10 mx-auto relative">
+        <div
+          ref={cubeRef}
+          className="cube w-full h-full absolute transition-transform duration-700"
+          style={{
+            transformStyle: "preserve-3d",
+            left: 0,
+            top: 0,
+          }}
+        >
+          {/* Face 1: video */}
           <div
-            ref={cubeRef}
-            className="cube w-full h-full absolute transition-transform duration-700"
+            ref={videoFaceRef}
+            className="cube-face clip-polygon-8 cube-face--front absolute w-full h-full bg-white overflow-visible flex items-center justify-center rounded-2xl shadow-lg"
+          >
+            <video
+              src={videoSrc}
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls={false}
+              preload="auto"
+              draggable={false}
+            />
+          </div>
+          {/* Face 2: right */}
+          <div
+            ref={rightFaceRef}
+            className="cube-face-parent absolute w-full h-full clip-polygon-8"
             style={{
-              transformStyle: "preserve-3d",
-              left: 0,
-              top: 0,
+              background:
+                "linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
             }}
           >
-            {/* Face 1: video */}
             <div
-              ref={videoFaceRef}
-              className="cube-face clip-polygon-8 cube-face--front absolute w-full h-full bg-white overflow-visible flex items-center justify-center rounded-2xl shadow-lg"
-            >
-              <video
-                src={videoSrc}
-                className="w-full h-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                controls={false}
-                preload="auto"
-                draggable={false}
-              />
-            </div>
-            {/* Face 2: right */}
-            <div
-              ref={rightFaceRef}
-              className="cube-face-parent absolute w-full h-full clip-polygon-8"
+              className="cube-face cube-face--right absolute z-10 flex items-center justify-center clip-polygon-8"
               style={{
                 background:
-                  "linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
+                  "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
+                width: "99%",
+                height: "99%",
+                left: "0.5%",
+                zIndex: 40,
               }}
             >
-              <div
-                className="cube-face cube-face--right absolute z-10 flex items-center justify-center clip-polygon-8"
+              <img
+                src={images[2]}
+                alt="Face 2"
                 style={{
-                  background:
-                    "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
                   width: "99%",
                   height: "99%",
                   left: "0.5%",
                   zIndex: 40,
                 }}
-              >
-                <img
-                  src={images[2]}
-                  alt="Face 2"
-                  style={{
-                    width: "99%",
-                    height: "99%",
-                    left: "0.5%",
-                    zIndex: 40,
-                  }}
-                  className="object-top object-cover"
-                  draggable={false}
-                />
-              </div>
+                className="object-top object-cover"
+                draggable={false}
+              />
             </div>
-            {/* Face 3: back */}
+          </div>
+          {/* Face 3: back */}
+          <div
+            ref={backFaceRef}
+            className="absolute clip-polygon-8 w-full h-full overflow-visible flex items-center justify-center rounded-2xl shadow-lg clip-polygon-8"
+            style={{
+              background:
+                " linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
+            }}
+          >
             <div
-              ref={backFaceRef}
-              className="absolute clip-polygon-8 w-full h-full overflow-visible flex items-center justify-center rounded-2xl shadow-lg clip-polygon-8"
+              className="clip-polygon-8 flex flex-col items-center p-5"
               style={{
                 background:
-                  " linear-gradient(159.8deg, rgba(0, 54, 112, 0) 3.01%, #0DB5E4 62.71%)",
+                  "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
+                width: "99%",
+                height: "99%",
+                left: "0.5%",
+                backgroundColor: "white",
               }}
             >
-              <div
-                className="clip-polygon-8 flex flex-col items-center p-5"
-                style={{
-                  background:
-                    "radial-gradient(241.87% 130.86% at 91.2% 0%, rgba(140, 229, 255, 0.7) 5.77%, rgba(255, 255, 255, 0.28) 53.85%, rgba(255, 255, 255, 0) 100%)",
-                  width: "99%",
-                  height: "99%",
-                  left: "0.5%",
-                  backgroundColor: "white",
-                }}
-              >
-                {bioData?.length > 0 ? (
-                  bioData.map((bio) => (
-                    <div key={bio.id} className="mb-4">
-                      <h1 className="text-sm sm:text-lg md:text-2xl font-bold text-black">
-                        {bio.user_name}
-                      </h1>
-                      <p className="text-gray-700 text-[10px] sm:text-[12px] mt-2 whitespace-pre-line">
-                        {bio.user_detail.substring(0, 250)}...
-                        <Link className="text-[#0db5e4] font-bold" to={"/bio"}>
-                          read more
-                        </Link>
-                      </p>
-                    </div>
-                  ))
-                ) : (
-                  <div className="relative w-full max-w-md h-[400px] p-6">
-                    {/* Skeleton content */}
-                    <div className="animate-pulse space-y-4">
-                      <div className="h-5 w-2/3 bg-gray-200/80 rounded"></div>
-                      <div className="h-3 w-full bg-gray-50 rounded"></div>
-                      <div className="h-3 w-5/6 bg-gray-50 rounded"></div>
-                      <div className="h-3 w-4/6 bg-gray-50 rounded"></div>
-                    </div>
+              {bioData?.length > 0 ? (
+                bioData.map((bio) => (
+                  <div key={bio.id} className="mb-4">
+                    <h1 className="text-sm sm:text-lg md:text-2xl font-bold text-black">
+                      {bio.user_name}
+                    </h1>
+                    <p className="text-gray-700 text-[10px] sm:text-[12px] mt-2 whitespace-pre-line">
+                      {bio.user_detail.substring(0, 250)}...
+                      <Link className="text-[#0db5e4] font-bold" to={"/bio"}>
+                        read more
+                      </Link>
+                    </p>
                   </div>
-                )}
-              </div>
+                ))
+              ) : (
+                <div className="relative w-full max-w-md h-[400px] p-6">
+                  {/* Skeleton content */}
+                  <div className="animate-pulse space-y-4">
+                    <div className="h-5 w-2/3 bg-gray-200/80 rounded"></div>
+                    <div className="h-3 w-full bg-gray-50 rounded"></div>
+                    <div className="h-3 w-5/6 bg-gray-50 rounded"></div>
+                    <div className="h-3 w-4/6 bg-gray-50 rounded"></div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
-        <style>
-          {`
+      </div>
+      <style>
+        {`
           .perspective-\\[1200px\\] {
             perspective: 1200px;
           }
@@ -273,9 +273,9 @@ const CubicSlider = () => {
             transform-style: preserve-3d;
           }
         `}
-        </style>
-      </section>
-    </div>
+      </style>
+    </section>
+    // </div>
   );
 };
 
