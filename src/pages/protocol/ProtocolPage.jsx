@@ -284,7 +284,7 @@ const DesktopProtocol1 = () => {
         </div>
 
         <div
-          className="mx-auto mt-12 w-[80%] flex flex-col  items-center py-4 min-h-[150vh] bg-center bg-contain bg-no-repeat"
+          className="mx-auto mt-12 w-[80%] flex flex-col  items-center py-4 min-h-[100vh] bg-center bg-contain bg-no-repeat"
           style={{
             backgroundImage: "url('/Protocols/cardBg.png')",
             backgroundSize: "100% 100%",
