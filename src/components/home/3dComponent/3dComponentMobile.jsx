@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -15,26 +16,28 @@ const ThreeJsComponentMobile = () => {
   const scrollContainerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const leftCardData = [
-    {
-      id: 1,
-      title: "Immunity Protocols",
-      content:
-        "This is a clear description of the protocol to let the customer know about its benefits and usecases.",
-    },
-    {
-      id: 2,
-      title: "Epstein Barr Virus Protocols",
-      content:
-        "This is a clear description of the protocol to let the customer know about its benefits and usecases.",
-    },
-    {
-      id: 3,
-      title: "IBS and Gut Healing Protocols",
-      content:
-        "This is a clear description of the protocol to let the customer know about its benefits and usecases.",
-    },
-  ];
+  const [leftCardData, setLeftCardData] = useState([]);
+
+  console.log(leftCardData)
+
+  useEffect(() => {
+    const fetchRoadmap = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_MAIN_API}/get-roadmap`, {
+          headers: {
+            'ngrok-skip-browser-warning': 'true'
+          }
+        });
+        if (response?.data) {
+          setLeftCardData(response?.data?.data.slice(0, 3));
+        }
+      } catch (error) {
+        console.error("Error fetching roadmap:", error);
+      }
+    };
+
+    fetchRoadmap();
+  }, []);
 
   useGSAP(() => {
     if (!textRef.current) return;
@@ -78,9 +81,13 @@ const ThreeJsComponentMobile = () => {
 
       <div className="text-gray-900 text-center px-4 md:text-lg lg:text-xl font-sf-ui-medium tracking-wide">
         <h1 ref={textRef}>
-          Biohacking the body to achieve LONGEVITY using science, epigenetics
-          and spiritual frameworks. We are cutting edge biohackers and longevity
-          coaches...
+          Biohacking the body to achieve <br></br> LONGEVITY using science,
+          epigenetics and spiritual frameworks. We are <br></br> cutting edge
+          biohackers and longevity coaches, who leverage science and <br></br>{" "}
+          revolutionary research to alter/change our genes to bring about a
+          longer, <br></br>healthier, more active life (along with <br></br>
+          employing spiritual connections to <br></br>reveal what's within and
+          to <br></br>supercharge the transformation).
         </h1>
       </div>
 
@@ -97,36 +104,56 @@ const ThreeJsComponentMobile = () => {
         ref={scrollContainerRef}
         className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 py-6 scroll-smooth no-scrollbar"
       >
-        {leftCardData.map((card, index) => (
-          <div
-            key={card.id}
-            className="relative cursor-pointer flex-shrink-0 w-full max-w-[350px] h-[510px] bg-[url('/card.png')] bg-no-repeat bg-contain bg-center border border-white/20 backdrop-blur-md flex flex-col p-4 snap-center"
-          >
-            <img
-              src="/donut.png"
-              alt=""
-              className="h-[120px] w-[120px] mx-auto mt-4"
-            />
-            <h6 className="text-black text-lg font-semibold leading-tight mt-10">
-              {card.title}
-            </h6>
-            <p className="mt-2 text-[14px] text-[#434343]">{card.content}</p>
-
+        {leftCardData.length === 0 ? (
+          // ⏳ Show placeholder skeleton cards while loading
+          Array(3)
+            .fill(null)
+            .map((_, index) => (
+              <div
+                key={index}
+                className="h-[470px] w-[378px] bg-gray-200 rounded-[20px] animate-pulse"
+              >
+                {/* Example skeleton structure */}
+                <div className="h-[174px] w-[174px] bg-gray-300 rounded-full mt-[40px] mx-auto" />
+                <div className="px-8 mt-6 space-y-4">
+                  <div className="h-6 bg-gray-300 rounded w-2/3" />
+                  <div className="h-4 bg-gray-300 rounded w-full" />
+                  <div className="h-4 bg-gray-300 rounded w-4/5" />
+                </div>
+              </div>
+            ))
+        ) : (
+          leftCardData.map((card) => (
             <div
-              className="absolute bottom-10 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
-              onClick={() => {
-                Navigate("/protocols/1");
-              }}
+              key={card.id}
+              className="relative cursor-pointer flex-shrink-0 w-full max-w-[350px] h-[510px] bg-[url('/card.png')] bg-no-repeat bg-contain bg-center border border-white/20 backdrop-blur-md flex flex-col p-4 snap-center"
             >
-              <h6 className="text-sm font-bold bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
-                View More
+              <img
+                src="/donut.png"
+                alt=""
+                className="h-[120px] w-[120px] mx-auto mt-4"
+              />
+              <h6 className="text-black text-lg font-semibold leading-tight mt-10">
+                {card?.title}
               </h6>
-              <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center bg-[#F9F9F9] shadow-inner">
-                <img src="/view_more.svg" alt="" className="h-4 w-4" />
+              <p className="mt-2 text-[14px] text-[#434343]">{card?.description}</p>
+
+              <div
+                className="absolute bottom-10 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
+                onClick={() => {
+                  Navigate("/protocols/1");
+                }}
+              >
+                <h6 className="text-sm font-bold bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
+                  View More
+                </h6>
+                <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center bg-[#F9F9F9] shadow-inner">
+                  <img src="/view_more.svg" alt="" className="h-4 w-4" />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
       {/* Dots */}
