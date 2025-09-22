@@ -24,13 +24,13 @@ gsap.registerPlugin(ScrollToPlugin);
 
 const Home = () => {
   const location = useLocation();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
-  const [isMd, setIsMd] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1280);
+  const [isMd, setIsMd] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1280);
-      setIsMd(window.innerWidth < 768);
+      setIsMobile(window.innerWidth <= 1280);
+      setIsMd(window.innerWidth <= 768);
     };
 
     window.addEventListener("resize", handleResize);

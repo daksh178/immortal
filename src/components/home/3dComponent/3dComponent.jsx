@@ -191,7 +191,6 @@ const ThreeJsComponent = () => {
 
           <div className="flex flex-wrap justify-center gap-10 px-6">
             {leftCardData.length === 0 ? (
-              // ⏳ Show placeholder skeleton cards while loading
               Array(3)
                 .fill(null)
                 .map((_, index) => (
