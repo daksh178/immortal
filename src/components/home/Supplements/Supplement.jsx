@@ -28,27 +28,6 @@ export default function Supplement() {
     fetchRoadmap();
   }, []);
 
-  useEffect(() => {
-    if (suplimentDta.length === 0) return; // wait until data is loaded
-
-    const textElements = document.querySelectorAll(".col-3 h1, .col-3 p");
-
-    textElements.forEach((element) => {
-      const split = new SplitText(element, {
-        type: "lines",
-        linesClass: "line",
-      });
-      split.lines.forEach(
-        (line) => (line.innerHTML = `<span>${line.textContent}</span>`)
-      );
-    });
-
-    // Set initial positions for animation
-    gsap.set(".col-3 .col-content-wrapper .line span", { y: "0%" });
-    gsap.set(".col-3 .col-content-wrapper-2 .line span", { y: "-125%" });
-
-  }, [suplimentDta]); // runs whenever data changes
-
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -152,6 +131,28 @@ export default function Supplement() {
     };
   }, []);
 
+  useEffect(() => {
+    if (suplimentDta.length === 0) return; // wait until data is loaded
+
+    const textElements = document.querySelectorAll(".col-3 h1, .col-3 p");
+
+    textElements.forEach((element) => {
+      const split = new SplitText(element, {
+        type: "lines",
+        linesClass: "line",
+      });
+      split.lines.forEach(
+        (line) => (line.innerHTML = `<span>${line.textContent}</span>`)
+      );
+    });
+
+    // Set initial positions for animation
+    gsap.set(".col-3 .col-content-wrapper .line span", { y: "0%" });
+    gsap.set(".col-3 .col-content-wrapper-2 .line span", { y: "-125%" });
+
+  }, [suplimentDta]); // runs whenever data changes
+
+
   return (
     <>
       <div className="supplement2">
@@ -186,7 +187,7 @@ export default function Supplement() {
                   <p className=" absolute text-lg 2xl:text-xl bottom-30">
                     {suplimentDta.length > 0 && suplimentDta[0].supplement_detail}
                   </p>
-                  <div className=" w-[170px] absolute bottom-4" onClick={() => Navigate("/protocols/1")}>
+                  <div className=" w-[170px] absolute bottom-4  z-50" onClick={() => Navigate("/protocols/1")}>
                     <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" />
                   </div>
                 </div>
@@ -235,7 +236,7 @@ export default function Supplement() {
                 <p className=" absolute text-lg 2xl:text-xl bottom-30">
                   {suplimentDta.length > 0 && suplimentDta[1].supplement_detail}
                 </p>
-                <div className=" w-[170px] absolute bottom-4" onClick={() => Navigate("/protocols/1")}>
+                <div className=" w-[170px] absolute bottom-4  z-50" onClick={() => Navigate("/protocols/1")}>
                   <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" />
                 </div>
               </div>
