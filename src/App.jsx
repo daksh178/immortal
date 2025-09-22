@@ -43,6 +43,7 @@ function App() {
         const video = document.createElement("video");
         video.src = "/assets/video/720p60fps.mp4";
         video.preload = "auto";
+        video.playsInline = true
         video.onloadeddata = () => resolve();
         video.onerror = () => resolve(); // avoid hang
       });
