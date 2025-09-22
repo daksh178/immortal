@@ -81,20 +81,20 @@ const ThreeJsComponentMobile = () => {
 
       <div className="text-gray-900 text-center px-4 md:text-lg lg:text-xl font-sf-ui-medium tracking-wide">
         <h1 ref={textRef}>
-          Biohacking the body to achieve <br></br> LONGEVITY using science,
-          epigenetics and spiritual frameworks. We are <br></br> cutting edge
-          biohackers and longevity coaches, who leverage science and <br></br>{" "}
+          Biohacking the body to achieve LONGEVITY using science,
+          epigenetics and spiritual frameworks. We are cutting edge
+          biohackers and longevity coaches, who leverage science and
           revolutionary research to alter/change our genes to bring about a
-          longer, <br></br>healthier, more active life (along with <br></br>
-          employing spiritual connections to <br></br>reveal what's within and
-          to <br></br>supercharge the transformation).
+          longer, healthier, more active life (along with
+          employing spiritual connections to reveal what's within and
+          to supercharge the transformation).
         </h1>
       </div>
 
       {/* Roadmap Heading */}
       <h1
         id="roadmap"
-        className="text-[#2C5789] text-center mt-5 opacity-10 w-full text-[36px] md:text-[48px] font-sf-ui-semibold"
+        className="text-[#2C5789] text-center mt-10 opacity-10 w-full text-[36px] md:text-[48px] font-sf-ui-semibold"
       >
         Roadmap
       </h1>

@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center mt-5 ">
-      <div className="footerMainDiv h-[357px] md:h-[450px] xl:h-[450px] 2xl:h-[540px]  relative flex flex-col items-center py-12 gap-5 overflow-hidden">
+      <div className="footerMainDiv h-[300px] md:h-[450px] xl:h-[450px] 2xl:h-[540px]  relative flex flex-col items-center py-12 gap-5 overflow-hidden">
         <img
           src="./footerTopGradient.png"
           className="w-full absolute top-0 h-[2px] "
