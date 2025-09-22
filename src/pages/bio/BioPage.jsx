@@ -157,7 +157,9 @@ const Bio = () => {
           }}
           className="mx-auto max-w-4xl mt-8"
         >
-          Email reimagined. Available today.
+          <span className="block text-xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+            Email reimagined. Available today.
+          </span>
         </p>
 
         <div

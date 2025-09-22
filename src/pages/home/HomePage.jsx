@@ -59,7 +59,7 @@ const Home = () => {
     <main className="flex flex-col w-full">
       {/* Navbar */}
       <header className="w-full">
-        <Overlay />
+        {isMobile ? <OverlayMobile /> : <Overlay />}
       </header>
 
       {/* Hero Section */}
