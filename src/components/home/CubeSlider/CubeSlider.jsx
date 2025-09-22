@@ -30,7 +30,7 @@ const CubicSlider = () => {
             'ngrok-skip-browser-warning': 'true'
           }
         });
-        setbioData(response.data?.data);
+        setbioData(response.data?.data?.sort((a, b) => a.id - b.id));
       } catch (error) {
         console.error("Error fetching roadmap:", error);
       }
