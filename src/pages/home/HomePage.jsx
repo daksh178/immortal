@@ -24,7 +24,7 @@ gsap.registerPlugin(ScrollToPlugin);
 
 const Home = () => {
   const location = useLocation();
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1280);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
   const [isMd, setIsMd] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
