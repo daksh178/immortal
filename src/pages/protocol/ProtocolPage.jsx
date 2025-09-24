@@ -108,80 +108,91 @@ export default function ProtocolPage() {
               {getRoadMapdata?.short_description}
             </p>
           </div>
+          {/* Cards Section */}
           <div className="w-full flex justify-center flex-wrap infoCardDiv px-24 gap-12 mt-20 max-w-[1411px]">
-            {infoCards?.map((card, index) => (
-              <div
-                key={index}
-                onMouseMove={(e) => {
-                  const cardEl = e.currentTarget;
-                  const rect = cardEl.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-                  const rotateX = ((y - centerY) / centerY) * 10;
-                  const rotateY = ((x - centerX) / centerX) * 10;
+            {getting
+              ? Array(4) // Show 4 skeletons while loading
+                .fill(null)
+                .map((_, index) => (
+                  <div
+                    key={index}
+                    className="w-[45%] h-[300px] bg-gray-200 rounded-md animate-pulse"
+                  ></div>
+                ))
+              : infoCards?.map((card, index) => (
+                <div
+                  key={index}
+                  onMouseMove={(e) => {
+                    const cardEl = e.currentTarget;
+                    const rect = cardEl.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * 10;
+                    const rotateY = ((x - centerX) / centerX) * 10;
 
-                  cardEl.style.transform = `
-                      perspective(1000px)
-                      rotateX(${-rotateX}deg)
-                      rotateY(${rotateY}deg)
-                      scale3d(1.02, 1.02, 1.02)
-                    `;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = `
-                      perspective(1000px)
-                      rotateX(0deg)
-                      rotateY(0deg)
-                      scale3d(1,1,1)
-                    `;
-                  e.currentTarget.style.transition = "transform 0.2s ease";
-                  setTimeout(() => {
-                    e.currentTarget.style.transition = "";
-                  }, 200);
-                }}
-                className="w-[45%] h-[300px] backdrop-blur-md border border-white/20 bg-[url('/Protocols/infoCard.png')] bg-contain bg-no-repeat relative"
-              >
-                <img
-                  src={card.image}
-                  className="w-[80px] top-10 left-8 absolute"
-                  alt={`info-${index}`}
-                />
-                <p
-                  className={`font-sf-ui-light infoCardText left-10 absolute ${card.bottomClass}`}
+                    cardEl.style.transform = `
+                perspective(1000px)
+                rotateX(${-rotateX}deg)
+                rotateY(${rotateY}deg)
+                scale3d(1.02, 1.02, 1.02)
+              `;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = `
+                perspective(1000px)
+                rotateX(0deg)
+                rotateY(0deg)
+                scale3d(1,1,1)
+              `;
+                    e.currentTarget.style.transition = "transform 0.2s ease";
+                    setTimeout(() => {
+                      e.currentTarget.style.transition = "";
+                    }, 200);
+                  }}
+                  className="w-[45%] h-[300px] backdrop-blur-md border border-white/20 bg-[url('/Protocols/infoCard.png')] bg-contain bg-no-repeat relative"
                 >
-                  {getRoadMapdata?.card_description?.[index]}
-                </p>
+                  <img
+                    src={card.image}
+                    className="w-[80px] top-10 left-8 absolute"
+                    alt={`info-${index}`}
+                  />
+                  <p
+                    className={`font-sf-ui-light infoCardText left-10 absolute ${card.bottomClass}`}
+                  >
+                    {getRoadMapdata?.card_description?.[index]}
+                  </p>
 
-                {/* left bar */}
-                <div
-                  className="h-[70px] w-[6px] absolute !z-30"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                    clipPath:
-                      "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
-                    left: -8,
-                    top: 20,
-                  }}
-                ></div>
+                  {/* left bar */}
+                  <div
+                    className="h-[70px] w-[6px] absolute !z-30"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                      clipPath:
+                        "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
+                      left: -8,
+                      top: 20,
+                    }}
+                  ></div>
 
-                {/* right bar */}
-                <div
-                  className="h-[70px] w-[6px] absolute"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                    clipPath:
-                      "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
-                    right: -8,
-                    bottom: 60,
-                  }}
-                ></div>
-              </div>
-            ))}
+                  {/* right bar */}
+                  <div
+                    className="h-[70px] w-[6px] absolute"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                      clipPath:
+                        "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
+                      right: -8,
+                      bottom: 60,
+                    }}
+                  ></div>
+                </div>
+              ))}
           </div>
+
 
           <div
             className="mx-auto mt-12 w-[80%] flex flex-col items-center py-4  bg-center bg-contain bg-no-repeat"
@@ -190,35 +201,42 @@ export default function ProtocolPage() {
               backgroundSize: "100% 100%",
             }}
           >
-            {getRoadMapdata?.medicine_detail?.map((medicine, index) => (
-              <div key={index} className="mb-12 flex flex-col items-center">
-                {/* Description */}
-                <p className="text-2xl font-sf-ui-light mx-auto max-w-4xl text-center mt-5">
-                  {medicine.description}
-                </p>
-
-                {/* Button with link */}
-                <div
-                  className="cursor-pointer w-[230px] h-[60px] rounded-[40px] flex items-center justify-start gap-4 py-[19px] pl-5 mt-5"
-                  style={{ border: "1px solid #03558C" }}
-                  onClick={() => window.open(medicine.link, "_blank")}
-                >
-                  <h6 className="flex-1 font-bold text-[20px] leading-[100%] bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
-                    Explore more
-                  </h6>
-                  <div className="w-[60px] h-[60px] rounded-full flex items-center justify-center bg-gradient-to-b from-[#003670] to-[#0DB5E4]">
-                    <img src="/rightaero.svg" alt="" className="h-[20px] w-[20px]" />
-                  </div>
+            {getting
+              ? Array(2).fill(null).map((_, index) => (
+                <div key={index} className="mb-12 flex flex-col items-center w-full animate-pulse">
+                  <div className="h-8 w-3/4 bg-gray-200 rounded mb-4"></div>
+                  <div className="h-[60px] w-[230px] bg-gray-200 rounded-full"></div>
                 </div>
+              ))
+              : getRoadMapdata?.medicine_detail?.map((medicine, index) => (
+                <div key={index} className="mb-12 flex flex-col items-center">
+                  {/* Description */}
+                  <p className="text-2xl font-sf-ui-light mx-auto max-w-4xl text-center mt-5">
+                    {medicine.description}
+                  </p>
 
-                {/* Divider Line */}
-                <img
-                  className="w-full h-[2px] mx-auto mt-4"
-                  src="/Protocols/line.png"
-                  alt=""
-                />
-              </div>
-            ))}
+                  {/* Button with link */}
+                  <div
+                    className="cursor-pointer w-[230px] h-[60px] rounded-[40px] flex items-center justify-start gap-4 py-[19px] pl-5 mt-5"
+                    style={{ border: "1px solid #03558C" }}
+                    onClick={() => window.open(medicine.link, "_blank")}
+                  >
+                    <h6 className="flex-1 font-bold text-[20px] leading-[100%] bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
+                      Explore more
+                    </h6>
+                    <div className="w-[60px] h-[60px] rounded-full flex items-center justify-center bg-gradient-to-b from-[#003670] to-[#0DB5E4]">
+                      <img src="/rightaero.svg" alt="" className="h-[20px] w-[20px]" />
+                    </div>
+                  </div>
+
+                  {/* Divider Line */}
+                  <img
+                    className="w-full h-[2px] mx-auto mt-4"
+                    src="/Protocols/line.png"
+                    alt=""
+                  />
+                </div>
+              ))}
           </div>
 
         </div >
