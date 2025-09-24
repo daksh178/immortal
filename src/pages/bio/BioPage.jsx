@@ -57,7 +57,7 @@ const Bio = () => {
       )}
 
       {/* Hero Section */}
-      <div className="relative pb-12 w-full text-black">
+      <div className="relative min-h-screen pb-12 w-full text-black">
         <div
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{ backgroundImage: "url('/Protocols/heroBg.png')" }}
@@ -180,45 +180,6 @@ const Bio = () => {
           </div>
         ))
       )}
-
-      {/* <div className="flex flex-col items-center justify-center mt-24">
-        <p
-          style={{
-            fontSize: "43px",
-            fontWeight: '500',
-            lineHeight: "38px",
-            letterSpacing: "-2%",
-            textAlign: "center",
-          }}
-          className="mx-auto max-w-4xl mt-8"
-        >
-          <span className="block text-xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
-            Email reimagined. Available today.
-          </span>
-        </p>
-
-        <div
-          className="cursor-pointer mt-5 w-[200px] h-[60px] rounded-[40px] flex items-center justify-start gap-4 py-[19px] pl-5"
-          style={{ boxShadow: "5.92px 5.92px 11.85px 0px #00000014" }}
-        >
-          <h6 className="flex-1 font-bold text-[18px] leading-[100%] bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
-            Contact Us
-          </h6>
-          <div
-            className="w-[60px] h-[60px] rounded-full flex items-center justify-center bg-[#F9F9F9]"
-            style={{
-              boxShadow:
-                "5.92px 5.92px 11.85px 0px #00000014 inset,-5.92px -5.92px 11.85px 0px #FFFFFF inset",
-            }}
-          >
-            <img
-              src="/view_more.svg"
-              alt=""
-              className="h-[20px] w-[20px]"
-            />
-          </div>
-        </div>
-      </div> */}
       <Footer />
     </>
   );

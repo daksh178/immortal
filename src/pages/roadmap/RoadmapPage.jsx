@@ -103,6 +103,7 @@ export default function RoadmapPage() {
                                 ) : (
                                     leftCardData.map((card) => (
                                         <div
+                                            onClick={() => navigate("/protocols/1")}
                                             key={card.id}
                                             onMouseMove={(e) => {
                                                 const cardEl = e.currentTarget;
@@ -115,19 +116,19 @@ export default function RoadmapPage() {
                                                 const rotateY = ((x - centerX) / centerX) * 10;
 
                                                 cardEl.style.transform = `
-                          perspective(1000px)
-                          rotateX(${-rotateX}deg)
-                          rotateY(${rotateY}deg)
-                          scale3d(1.02, 1.02, 1.02)
-                        `;
+                                                    perspective(1000px)
+                                                    rotateX(${-rotateX}deg)
+                                                    rotateY(${rotateY}deg)
+                                                    scale3d(1.02, 1.02, 1.02)
+                                                    `;
                                             }}
                                             onMouseLeave={(e) => {
                                                 e.currentTarget.style.transform = `
-                          perspective(1000px)
-                          rotateX(0deg)
-                          rotateY(0deg)
-                          scale3d(1,1,1)
-                        `;
+                                                    perspective(1000px)
+                                                    rotateX(0deg)
+                                                    rotateY(0deg)
+                                                    scale3d(1,1,1)
+                                                    `;
                                                 e.currentTarget.style.transition =
                                                     "transform 0.2s ease";
                                                 setTimeout(() => {
@@ -154,7 +155,7 @@ export default function RoadmapPage() {
                                                 </p>
 
                                                 {/* Button */}
-                                                <div
+                                                {/* <div
                                                     className="cursor-pointer mt-2 w-[171px] h-[50px] rounded-[40px] flex items-center justify-start gap-4 py-[19px] pl-5"
                                                     style={{
                                                         boxShadow:
@@ -178,7 +179,7 @@ export default function RoadmapPage() {
                                                             className="h-[20px] w-[20px]"
                                                         />
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
 
                                             {/* Decorative Bars */}

@@ -75,12 +75,15 @@ export default function SupplementPage() {
                     </div>
 
                     {/* CARD LIST */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 w-[90%] mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 w-[90%] mx-auto cursor-pointer"
+                        onClick={() => {
+                            navigate("/protocols/1");
+                        }}>
                         {suplimentDta && suplimentDta.length > 0 ? (
                             suplimentDta?.map((card, i) => (
                                 <section
                                     key={i}
-                                    className="relative flex flex-col justify-between p-4 rounded-2xl border border-gray-200 shadow-sm bg-white"
+                                    className="relative flex flex-col p-4 rounded-2xl border border-gray-200 shadow-sm bg-white"
                                 >
                                     <img
                                         src={`/team-${i + 1}.jpg`}
@@ -95,7 +98,7 @@ export default function SupplementPage() {
                                         <p className="text-sm text-gray-600 mb-4">
                                             {card.supplement_detail}
                                         </p>
-                                        <div
+                                        {/* <div
                                             onClick={() => {
                                                 navigate("/protocols/1");
                                             }}
@@ -105,12 +108,8 @@ export default function SupplementPage() {
                                                 alt="See more"
                                                 className="w-28 object-contain cursor-pointer"
                                             />
-                                        </div>
+                                        </div> */}
                                     </div>
-
-                                    <h1 className="text-[60px] font-bold text-black opacity-5 absolute left-4 top-[40%] -translate-y-1/2 pointer-events-none">
-                                        {card?.id.toString().padStart(2, "0")}
-                                    </h1>
                                 </section>
                             ))
                         ) : (
@@ -126,10 +125,7 @@ export default function SupplementPage() {
                                         <div className="h-6 w-3/4 bg-gray-300 rounded-md mb-2"></div>
                                         <div className="h-3 w-full bg-gray-300 rounded mb-1"></div>
                                         <div className="h-3 w-5/6 bg-gray-300 rounded mb-4"></div>
-                                        <div className="w-28 h-8 bg-gray-300 rounded"></div>
                                     </div>
-
-                                    <div className="h-[60px] w-16 bg-gray-300 opacity-20 absolute left-4 top-[40%] -translate-y-1/2 pointer-events-none rounded-md"></div>
                                 </section>
                             ))
                         )}

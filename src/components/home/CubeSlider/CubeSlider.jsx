@@ -142,11 +142,10 @@ const CubicSlider = () => {
   }, []);
 
   return (
-    // <div style={{ minHeight: "3000px", height: "max(3000px, 300vh)" }}>
     <section
       ref={sectionRef}
       id="bio"
-      className="relative w-full min-h-[150vh] flex justify-center items-center overflow-visible"
+      className="relative w-full h-full flex justify-center items-center overflow-visible"
     >
       <div className="absolute top-10 left-20 z-0 pl-4 text-gray-300">
         <p className="font-sf-ui-semibold md:text-[170px] lg:text-[200px] xl:text-[180px] lg:mt-24 xl:mt-0 opacity-10 text-[#2C5789]">
@@ -154,7 +153,7 @@ const CubicSlider = () => {
         </p>
       </div>
       {/* Responsive Cube Container */}
-      <div className="w-[80vw] max-w-[400px] h-[64vw] max-h-[320px] scale-[0.7] sm:scale-100 md:scale-125 xl:scale-150 -translate-y-[10%] sm:-translate-y-[30%] z-10 mx-auto relative">
+      <div className="w-[80vw] max-w-[400px] h-[64vw] max-h-[320px] scale-[0.7] sm:scale-100 md:scale-125 xl:scale-150 translate-y-[60%] sm:translate-y-[60%] z-10 mx-auto relative">
         <div
           ref={cubeRef}
           className="cube w-full h-full absolute transition-transform duration-700"
@@ -275,7 +274,6 @@ const CubicSlider = () => {
         `}
       </style>
     </section>
-    // </div>
   );
 };
 

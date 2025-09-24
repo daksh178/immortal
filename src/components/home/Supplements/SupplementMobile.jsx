@@ -35,6 +35,9 @@ export default function SupplementMobile() {
       {suplimentDta && suplimentDta.length > 0 ? (
         suplimentDta?.map((card, i) => (
           <section
+            onClick={() => {
+              Navigate("/protocols/1");
+            }}
             key={i}
             className="relative w-[90%] max-w-full mx-auto flex flex-col justify-between p-4 mb-8 rounded-2xl border border-gray-200 shadow-sm bg-white"
           >
@@ -49,7 +52,7 @@ export default function SupplementMobile() {
                 {card.supplement_name}
               </h1>
               <p className="text-sm text-gray-600 mb-4">{card.supplement_detail}</p>
-              <div onClick={() => {
+              {/* <div onClick={() => {
                 Navigate("/protocols/1");
               }}>
                 <img
@@ -57,12 +60,9 @@ export default function SupplementMobile() {
                   alt="See more"
                   className="w-28 object-contain"
                 />
-              </div>
+              </div> */}
             </div>
 
-            <h1 className="text-[60px] font-bold text-black opacity-5 absolute left-4 top-[40%] -translate-y-1/2 pointer-events-none">
-              {card?.id.toString().padStart(2, "0")}
-            </h1>
           </section>
         ))
       ) : (

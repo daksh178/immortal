@@ -77,9 +77,9 @@ const Home = () => {
         {isMobile ? <MobileCubeSlider /> : <CubicSlider />}
       </section>
 
-      {/* <section id="img" >
+      <section id="img" className="mt-30">
         <img src="./marquee.png" className="w-full" />
-      </section> */}
+      </section>
 
       {/* Supplement Section */}
       <section id="supplements" className="w-full">

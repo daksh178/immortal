@@ -111,7 +111,7 @@ const ThreeJsComponentMobile = () => {
             .map((_, index) => (
               <div
                 key={index}
-                className="h-[470px] w-[378px] bg-gray-200 rounded-[20px] animate-pulse"
+                className="flex flex-col h-[470px] w-[378px] bg-gray-200 rounded-[20px] animate-pulse"
               >
                 {/* Example skeleton structure */}
                 <div className="h-[174px] w-[174px] bg-gray-300 rounded-full mt-[40px] mx-auto" />
@@ -125,6 +125,9 @@ const ThreeJsComponentMobile = () => {
         ) : (
           leftCardData.map((card) => (
             <div
+              onClick={() => {
+                Navigate("/protocols/1");
+              }}
               key={card.id}
               className="relative cursor-pointer flex-shrink-0 w-full max-w-[350px] h-[510px] bg-[url('/card.png')] bg-no-repeat bg-contain bg-center border border-white/20 backdrop-blur-md flex flex-col p-4 snap-center"
             >
@@ -138,7 +141,7 @@ const ThreeJsComponentMobile = () => {
               </h6>
               <p className="mt-2 text-[14px] text-[#434343]">{card?.description}</p>
 
-              <div
+              {/* <div
                 className="absolute bottom-10 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
                 onClick={() => {
                   Navigate("/protocols/1");
@@ -150,7 +153,7 @@ const ThreeJsComponentMobile = () => {
                 <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center bg-[#F9F9F9] shadow-inner">
                   <img src="/view_more.svg" alt="" className="h-4 w-4" />
                 </div>
-              </div>
+              </div> */}
             </div>
           ))
         )}
