@@ -57,7 +57,7 @@ const Bio = () => {
       )}
 
       {/* Hero Section */}
-      <div className="relative min-h-screen pb-12 w-full text-black">
+      <div className="relative pb-12 w-full text-black">
         <div
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{ backgroundImage: "url('/Protocols/heroBg.png')" }}
