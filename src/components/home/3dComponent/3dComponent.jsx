@@ -190,141 +190,143 @@ const ThreeJsComponent = () => {
           </h1>
 
           <div className="px-6 flex flex-col">
-            {/* Cards Section */}
-            <div
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
-              onClick={() => Navigate("/protocols/1")}
-            >
-              {leftCardData.length === 0
-                ? Array(3)
-                  .fill(null)
-                  .map((_, index) => (
-                    <div
-                      key={index}
-                      className="w-full max-w-[380px] aspect-[9/11] bg-gray-200 rounded-[20px] animate-pulse"
-                    >
-                      {/* Skeleton */}
-                      <div className="w-3/5 aspect-square bg-gray-300 rounded-full mt-10 mx-auto" />
-                      <div className="px-6 mt-6 space-y-4">
-                        <div className="h-6 bg-gray-300 rounded w-2/3" />
-                        <div className="h-4 bg-gray-300 rounded w-full" />
-                        <div className="h-4 bg-gray-300 rounded w-4/5" />
+            <div className="w-full max-w-[1300px] mx-auto">
+              {/* Cards Section */}
+              <div
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
+                onClick={() => Navigate("/protocols/1")}
+              >
+                {leftCardData.length === 0
+                  ? Array(3)
+                    .fill(null)
+                    .map((_, index) => (
+                      <div
+                        key={index}
+                        className="w-full max-w-[380px] aspect-[9/11] bg-gray-200 rounded-[20px] animate-pulse"
+                      >
+                        {/* Skeleton */}
+                        <div className="w-3/5 aspect-square bg-gray-300 rounded-full mt-10 mx-auto" />
+                        <div className="px-6 mt-6 space-y-4">
+                          <div className="h-6 bg-gray-300 rounded w-2/3" />
+                          <div className="h-4 bg-gray-300 rounded w-full" />
+                          <div className="h-4 bg-gray-300 rounded w-4/5" />
+                        </div>
                       </div>
-                    </div>
-                  ))
-                : leftCardData.map((card) => (
-                  <div
-                    key={card.id}
-                    onMouseMove={(e) => {
-                      const cardEl = e.currentTarget;
-                      const rect = cardEl.getBoundingClientRect();
-                      const x = e.clientX - rect.left;
-                      const y = e.clientY - rect.top;
-                      const centerX = rect.width / 2;
-                      const centerY = rect.height / 2;
-                      const rotateX = ((y - centerY) / centerY) * 10;
-                      const rotateY = ((x - centerX) / centerX) * 10;
+                    ))
+                  : leftCardData.map((card) => (
+                    <div
+                      key={card.id}
+                      onMouseMove={(e) => {
+                        const cardEl = e.currentTarget;
+                        const rect = cardEl.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const rotateX = ((y - centerY) / centerY) * 10;
+                        const rotateY = ((x - centerX) / centerX) * 10;
 
-                      cardEl.style.transform = `
+                        cardEl.style.transform = `
                 perspective(1000px)
                 rotateX(${-rotateX}deg)
                 rotateY(${rotateY}deg)
                 scale3d(1.02, 1.02, 1.02)
               `;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = `
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = `
                 perspective(1000px)
                 rotateX(0deg)
                 rotateY(0deg)
                 scale3d(1,1,1)
               `;
-                      e.currentTarget.style.transition = "transform 0.2s ease";
-                      setTimeout(() => {
-                        e.currentTarget.style.transition = "";
-                      }, 200);
-                    }}
-                    className="relative w-full max-w-[380px] aspect-[9/11] cursor-pointer duration-150 will-change-transform"
-                    style={{ transformStyle: "preserve-3d" }}
-                  >
-                    {/* Decorative left bar */}
-                    <div
-                      className="absolute h-1/3 w-[6px]"
-                      style={{
-                        background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                        clipPath:
-                          "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
-                        left: -8,
-                        bottom: '15%',
+                        e.currentTarget.style.transition = "transform 0.2s ease";
+                        setTimeout(() => {
+                          e.currentTarget.style.transition = "";
+                        }, 200);
                       }}
-                    ></div>
-
-                    {/* Decorative right bar */}
-                    <div
-                      className="absolute h-1/3 w-[6px]"
-                      style={{
-                        background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                        clipPath:
-                          "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
-                        right: -8,
-                        bottom: '40%',
-                      }}
-                    ></div>
-
-                    {/* Border layer */}
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(169.06deg, rgba(0, 54, 112, 0) 4.42%, #0DB5E4 91.9%)",
-                        clipPath:
-                          "polygon(3% 0, 97% 0, 100% 3%, 100% 97%, 97% 100%, 3% 100%, 0 97%, 0 3%)",
-                      }}
-                    />
-
-                    {/* Inner background */}
-                    <div
-                      className="absolute inset-[0.8%] flex flex-col bg-white"
-                      style={{
-                        clipPath:
-                          "polygon(2% 0, 98% 0, 100% 2%, 100% 98%, 98% 100%, 2% 100%, 0 98%, 0 2%)",
-                      }}
+                      className="relative w-full max-w-[380px] aspect-[9/11] cursor-pointer duration-150 will-change-transform"
+                      style={{ transformStyle: "preserve-3d" }}
                     >
-                      {/* Image */}
-                      <img
-                        src="/donut.png"
-                        alt=""
-                        className="w-3/5 aspect-square mt-10 mx-auto pointer-events-none"
+                      {/* Decorative left bar */}
+                      <div
+                        className="absolute h-1/3 w-[6px]"
+                        style={{
+                          background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                          clipPath:
+                            "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
+                          left: -8,
+                          bottom: '15%',
+                        }}
+                      ></div>
+
+                      {/* Decorative right bar */}
+                      <div
+                        className="absolute h-1/3 w-[6px]"
+                        style={{
+                          background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                          clipPath:
+                            "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
+                          right: -8,
+                          bottom: '40%',
+                        }}
+                      ></div>
+
+                      {/* Border layer */}
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          background:
+                            "linear-gradient(169.06deg, rgba(0, 54, 112, 0) 4.42%, #0DB5E4 91.9%)",
+                          clipPath:
+                            "polygon(3% 0, 97% 0, 100% 3%, 100% 97%, 97% 100%, 3% 100%, 0 97%, 0 3%)",
+                        }}
                       />
 
-                      {/* Content */}
-                      <div className="flex flex-col flex-1 px-6 mt-4">
-                        <h6 className="text-black text-xl md:text-2xl font-semibold leading-tight min-h-[4rem] pointer-events-none">
-                          {card?.title}
-                        </h6>
-                        <p className="text-sm md:text-[14px] font-normal leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
-                          {card?.description}
-                        </p>
+                      {/* Inner background */}
+                      <div
+                        className="absolute inset-[0.8%] flex flex-col bg-white"
+                        style={{
+                          clipPath:
+                            "polygon(2% 0, 98% 0, 100% 2%, 100% 98%, 98% 100%, 2% 100%, 0 98%, 0 2%)",
+                        }}
+                      >
+                        {/* Image */}
+                        <img
+                          src="/donut.png"
+                          alt=""
+                          className="w-3/5 aspect-square mt-10 mx-auto pointer-events-none"
+                        />
+
+                        {/* Content */}
+                        <div className="flex flex-col flex-1 px-6 mt-4">
+                          <h6 className="text-black text-xl md:text-2xl font-semibold leading-tight min-h-[4rem] pointer-events-none">
+                            {card?.title}
+                          </h6>
+                          <p className="text-sm md:text-[14px] font-normal leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
+                            {card?.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-            </div>
+                  ))}
+              </div>
 
-            {/* View All Section */}
-            <div className="flex mt-10 items-center justify-end gap-3">
-              <span
-                className="contactText inter-bold cursor-pointer"
-                onClick={() => Navigate("/roadmap")}
-              >
-                View All
-              </span>
-              <img
-                src="/view_more.svg"
-                alt=""
-                className="h-5 w-5 cursor-pointer"
-                onClick={() => Navigate("/roadmap")}
-              />
+              {/* View All Section */}
+              <div className="flex mt-10 items-center justify-end gap-3">
+                <span
+                  className="contactText inter-bold cursor-pointer"
+                  onClick={() => Navigate("/roadmap")}
+                >
+                  View All
+                </span>
+                <img
+                  src="/view_more.svg"
+                  alt=""
+                  className="h-5 w-5 cursor-pointer"
+                  onClick={() => Navigate("/roadmap")}
+                />
+              </div>
             </div>
           </div>
 
