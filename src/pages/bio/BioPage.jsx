@@ -47,7 +47,7 @@ const Bio = () => {
   return (
     <>
       <ScrollToTop />
-      <div className="absolute top-4 towardFadeDiv left-4 xl:left-8">
+      <div onClick={() => navigate("/")} className="absolute top-4 towardFadeDiv left-4 xl:left-8 cursor-pointer">
         <img src="/logo.svg" className="w-[200px]"></img>
       </div>
       {isMobile ? (

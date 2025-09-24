@@ -688,17 +688,16 @@ const MobileProtocol1 = () => {
   );
 };
 
-const DesktopProtocol2 = ({ number }) => {
+const DesktopProtocol2 = () => {
   return (
     <>
       <ScrollToTop />
-
       <div className="absolute top-4 towardFadeDiv left-8">
         <img src="/logo.svg" className="w-[200px]"></img>
       </div>
       <Overlay isProtocolPage={true} />
       <div>
-        <div className="relative h-[200vh] w-full text-black">
+        <div className="relative w-full text-black">
           {/* Background layer (140vh) */}
           <div
             style={{
@@ -708,7 +707,7 @@ const DesktopProtocol2 = ({ number }) => {
           ></div>
 
           {/* Foreground content */}
-          <div className="relative text-7xl  2xl:text-8xl font-sf-ui-semibold z-10 flex flex-col items-center top-[8%] 2xl:top-[12%] h-full">
+          <div className="text-7xl  2xl:text-8xl font-sf-ui-semibold z-10 flex flex-col items-center pt-[156px] h-full">
             <h1
               style={{
                 background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
@@ -717,261 +716,358 @@ const DesktopProtocol2 = ({ number }) => {
                 color: "transparent",
                 WebkitTextFillColor: "transparent",
               }}
-              className="text-transparent"
+              className="text-transparent font-bold"
             >
-              Protocol
+              Female
             </h1>
-            <h1 className="font-sf-ui-medium">Female PMS</h1>
-            <h1 className="font-sf-ui-medium">Support</h1>
+            <h1 className="font-sf-ui-semibold">Hormone Protocols</h1>
 
-            <p className="protocolDescription max-w-6xl  mt-16">
-              Progonol - 2oz Crème - Professionally Formulated Pre-Menopause &
-              PMS Symptom Support - Safe, Natural, Paraben Free - 30 Day Supply,
-              Progonol is commonly used to support Pre-Menopause & PMS Symptoms
+            <p className="protocolDescription max-w-[1200px] mt-16">
+              The female hormone protocols listed are not to be considered medical advice. If
+              you have any  medical condition, please consult your physician. We are not
+              licensed doctors and are unable to  make medical recommendations. These
+              protocols are what is working for us based off the latest  science and research
             </p>
-            <div className="w-full flex justify-center flex-wrap infoCardDiv px-24 gap-12 mt-20 max-w-[1411px]">
-              {infoCards.map((card, index) => (
-                <div
-                  key={index}
-                  className="w-[45%] h-[300px] backdrop-blur-md border border-white/20 bg-[url('/Protocols/infoCard.png')] bg-contain bg-no-repeat relative"
-                >
-                  <img
-                    src={card.image}
-                    className="w-[80px] top-10 left-8 absolute"
-                    alt={`info-${index}`}
-                  />
-                  <p
-                    className={`font-sf-ui-light infoCardText left-10 absolute ${card.bottomClass}`}
-                  >
-                    {card.text}
-                  </p>
 
-                  {/* left bar */}
-                  <div
-                    className="h-[70px] w-[6px] absolute !z-30"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                      clipPath:
-                        "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
-                      left: -8,
-                      top: 20,
-                    }}
-                  ></div>
+            <h1
+              style={{
+                background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+              className="text-transparent font-bold text-[160px] mt-[120px]"
+            >
+              DIM
+            </h1>
+            <img
+              className="w-full h-[2px] mx-auto mt-5"
+              src="/Protocols/line.png"
+            ></img>
+            <p className="protocolDescription max-w-[1200px] mt-16">
+              Most likely, you’ve probably come across the supplement DIM (Diindolylmethane).
+              Whether you’re on hormone replacement therapy (HRT) or simply looking to
+              balance your estrogen levels naturally, supplementing with DIM can make a drastic
+              impact. Your hormone metabolism and overall wellbeing will greatly benefit.
+            </p>
+            <p className="protocolDescription max-w-[1200px] mt-16">
+              DIM is a natural compound found in cruciferous vegetables like broccoli,
+              brusselssprouts and kale. Of course, all food sources are good, but it’s difficult to
+              get enough DIM from food alone to impact estrogen metabolism significantly.
+              That’s where supplementation assists us.
+            </p>
 
-                  {/* right bar */}
-                  <div
-                    className="h-[70px] w-[6px] absolute"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                      clipPath:
-                        "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
-                      right: -8,
-                      bottom: 60,
-                    }}
-                  ></div>
-                </div>
-              ))}
+            <h1
+              style={{
+                background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+              className="text-transparent font-bold text-[43px] mt-[120px]"
+            >
+              How DIM Works to Support Estrogen Metabolism
+            </h1>
+            <img
+              className="w-full h-[2px] mx-auto mt-5"
+              src="/Protocols/line.png"
+            ></img>
+
+            <p className="protocolDescription max-w-[1200px] mt-16">
+              Women need the right balance of Estrogen to Progesterone. Estrogen is very,
+              very good and should  not be demonized. However, too much estrogen—especially the
+              “bad” kind—can lead to weight gain, mood swings, and even increase the risk of
+              certain cancers. Too little, on the other hand, can cause fatigue, brain fog, and
+              other unpleasant symptoms.
+            </p>
+            <p className="protocolDescription max-w-[1200px] mt-16">
+              Enter “DIM”. DIM works by assisting the liver to metabolize estrogen.Specifically,
+              it helps the body convert estrogen into its beneficial forms, reducing the impact of
+              harmful estrogen metabolites. With properly balanced estrogen, many of the
+              benefits you are seeking arise:improved energy, mood stability, and weight
+              management.
+            </p>
+
+            <h1
+              style={{
+                background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+              className="text-transparent font-bold text-[43px] mt-[120px]"
+            >
+              HRT USERS: Good News
+            </h1>
+            <img
+              className="w-full h-[2px] mx-auto mt-5"
+              src="/Protocols/line.png"
+            ></img>
+
+            <p className="protocolDescription max-w-[1200px] mt-16">
+              HRT can be life-changing, but sometimes imbalance ensues. The metabolism of
+              estrogen is thrown  off and mood swings, tender breasts, weight gain appears.
+              Supplementing with DIM helps the body  metabolize estrogen more efficiently,
+              reducing these symptoms and allowing you to reap the full  benefits of HRT without
+              the drawbacks.
+            </p>
+          </div>
+
+          <div
+            className="mx-auto mt-12 w-[80%] flex flex-col  items-center py-4 min-h-[100vh] bg-center bg-contain bg-no-repeat"
+            style={{
+              backgroundImage: "url('/Protocols/cardBg.png')",
+              backgroundSize: "100% 100%",
+            }}
+          >
+            <h1
+              style={{
+                background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+              className="text-transparent font-bold text-[43px] mt-10"
+            >
+              Here’s why DIM is a must-have for HRT users:
+            </h1>
+            <img
+              className="w-full h-[2px] mx-auto mt-5"
+              src="/Protocols/line.png"
+            ></img>
+
+            <div className="max-w-[996px] mt-16 flex flex-col gap-[40px] mb-[80px]">
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Contributes to Healthy Estrogen Metabolism </span> – <span className="text-[28px]"> It helps convert estrogen into
+                    beneficial forms, reducing harmful metabolites that contribute to imbalance</span>
+              </p>
+
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Diminishes Estrogen Dominance Symptoms </span> – <span className="text-[28px]">  If you’ve been struggling with mood
+                    swings, weight gain, or water retention, DIM can help balance things out.</span>
+              </p>
+
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Assists with Liver Detoxification </span> – <span className="text-[28px]">   Since the liver plays a significant role in hormone
+                    metabolism, DIM helps enhance its function and eliminate excess estrogen</span>
+              </p>
+
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Balances Testosterone and Estrogen Levels </span> – <span className="text-[28px]">  DIM doesn’t just support estrogen
+                    metabolism; it also prevents testosterone from converting into excess estrogen, which
+                    is particularly beneficial for both men and women.</span>
+              </p>
+
+              <span className="text-[28px] font-medium">
+                Make the best out of your hormone therapy and experience fewer side effects while
+                maintaining a healthier balance overall by incorporating DIM
+              </span>
             </div>
           </div>
 
-          {/* Info Cards*/}
+          <div className="z-10 flex flex-col items-center h-full">
+            <h1
+              style={{
+                background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+              className="text-transparent font-bold text-[43px] mt-[120px]"
+            >
+              Additional Benefits of DIM
+            </h1>
+            <img
+              className="w-full h-[2px] mx-auto mt-5"
+              src="/Protocols/line.png"
+            ></img>
+
+            <p className="protocolDescription max-w-[1200px] mt-16">
+              While DIM is primarily known for its impact on estrogen metabolism, its benefits
+              extend beyond hormone balance. Here are some additional ways DIM can support
+              your overall well-being:
+            </p>
+          </div>
+
+          <div
+            className="mx-auto mt-12 w-[80%] flex flex-col  items-center py-4 min-h-[100vh] bg-center bg-contain bg-no-repeat"
+            style={{
+              backgroundImage: "url('/Protocols/cardBg.png')",
+              backgroundSize: "100% 100%",
+            }}
+          >
+            <div className="max-w-[996px] mt-16 flex flex-col gap-[40px] mb-[80px]">
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Supports Weight Management:</span> – <span className="text-[28px]"> Estrogen dominance can contribute to weight
+                    gain,  particularly around the hips and abdomen. Because DIM helps regulate estrogen
+                    levels, it  can also support weight loss efforts by promoting a healthier hormone
+                    balance.</span>
+              </p>
+
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Improves Skin Health </span> – <span className="text-[28px]">  Hormonal acne is a common issue for those experiencing
+                    estrogen  fluctuations. DIM helps reduce breakouts by balancing hormone levels and
+                    lowering  inflammation in the skin.</span>
+              </p>
+
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Enhances Mood and Mental Clarity</span> – <span className="text-[28px]">   If you’ve ever felt mentally foggy or moody
+                    due to  hormone imbalances, DIM may help. By promoting optimal estrogen
+                    metabolism, it can lead  to more stable moods and improved focus.</span>
+              </p>
+
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Supports Immune Function </span> – <span className="text-[28px]">   DIM has been shown to support a healthy immune
+                    system,  thanks to its anti-inflammatory and detoxification properties..</span>
+              </p>
+            </div>
+          </div>
+
+
+          <div className="z-10 flex flex-col items-center h-full">
+            <h1
+              style={{
+                background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+              className="text-transparent font-bold text-[43px] mt-[120px]"
+            >
+              How to Take DIM for the Best Results
+            </h1>
+            <img
+              className="w-full h-[2px] mx-auto mt-5"
+              src="/Protocols/line.png"
+            ></img>
+
+            <p className="protocolDescription max-w-[1200px] mt-16">
+              If you’re ready to "DIM" your health and add this supplement to your
+              routine, here are some tips to ensure you get the best results:
+            </p>
+          </div>
+
+          <div
+            className="mx-auto mt-12 w-[80%] flex flex-col  items-center py-4 h-full max-h-[100vh] bg-center bg-contain bg-no-repeat"
+            style={{
+              backgroundImage: "url('/Protocols/cardBg.png')",
+              backgroundSize: "100% 100%",
+            }}
+          >
+            <div className="max-w-[996px] mt-16 flex flex-col gap-[40px] mb-[80px]">
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Dosage</span> – <span className="text-[28px]"> A typical dose ranges from 100-300 mg per day, depending on your needs.
+                    It’s  always best to consult with a healthcare provider to determine the right amount for
+                    you.</span>
+              </p>
+
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Timing </span> – <span className="text-[28px]">  DIM is best taken with food to improve absorption.</span>
+              </p>
+
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Pair with a Healthy Diet </span> – <span className="text-[28px]"> While supplementing with DIM is effective, consuming
+                    cruciferous vegetables can enhance its benefits.</span>
+              </p>
+
+              <p>
+                <span style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                  WebkitTextFillColor: "transparent",
+                }}
+                  className="text-[28px] font-bold"> Monitor Your Symptoms </span> – <span className="text-[28px]">As with any supplement, it’s important to pay attention to
+                    how your body responds and make adjustments as needed.</span>
+              </p>
+            </div>
+          </div>
+
         </div>
-
-        <div className="flex flex-col items-center  mt-12 justify-center">
-          <a
-            style={{
-              background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-              borderBottom: "2px solid #0DB5E4", // mimics underline
-              display: "inline-block", // required for border to show under text only
-              paddingBottom: "0px", // spacing for line
-            }}
-            className="mb-4 text-transparent linkText font-sf-ui-medium"
-            href="https://amzn.to/4n2DKV3"
-          >
-            https://amzn.to/4n2DKV3
-          </a>
-          <p className="linkBriefText font-sf-ui-medium">
-            Melatonin - 240 Tablets - Professionally Formulated - Potent, Safe,
-            Vegetarian
-          </p>
-          <img
-            className="w-full h-[2px] mx-auto mt-24"
-            src="/Protocols/line.png"
-          ></img>
-        </div>
-
-        <div className="flex flex-col items-center justify-center mt-24">
-          <h1
-            style={{
-              background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-            }}
-            className="text-transparent text-6xl font-sf-ui-semibold"
-          >
-            Other Female Issues
-          </h1>
-
-          <p
-            style={{
-              fontSize: "28px",
-              lineHeight: "38px",
-              letterSpacing: "-2%",
-              textAlign: "center",
-            }}
-            className="mx-auto max-w-4xl mt-8"
-          >
-            AVI Crème - 2oz Crème - Professionally Formulated Vaginal Yeast
-            Infection Support - Safe, Natural, Paraben Free -{" "}
-            <span className="text-[#04082c]">30 Day Supply</span>
-          </p>
-
-          <a
-            style={{
-              background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-              borderBottom: "2px solid #0DB5E4", // mimics underline
-              display: "inline-block", // required for border to show under text only
-              paddingBottom: "0px", // spacing for line
-            }}
-            className="mb-4 mt-10 text-3xl text-transparent linkText font-sf-ui-medium"
-            href="https://amzn.to/4n2DKV3"
-          >
-            https://amzn.to/4n2DKV3
-          </a>
-        </div>
-
-        <div
-          className="mx-auto mt-12 w-[80%] flex flex-col  items-center py-4 h-[160vh] bg-center bg-contain bg-no-repeat"
-          style={{
-            backgroundImage: "url('/Protocols/cardBg.png')",
-            backgroundSize: "100% 100%",
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "34px",
-              lineHeight: "58px",
-              letterSpacing: "-2%",
-              textAlign: "center",
-            }}
-            className="font-sf-ui-medium mt-12 mb-4"
-          >
-            GinYam - 240 Pellets by Bezwecken
-          </h1>
-
-          <p className=" text-2xl font-sf-ui-light mx-auto max-w-4xl text-center">
-            Professionally Formulated Menopausal Symptom Support for Reduced
-            Night Sweats, Boosted Energy & Increased Stamina
-          </p>
-          <a
-            style={{
-              background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-              borderBottom: "2px solid #0DB5E4", // mimics underline
-              display: "inline-block", // required for border to show under text only
-              paddingBottom: "0px", // spacing for line
-            }}
-            className="mx-auto text-3xl my-8 font-sf-ui-medium"
-            href="https://amzn.to/4n2DKV3"
-          >
-            https://amzn.to/4n2DKV3
-          </a>
-          <img
-            className="w-full h-[2px] mx-auto mt-4"
-            src="/Protocols/line.png"
-          ></img>
-          <p className=" text-2xl font-sf-ui-light mx-auto max-w-4xl mt-8 text-center">
-            Bezwecken - Melatonin - 240 Tablets - Professionally Formulated -
-            Potent, Safe, Vegetarian
-          </p>
-          <a
-            style={{
-              background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-              borderBottom: "2px solid #0DB5E4", // mimics underline
-              display: "inline-block", // required for border to show under text only
-              paddingBottom: "0px", // spacing for line
-            }}
-            className="mx-auto text-3xl my-8 font-sf-ui-medium"
-            href="https://amzn.to/4naZGxe"
-          >
-            https://amzn.to/4naZGxe
-          </a>
-          <img
-            className="w-full h-[2px] mx-auto mt-4"
-            src="/Protocols/line.png"
-          ></img>
-          <p className=" text-2xl font-sf-ui-light mx-auto max-w-4xl mt-8 text-center">
-            HemStad - 2oz Crème - Professionally Formulated Hemorrhoid Relief -
-            Safe, Natural, Paraben Free - 30 Day Supply
-          </p>
-          <a
-            style={{
-              background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-              borderBottom: "2px solid #0DB5E4", // mimics underline
-              display: "inline-block", // required for border to show under text only
-              paddingBottom: "0px", // spacing for line
-            }}
-            className="mx-auto text-3xl my-8 font-sf-ui-medium"
-            href="https://amzn.to/442c5e6"
-          >
-            https://amzn.to/442c5e6
-          </a>
-          <img
-            className="w-full h-[2px] mx-auto mt-4"
-            src="/Protocols/line.png"
-          ></img>
-          <p className=" text-2xl font-sf-ui-light mx-auto max-w-4xl mt-8 text-center">
-            LinoPanate - 2oz Healing Ointment - Professionally Formulated to
-            Soothe Dry, Cracked & Cut Skin - Enhanced with Lanolin, Vitamin E &
-            D - 30 Day Supply Baby / Child Top OfThe Line Linopanate Sticky
-            Healing Ointment For Dry And Cracked Nipples
-          </p>
-          <a
-            style={{
-              background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-              borderBottom: "2px solid #0DB5E4", // mimics underline
-              display: "inline-block", // required for border to show under text only
-              paddingBottom: "0px", // spacing for line
-            }}
-            className="mx-auto text-3xl my-8 font-sf-ui-medium"
-            href="https://amzn.to/4kFRcwk"
-          >
-            https://amzn.to/4kFRcwk
-          </a>
-        </div>
-
-        <img
-          src="/Protocols/footerImg.png"
-          className="h-[70vh] w-full my-32 mb-16"
-          alt="footer"
-        />
       </div>
       <Footer />
     </>

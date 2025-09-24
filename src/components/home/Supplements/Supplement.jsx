@@ -132,7 +132,7 @@ export default function Supplement() {
   }, []);
 
   useEffect(() => {
-    if (suplimentDta.length === 0) return; // wait until data is loaded
+    if (suplimentDta.length === 0) return;
 
     const textElements = document.querySelectorAll(".col-3 h1, .col-3 p");
 
@@ -146,11 +146,10 @@ export default function Supplement() {
       );
     });
 
-    // Set initial positions for animation
     gsap.set(".col-3 .col-content-wrapper .line span", { y: "0%" });
     gsap.set(".col-3 .col-content-wrapper-2 .line span", { y: "-125%" });
 
-  }, [suplimentDta]); // runs whenever data changes
+  }, [suplimentDta]);
 
 
   return (
