@@ -263,6 +263,8 @@ const CubicSlider = () => {
           </div>
         </div>
       </div>
+
+      {/* <img src="./marquee.png" className="w-full" /> */}
       <style>
         {`
           .perspective-\\[1200px\\] {
