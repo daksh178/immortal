@@ -189,19 +189,21 @@ const ThreeJsComponent = () => {
             Roadmap
           </h1>
 
-          <div className="px-6 flex flex-col w-[1300px]">
-            <div className="flex flex-wrap justify-center gap-10"
-              onClick={() => Navigate("/protocols/1")}>
-
-              {leftCardData.length === 0 ? (
-                Array(3)
+          <div className="px-6 flex flex-col">
+            {/* Cards Section */}
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center"
+              onClick={() => Navigate("/protocols/1")}
+            >
+              {leftCardData.length === 0
+                ? Array(3)
                   .fill(null)
                   .map((_, index) => (
                     <div
                       key={index}
                       className="h-[470px] w-[378px] bg-gray-200 rounded-[20px] animate-pulse"
                     >
-                      {/* Example skeleton structure */}
+                      {/* Skeleton structure */}
                       <div className="h-[174px] w-[174px] bg-gray-300 rounded-full mt-[40px] mx-auto" />
                       <div className="px-8 mt-6 space-y-4">
                         <div className="h-6 bg-gray-300 rounded w-2/3" />
@@ -210,8 +212,7 @@ const ThreeJsComponent = () => {
                       </div>
                     </div>
                   ))
-              ) : (
-                leftCardData.map((card) => (
+                : leftCardData.map((card) => (
                   <div
                     key={card.id}
                     onMouseMove={(e) => {
@@ -225,19 +226,19 @@ const ThreeJsComponent = () => {
                       const rotateY = ((x - centerX) / centerX) * 10;
 
                       cardEl.style.transform = `
-                          perspective(1000px)
-                          rotateX(${-rotateX}deg)
-                          rotateY(${rotateY}deg)
-                          scale3d(1.02, 1.02, 1.02)
-                        `;
+                perspective(1000px)
+                rotateX(${-rotateX}deg)
+                rotateY(${rotateY}deg)
+                scale3d(1.02, 1.02, 1.02)
+              `;
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = `
-                          perspective(1000px)
-                          rotateX(0deg)
-                          rotateY(0deg)
-                          scale3d(1,1,1)
-                        `;
+                perspective(1000px)
+                rotateX(0deg)
+                rotateY(0deg)
+                scale3d(1,1,1)
+              `;
                       e.currentTarget.style.transition = "transform 0.2s ease";
                       setTimeout(() => {
                         e.currentTarget.style.transition = "";
@@ -246,8 +247,6 @@ const ThreeJsComponent = () => {
                     className="relative h-[470px] w-[378px] cursor-pointer duration-150 will-change-transform"
                     style={{ transformStyle: "preserve-3d" }}
                   >
-
-
                     {/* Decorative left bar */}
                     <div
                       className="h-[130px] w-[6px] absolute"
@@ -283,11 +282,10 @@ const ThreeJsComponent = () => {
                       }}
                     />
 
-                    {/* Inner background (acts like fill inside border) */}
+                    {/* Inner background */}
                     <div
                       className="absolute inset-[3px] flex flex-col bg-white"
                       style={{
-
                         clipPath:
                           "polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px)",
                       }}
@@ -310,15 +308,11 @@ const ThreeJsComponent = () => {
                       </div>
                     </div>
                   </div>
-
-                ))
-              )}
+                ))}
             </div>
 
-
-
-
-            <div className="flex mt-10 items-center justify-end gap-3 px-6">
+            {/* View All Section */}
+            <div className="flex mt-10 items-center justify-end gap-3 px-5">
               <span
                 className="contactText inter-bold cursor-pointer"
                 onClick={() => Navigate("/roadmap")}
@@ -333,6 +327,7 @@ const ThreeJsComponent = () => {
               />
             </div>
           </div>
+
         </div>
       </section>
     </div >
