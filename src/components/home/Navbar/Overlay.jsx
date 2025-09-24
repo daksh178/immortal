@@ -92,13 +92,14 @@ const Overlay = ({ isProtocolPage }) => {
           ) : (
             <button
               onClick={() => setIsOpen(true)}
-              className="text-sm flex gap-2 items-center justify-between cursor-pointer"
+              className="text-sm flex gap-2 items-center justify-between cursor-pointer text-white drop-shadow-md"
             >
-              Menu
-              <div className="h-[40px] w-[40px] rounded-full bg-white flex items-center justify-center">
+              <span className="text-[#003670]">Menu</span>
+              <div className="h-[40px] w-[40px] rounded-full bg-white flex items-center justify-center shadow-md">
                 <img src="/menu.svg" className="w-2/5" />
               </div>
             </button>
+
           ))}
       </div>
 
