@@ -308,7 +308,7 @@ const ThreeJsComponent = () => {
             )}
           </div>
 
-          <div className="flex mt-10 items-center justify-center gap-3 px-6">
+          <div className="flex mt-10 items-center justify-end mr-20 gap-3 px-6">
             <span
               className="contactText inter-bold cursor-pointer"
               onClick={() => Navigate("/roadmap")}

@@ -170,9 +170,7 @@ const ThreeJsComponentMobile = () => {
       <div className="flex mt-5 items-center justify-center gap-3 px-6">
         <span
           className="contactText inter-bold cursor-pointer"
-          onClick={() => {
-            Navigate("/protocols/1");
-          }}
+          onClick={() => Navigate("/roadmap")}
         >
           View All
         </span>
@@ -180,9 +178,7 @@ const ThreeJsComponentMobile = () => {
           src="/view_more.svg"
           alt=""
           className="h-[20px] w-[20px] cursor-pointer"
-          onClick={() => {
-            Navigate("/protocols/1");
-          }}
+          onClick={() => Navigate("/roadmap")}
         />
       </div>
     </div>
