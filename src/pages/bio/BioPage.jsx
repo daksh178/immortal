@@ -175,7 +175,14 @@ const Bio = () => {
             </div>
 
             <p className="mt-8 text-base sm:text-lg md:text-xl font-sf-ui-semibold leading-relaxed text-justify">
-              {bio?.user_detail}
+              {bio?.user_detail
+                ?.split(".")
+                .filter((sentence) => sentence.trim() !== "")
+                .map((sentence, index) => (
+                  <p key={index} className="mb-1">
+                    {sentence.trim()}.
+                  </p>
+                ))}
             </p>
           </div>
         ))
