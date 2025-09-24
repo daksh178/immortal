@@ -7,7 +7,7 @@ import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Bio = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
 
   useEffect(() => {
@@ -47,9 +47,13 @@ const Bio = () => {
   return (
     <>
       <ScrollToTop />
-      <div onClick={() => navigate("/")} className="absolute top-4 towardFadeDiv left-4 xl:left-8 cursor-pointer">
-        <img src="/logo.svg" className="w-[200px]"></img>
+      <div
+        onClick={() => navigate("/")}
+        className="absolute top-4 left-4 xl:left-8 cursor-pointer z-50"
+      >
+        <img src="/logo.svg" className="w-[200px] cursor-pointer" />
       </div>
+
       {isMobile ? (
         <OverlayMobile isBioPage={true} />
       ) : (

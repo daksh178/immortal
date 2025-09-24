@@ -194,7 +194,6 @@ const ThreeJsComponent = () => {
               {/* Cards Section */}
               <div
                 className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
-                onClick={() => Navigate("/protocols/1")}
               >
                 {leftCardData.length === 0
                   ? Array(3)
@@ -227,25 +226,25 @@ const ThreeJsComponent = () => {
                         const rotateY = ((x - centerX) / centerX) * 10;
 
                         cardEl.style.transform = `
-                perspective(1000px)
-                rotateX(${-rotateX}deg)
-                rotateY(${rotateY}deg)
-                scale3d(1.02, 1.02, 1.02)
-              `;
+                          perspective(1000px)
+                          rotateX(${-rotateX}deg)
+                          rotateY(${rotateY}deg)
+                          scale3d(1.02, 1.02, 1.02)
+                        `;
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.transform = `
-                perspective(1000px)
-                rotateX(0deg)
-                rotateY(0deg)
-                scale3d(1,1,1)
-              `;
+                          perspective(1000px)
+                          rotateX(0deg)
+                          rotateY(0deg)
+                          scale3d(1,1,1)
+                        `;
                         e.currentTarget.style.transition = "transform 0.2s ease";
                         setTimeout(() => {
                           e.currentTarget.style.transition = "";
                         }, 200);
                       }}
-                      className="relative w-full max-w-[380px] aspect-[9/11] cursor-pointer duration-150 will-change-transform"
+                      className="relative w-full h-[500px] max-w-[380px] aspect-[9/11] cursor-pointer duration-150 will-change-transform"
                       style={{ transformStyle: "preserve-3d" }}
                     >
                       {/* Decorative left bar */}
@@ -285,6 +284,8 @@ const ThreeJsComponent = () => {
 
                       {/* Inner background */}
                       <div
+                        onClick={() => Navigate(`/protocols/${card?.id}`)}
+
                         className="absolute inset-[0.8%] flex flex-col bg-white"
                         style={{
                           clipPath:
@@ -303,8 +304,8 @@ const ThreeJsComponent = () => {
                           <h6 className="text-black text-xl md:text-2xl font-semibold leading-tight min-h-[4rem] pointer-events-none">
                             {card?.title}
                           </h6>
-                          <p className="text-sm md:text-[14px] font-normal leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
-                            {card?.description}
+                          <p className="text-sm md:text-[14px] mb-10 font-normal leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
+                            {card?.short_description}
                           </p>
                         </div>
                       </div>

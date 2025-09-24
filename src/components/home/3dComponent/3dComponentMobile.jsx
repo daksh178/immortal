@@ -18,8 +18,6 @@ const ThreeJsComponentMobile = () => {
 
   const [leftCardData, setLeftCardData] = useState([]);
 
-  console.log(leftCardData)
-
   useEffect(() => {
     const fetchRoadmap = async () => {
       try {
@@ -125,9 +123,7 @@ const ThreeJsComponentMobile = () => {
         ) : (
           leftCardData.map((card) => (
             <div
-              onClick={() => {
-                Navigate("/protocols/1");
-              }}
+              onClick={() => Navigate(`/protocols/${card?.id}`)}
               key={card.id}
               className="relative cursor-pointer flex-shrink-0 w-full max-w-[350px] h-[510px] bg-[url('/card.png')] bg-no-repeat bg-contain bg-center border border-white/20 backdrop-blur-md flex flex-col p-4 snap-center"
             >
@@ -139,7 +135,7 @@ const ThreeJsComponentMobile = () => {
               <h6 className="text-black text-lg font-semibold leading-tight mt-10">
                 {card?.title}
               </h6>
-              <p className="mt-2 text-[14px] text-[#434343]">{card?.description}</p>
+              <p className="mt-2 text-[14px] text-[#434343]">{card?.short_description}</p>
 
               {/* <div
                 className="absolute bottom-10 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
