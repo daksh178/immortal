@@ -101,51 +101,86 @@ const Bio = () => {
         </div>
       </div>
       {getting ? (
-        <div className="w-full flex justify-center items-center py-20">
-          <div className="w-12 h-12 border-4 border-[#0DB5E4] border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      ) : (
-        bioData.length > 0 && (
-          bioData?.map((bio) => (
-            <div className="w-full px-4 sm:px-6 lg:px-16 xl:px-8 py-5 flex flex-col">
-              <div className="flex lg:flex-row gap-8 items-end">
-                <div className="lg:w-3/5 text-center lg:text-left">
-                  <h1
-                    className="text-5xl sm:text-6xl xl:text-8xl font-sf-ui-semibold text-transparent mb-2"
-                    style={{
-                      background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                      backgroundClip: "text",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    {bio?.user_name}
-                  </h1>
-                </div>
-
-                <div className="relative lg:w-2/5">
-                  <img
-                    src={bio?.user_photo}
-                    alt="Kim Wheeler"
-                    className="w-full max-w-xs sm:max-w-sm mx-auto relative z-10"
-                  />
-                  <div
-                    className="absolute bottom-0 left-0 w-full h-16 z-20 pointer-events-none"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
-                    }}
-                  ></div>
-                </div>
-
+        Array.from({ length: 2 }).map((_, i) => (
+          <div
+            key={i}
+            className="w-full px-4 sm:px-6 lg:px-16 xl:px-8 py-5 flex flex-col animate-pulse"
+          >
+            <div className="flex lg:flex-row gap-8 items-end">
+              {/* Skeleton Title */}
+              <div className="lg:w-3/5 text-center lg:text-left">
+                <div className="h-12 sm:h-16 xl:h-20 w-3/4 bg-gray-300 rounded-md mx-auto lg:mx-0 mb-4"></div>
               </div>
 
-              <p className="mt-8 text-base sm:text-lg md:text-xl font-sf-ui-semibold leading-relaxed text-justify">
-                {bio?.user_detail}
-              </p>
+              {/* Skeleton Image */}
+              <div className="relative lg:w-2/5">
+                <div className="w-full max-w-xs sm:max-w-sm mx-auto relative z-10">
+                  <div className="w-full h-64 sm:h-72 bg-gray-300 rounded-xl"></div>
+                </div>
+                <div
+                  className="absolute bottom-0 left-0 w-full h-16 z-20 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
+                  }}
+                ></div>
+              </div>
             </div>
-          ))
-        ))}
+
+            {/* Skeleton Paragraph */}
+            <div className="mt-8 space-y-3">
+              <div className="h-4 sm:h-5 bg-gray-300 rounded w-full"></div>
+              <div className="h-4 sm:h-5 bg-gray-300 rounded w-11/12"></div>
+              <div className="h-4 sm:h-5 bg-gray-300 rounded w-10/12"></div>
+              <div className="h-4 sm:h-5 bg-gray-300 rounded w-9/12"></div>
+            </div>
+          </div>
+        ))
+      ) : (
+        bioData.length > 0 &&
+        bioData?.map((bio) => (
+          <div
+            key={bio.id}
+            className="w-full px-4 sm:px-6 lg:px-16 xl:px-8 py-5 flex flex-col"
+          >
+            <div className="flex lg:flex-row gap-8 items-end">
+              <div className="lg:w-3/5 text-center lg:text-left">
+                <h1
+                  className="text-5xl sm:text-6xl xl:text-8xl font-sf-ui-semibold text-transparent mb-2"
+                  style={{
+                    background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  {bio?.user_name}
+                </h1>
+              </div>
+
+              <div className="relative lg:w-2/5">
+                <img
+                  src={bio?.user_photo}
+                  alt={bio?.user_name}
+                  className="w-full max-w-xs sm:max-w-sm mx-auto relative z-10"
+                />
+                <div
+                  className="absolute bottom-0 left-0 w-full h-16 z-20 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)",
+                  }}
+                ></div>
+              </div>
+            </div>
+
+            <p className="mt-8 text-base sm:text-lg md:text-xl font-sf-ui-semibold leading-relaxed text-justify">
+              {bio?.user_detail}
+            </p>
+          </div>
+        ))
+      )}
+
       {/* <div className="flex flex-col items-center justify-center mt-24">
         <p
           style={{
