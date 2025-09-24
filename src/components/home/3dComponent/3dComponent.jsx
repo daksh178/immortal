@@ -32,7 +32,7 @@ const ThreeJsComponent = () => {
           }
         });
         if (response?.data) {
-          setLeftCardData(response?.data?.data.slice(0, 3));
+          setLeftCardData(response?.data?.data?.slice(0, 3));
         }
       } catch (error) {
         console.error("Error fetching roadmap:", error);
@@ -311,7 +311,7 @@ const ThreeJsComponent = () => {
           <div className="flex mt-10 items-center justify-center gap-3 px-6">
             <span
               className="contactText inter-bold cursor-pointer"
-              onClick={() => Navigate("/protocols/1")}
+              onClick={() => Navigate("/roadmap")}
             >
               View All
             </span>
@@ -319,7 +319,7 @@ const ThreeJsComponent = () => {
               src="/view_more.svg"
               alt=""
               className="h-[20px] w-[20px] cursor-pointer"
-              onClick={() => Navigate("/protocols/1")}
+              onClick={() => Navigate("/roadmap")}
             />
           </div>
         </div>

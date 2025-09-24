@@ -6,6 +6,7 @@ import { ReactLenis } from "lenis/react";
 import Home from "./pages/home/HomePage";
 import Bio from "./pages/bio/BioPage";
 import Protocol from "./pages/protocol/ProtocolPage";
+import RoadmapPage from "./pages/roadmap/RoadmapPage";
 import Loader from "./components/Loader";
 import { useGLTF } from "@react-three/drei";
 
@@ -76,6 +77,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/protocols/:protocolname" element={<Protocol />} />
           <Route path="/bio" element={<Bio />} />
+          <Route path="/roadmap" element={<RoadmapPage />} />
         </Routes>
       </Router>
 
