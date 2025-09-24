@@ -189,7 +189,8 @@ const ThreeJsComponent = () => {
             Roadmap
           </h1>
 
-          <div className="flex flex-wrap justify-center gap-10 px-6">
+          <div className="flex flex-wrap justify-center gap-10 px-6"
+            onClick={() => Navigate("/protocols/1")}>
             {leftCardData.length === 0 ? (
               Array(3)
                 .fill(null)
@@ -260,7 +261,7 @@ const ThreeJsComponent = () => {
                     </p>
 
                     {/* Button pinned at bottom */}
-                    <div
+                    {/* <div
                       className="cursor-pointer mt-2 w-[171px] h-[50px] rounded-[40px] flex items-center justify-start gap-4 py-[19px] pl-5"
                       style={{ boxShadow: "5.92px 5.92px 11.85px 0px #00000014" }}
                       onClick={() => Navigate("/protocols/1")}
@@ -277,7 +278,7 @@ const ThreeJsComponent = () => {
                       >
                         <img src="/view_more.svg" alt="" className="h-[20px] w-[20px]" />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
                   {/* Decorative left bar */}

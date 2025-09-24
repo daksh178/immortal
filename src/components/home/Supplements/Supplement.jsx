@@ -271,7 +271,7 @@ export default function Supplement() {
       <div className="flex mt-10 items-center justify-end gap-3 px-6">
         <span
           className="contactText inter-bold cursor-pointer"
-          onClick={() => Navigate("/protocols/1")}
+          onClick={() => Navigate("/supplement")}
         >
           View All
         </span>
@@ -279,7 +279,7 @@ export default function Supplement() {
           src="/view_more.svg"
           alt=""
           className="h-[20px] w-[20px] cursor-pointer"
-          onClick={() => Navigate("/protocols/1")}
+          onClick={() => Navigate("/supplement")}
         />
       </div>
     </>

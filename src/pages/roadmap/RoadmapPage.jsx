@@ -214,7 +214,7 @@ export default function RoadmapPage() {
                 </div>
 
                 {/* Footer Section */}
-                <div className="flex flex-col items-center justify-center mt-24">
+                {/* <div className="flex flex-col items-center justify-center mt-24">
                     <p
                         style={{
                             fontSize: "43px",
@@ -247,7 +247,7 @@ export default function RoadmapPage() {
                             <img src="/view_more.svg" alt="" className="h-[20px] w-[20px]" />
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
             <Footer />
         </>

@@ -89,7 +89,7 @@ export default function SupplementMobile() {
         <span
           className="contactText inter-bold cursor-pointer"
           onClick={() => {
-            Navigate("/protocols/1");
+            Navigate("/supplement");
           }}
         >
           View All
@@ -99,7 +99,7 @@ export default function SupplementMobile() {
           alt=""
           className="h-[20px] w-[20px] cursor-pointer"
           onClick={() => {
-            Navigate("/protocols/1");
+            Navigate("/supplement");
           }}
         />
       </div>

@@ -146,7 +146,7 @@ const Bio = () => {
             </div>
           ))
         ))}
-      <div className="flex flex-col items-center justify-center mt-24">
+      {/* <div className="flex flex-col items-center justify-center mt-24">
         <p
           style={{
             fontSize: "43px",
@@ -183,7 +183,7 @@ const Bio = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       <Footer />
     </>
   );

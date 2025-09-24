@@ -408,7 +408,7 @@ const DesktopProtocol1 = () => {
           alt="footer"
         />
 
-        <div className="flex flex-col items-center justify-center mt-24">
+        {/* <div className="flex flex-col items-center justify-center mt-24">
           <p
             style={{
               fontSize: "43px",
@@ -443,7 +443,7 @@ const DesktopProtocol1 = () => {
               />
             </div>
           </div>
-        </div>
+        </div> */}
 
       </div>
       <Footer />
@@ -644,7 +644,7 @@ const MobileProtocol1 = () => {
           alt="footer"
         />
 
-        <div className="flex flex-col items-center justify-center">
+        {/* <div className="flex flex-col items-center justify-center">
           <p
             style={{
               fontSize: "18px",
@@ -679,7 +679,7 @@ const MobileProtocol1 = () => {
               />
             </div>
           </div>
-        </div>
+        </div> */}
 
       </div>
 
