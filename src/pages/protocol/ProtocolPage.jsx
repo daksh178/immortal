@@ -225,13 +225,20 @@ export default function ProtocolPage() {
 
                   {/* Divider Line */}
                   <img
-                    className="w-full h-[2px] mx-auto mt-4"
+                    className="w-full h-[2px] mx-auto mt-4 mb-12"
                     src="/Protocols/line.png"
                     alt=""
                   />
                 </div>
               ))}
           </div>
+
+          {/* Footer */}
+          <img
+            src="/Protocols/footerImg.png"
+            className="w-full h-auto mt-8 mb-8 object-cover"
+            alt="footer"
+          />
 
         </div >
       </div >
