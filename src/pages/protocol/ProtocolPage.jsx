@@ -6,24 +6,6 @@ import ScrollToTop from "../../components/ScrollToTop/ScrollToTop.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const infoCards = [
-  {
-    image: "/Protocols/info1.svg",
-    bottomClass: "bottom-24",
-  },
-  {
-    image: "/Protocols/info2.svg",
-    bottomClass: "bottom-18",
-  },
-  {
-    image: "/Protocols/info3.svg",
-    bottomClass: "bottom-18",
-  },
-  {
-    image: "/Protocols/info4.svg",
-    bottomClass: "bottom-18",
-  },
-];
 
 export default function ProtocolPage() {
   const navigate = useNavigate();
@@ -31,7 +13,6 @@ export default function ProtocolPage() {
   const { protocolname } = useParams();
 
   const [getRoadMapdata, setgetRoadMapdata] = useState([]);
-
   const [getting, setgetting] = useState(false)
 
   useEffect(() => {
@@ -57,9 +38,6 @@ export default function ProtocolPage() {
 
     fetchRoadmap();
   }, [protocolname]);
-
-  console.log(getRoadMapdata)
-
 
   return (
     <>
@@ -101,8 +79,8 @@ export default function ProtocolPage() {
               {getRoadMapdata?.short_description}
             </p>
           </div>
-          {/* Cards Section */}
 
+          {/* Cards Section */}
 
           <div className="mx-auto w-[80%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-12 mt-20">
             {getting
@@ -111,7 +89,7 @@ export default function ProtocolPage() {
                 .map((_, index) => (
                   <div
                     key={index}
-                    className="w-full sm:w-[45%] md:w-[30%] h-[300px] bg-gray-200 rounded-md animate-pulse"
+                    className="w-full h-[250px] bg-gray-200 rounded-md animate-pulse"
                   ></div>
                 ))
               : getRoadMapdata?.card_description?.map((desc, index) => (
@@ -210,9 +188,8 @@ export default function ProtocolPage() {
           </div>
 
 
-
           <div
-            className="mx-auto mt-12 w-[80%] flex flex-col items-center py-4  bg-center bg-contain bg-no-repeat"
+            className="mx-auto mt-12 w-[80%] flex flex-col items-center py-4 bg-center bg-contain bg-no-repeat"
             style={{
               backgroundImage: "url('/Protocols/cardBg.png')",
               backgroundSize: "100% 100%",
@@ -226,9 +203,9 @@ export default function ProtocolPage() {
                 </div>
               ))
               : getRoadMapdata?.medicine_detail?.map((medicine, index) => (
-                <div key={index} className="mb-12 flex flex-col items-center">
+                <div key={index} className="mt-12 flex flex-col items-center">
                   {/* Description */}
-                  <p className="text-2xl font-sf-ui-light mx-auto max-w-4xl text-center mt-5">
+                  <p className="text-2xl font-sf-ui-light mx-auto max-w-4xl text-center">
                     {medicine.description}
                   </p>
 

@@ -48,8 +48,11 @@ export default function SupplementPage() {
                 ></div>
 
                 {/* Logo */}
-                <div className="absolute top-4 towardFadeDiv left-4 xl:left-8 z-20">
-                    <img src="/logo.svg" className="w-[200px]" />
+                <div
+                    onClick={() => navigate("/")}
+                    className="absolute top-4 left-4 xl:left-8 cursor-pointer z-50"
+                >
+                    <img src="/logo.svg" className="w-[200px] cursor-pointer" />
                 </div>
 
                 {/* Navbar Overlay */}
