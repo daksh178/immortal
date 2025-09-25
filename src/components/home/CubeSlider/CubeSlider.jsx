@@ -273,7 +273,7 @@ const CubicSlider = () => {
                         sm:text-[14px] 
                         md:text-[16px] 
                         lg:text-[20px] 
-                        xl:text-[22px] 
+                        xl:text-[20px] 
                         2xl:text-[28px] 
                         mt-2 
                         whitespace-pre-line
