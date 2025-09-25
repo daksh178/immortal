@@ -9,22 +9,18 @@ import axios from "axios";
 const infoCards = [
   {
     image: "/Protocols/info1.svg",
-    text: "Topical cosmetic crème enhanced with Progesterone",
     bottomClass: "bottom-24",
   },
   {
     image: "/Protocols/info2.svg",
-    text: "Designed for application to the chest, abdomen, back, shoulder neck throat or face",
     bottomClass: "bottom-18",
   },
   {
     image: "/Protocols/info3.svg",
-    text: "Free of parabens, mineral oils, animal products, petroleum & never tested on animals",
     bottomClass: "bottom-18",
   },
   {
     image: "/Protocols/info4.svg",
-    text: "Bezwecken is celebrating over 28 years of providing safe, effective and natural cosmetics and dietary supplements",
     bottomClass: "bottom-18",
   },
 ];
@@ -49,10 +45,7 @@ export default function ProtocolPage() {
           { headers: { "ngrok-skip-browser-warning": "true" } }
         );
 
-        console.log("API Response:", response);
-
         if (response?.data?.success) {
-          // Set only the actual data part
           setgetRoadMapdata(response.data.data);
         }
       } catch (error) {
@@ -65,9 +58,9 @@ export default function ProtocolPage() {
     fetchRoadmap();
   }, [protocolname]);
 
-
-
   console.log(getRoadMapdata)
+
+
   return (
     <>
       <ScrollToTop />
@@ -109,17 +102,19 @@ export default function ProtocolPage() {
             </p>
           </div>
           {/* Cards Section */}
-          <div className="w-full flex justify-center flex-wrap infoCardDiv px-24 gap-12 mt-20 max-w-[1411px]">
+
+
+          <div className="flex justify-center items-center flex-wrap infoCardDiv px-6 md:px-24 gap-6 md:gap-12 mt-20">
             {getting
-              ? Array(4) // Show 4 skeletons while loading
+              ? Array(4)
                 .fill(null)
                 .map((_, index) => (
                   <div
                     key={index}
-                    className="w-[45%] h-[300px] bg-gray-200 rounded-md animate-pulse"
+                    className="w-full sm:w-[45%] md:w-[30%] h-[300px] bg-gray-200 rounded-md animate-pulse"
                   ></div>
                 ))
-              : infoCards?.map((card, index) => (
+              : getRoadMapdata?.card_description?.map((desc, index) => (
                 <div
                   key={index}
                   onMouseMove={(e) => {
@@ -133,65 +128,87 @@ export default function ProtocolPage() {
                     const rotateY = ((x - centerX) / centerX) * 10;
 
                     cardEl.style.transform = `
-                perspective(1000px)
-                rotateX(${-rotateX}deg)
-                rotateY(${rotateY}deg)
-                scale3d(1.02, 1.02, 1.02)
-              `;
+              perspective(1000px)
+              rotateX(${-rotateX}deg)
+              rotateY(${rotateY}deg)
+              scale3d(1.02, 1.02, 1.02)
+            `;
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = `
-                perspective(1000px)
-                rotateX(0deg)
-                rotateY(0deg)
-                scale3d(1,1,1)
-              `;
+              perspective(1000px)
+              rotateX(0deg)
+              rotateY(0deg)
+              scale3d(1,1,1)
+            `;
                     e.currentTarget.style.transition = "transform 0.2s ease";
                     setTimeout(() => {
                       e.currentTarget.style.transition = "";
                     }, 200);
                   }}
-                  className="w-[45%] h-[300px] backdrop-blur-md border border-white/20 bg-[url('/Protocols/infoCard.png')] bg-contain bg-no-repeat relative"
+                  className="relative w-[45%] min-h-[250px] cursor-pointer duration-150 will-change-transform"
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  <img
-                    src={card.image}
-                    className="w-[80px] top-10 left-8 absolute"
-                    alt={`info-${index}`}
-                  />
-                  <p
-                    className={`font-sf-ui-light infoCardText left-10 absolute ${card.bottomClass}`}
-                  >
-                    {getRoadMapdata?.card_description?.[index]}
-                  </p>
-
-                  {/* left bar */}
+                  {/* Decorative left bar */}
                   <div
-                    className="h-[70px] w-[6px] absolute !z-30"
+                    className="absolute h-1/3 w-[6px]"
                     style={{
-                      background:
-                        "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                      background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
                       clipPath:
                         "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
                       left: -8,
-                      top: 20,
+                      bottom: "15%",
                     }}
                   ></div>
 
-                  {/* right bar */}
+                  {/* Decorative right bar */}
                   <div
-                    className="h-[70px] w-[6px] absolute"
+                    className="absolute h-1/3 w-[6px]"
                     style={{
-                      background:
-                        "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                      background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
                       clipPath:
                         "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
                       right: -8,
-                      bottom: 60,
+                      bottom: "40%",
                     }}
                   ></div>
+
+                  {/* Border layer */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(169.06deg, rgba(0, 54, 112, 0) 4.42%, #0DB5E4 91.9%)",
+                      clipPath:
+                        "polygon(3% 0, 97% 0, 100% 3%, 100% 97%, 97% 100%, 3% 100%, 0 97%, 0 3%)",
+                    }}
+                  />
+
+                  {/* Inner background */}
+                  <div
+                    className="absolute inset-[0.8%] flex flex-col  justify-start bg-white p-6"
+                    style={{
+                      clipPath:
+                        "polygon(2% 0, 98% 0, 100% 2%, 100% 98%, 98% 100%, 2% 100%, 0 98%, 0 2%)",
+                    }}
+                  >
+                    {/* Image */}
+                    <img
+                      src={`/Protocols/info${index + 1}.svg`}
+                      className="w-[70px] md:w-[90px] mb-6"
+                      alt={`info-${index}`}
+                    />
+
+                    {/* Description text */}
+
+                    <p className="infoCardText font-sf-ui-light">
+                      {desc}
+                    </p>
+                  </div>
                 </div>
               ))}
           </div>
+
 
 
           <div
