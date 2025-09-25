@@ -181,7 +181,7 @@ export default function Supplement() {
                     {suplimentDta.length > 0 && suplimentDta[0].supplement_name}
                   </h1>
                   <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
-                    {suplimentDta.length > 0 && suplimentDta[0].id.toString().padStart(2, "0")}
+                    01
                   </h1>
                   <p className=" absolute text-lg 2xl:text-xl bottom-30">
                     {suplimentDta.length > 0 && suplimentDta[0].supplement_detail}
@@ -230,7 +230,7 @@ export default function Supplement() {
                   {suplimentDta.length > 0 && suplimentDta[1].supplement_name}
                 </h1>
                 <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
-                  {suplimentDta.length > 0 && suplimentDta[1].id.toString().padStart(2, "0")}
+                  02
                 </h1>
                 <p className=" absolute text-lg 2xl:text-xl bottom-30">
                   {suplimentDta.length > 0 && suplimentDta[1].supplement_detail}
@@ -244,7 +244,7 @@ export default function Supplement() {
                   {suplimentDta.length > 0 && suplimentDta[2].supplement_name}
                 </h1>
                 <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
-                  {suplimentDta.length > 0 && suplimentDta[2].id.toString().padStart(2, "0")}
+                  03
                 </h1>
                 <p className="absolute text-lg 2xl:text-xl bottom-30">
                   {suplimentDta.length > 0 && suplimentDta[2].supplement_detail}

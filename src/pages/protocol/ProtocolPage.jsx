@@ -104,7 +104,7 @@ export default function ProtocolPage() {
           {/* Cards Section */}
 
 
-          <div className="flex justify-center items-center flex-wrap infoCardDiv px-6 md:px-24 gap-6 md:gap-12 mt-20">
+          <div className="mx-auto w-[80%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-12 mt-20">
             {getting
               ? Array(4)
                 .fill(null)
@@ -146,7 +146,7 @@ export default function ProtocolPage() {
                       e.currentTarget.style.transition = "";
                     }, 200);
                   }}
-                  className="relative w-[45%] min-h-[250px] cursor-pointer duration-150 will-change-transform"
+                  className="relative w-full min-h-[250px] cursor-pointer duration-150 will-change-transform"
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   {/* Decorative left bar */}
