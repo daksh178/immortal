@@ -61,7 +61,7 @@ export default function ProtocolPage() {
           ></div>
 
           <div className="text-7xl  2xl:text-8xl font-sf-ui-semibold z-10 flex flex-col items-center pt-[156px] h-full">
-            <h1
+            {/* <h1
               style={{
                 background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
                 backgroundClip: "text",
@@ -72,10 +72,10 @@ export default function ProtocolPage() {
               className="text-transparent"
             >
               Protocol
-            </h1>
-            <h1 className="font-sf-ui-medium">{getRoadMapdata?.title}</h1>
+            </h1> */}
+            <h1 className="font-sf-ui-medium z-50">{getRoadMapdata?.title}</h1>
 
-            <p className="protocolDescription max-w-6xl mt-[120px]">
+            <p className="protocolDescription max-w-6xl mt-[120px] z-50">
               {getRoadMapdata?.short_description}
             </p>
           </div>

@@ -186,7 +186,7 @@ export default function Supplement() {
                   <p className=" absolute text-lg 2xl:text-xl bottom-30">
                     {suplimentDta.length > 0 && suplimentDta[0].supplement_detail}
                   </p>
-                  <div className=" w-[170px] absolute bottom-4  z-50" onClick={() => Navigate("/protocols/1")}>
+                  <div className=" w-[170px] absolute bottom-4  z-50">
                     <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" />
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export default function Supplement() {
                 <p className=" absolute text-lg 2xl:text-xl bottom-30">
                   {suplimentDta.length > 0 && suplimentDta[1].supplement_detail}
                 </p>
-                <div className=" w-[170px] absolute bottom-4  z-50" onClick={() => Navigate("/protocols/1")}>
+                <div className=" w-[170px] absolute bottom-4  z-50">
                   <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" />
                 </div>
               </div>

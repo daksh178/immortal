@@ -78,10 +78,7 @@ export default function SupplementPage() {
                     </div>
 
                     {/* CARD LIST */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 w-[90%] mx-auto cursor-pointer"
-                        onClick={() => {
-                            navigate("/protocols/1");
-                        }}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 w-[90%] mx-auto cursor-pointer">
                         {suplimentDta && suplimentDta.length > 0 ? (
                             suplimentDta?.map((card, i) => (
                                 <section
@@ -96,10 +93,10 @@ export default function SupplementPage() {
 
                                     <div>
                                         <h1 className="text-lg font-semibold text-gray-800 mb-2">
-                                            {card.supplement_name}
+                                            {card?.supplement_name}
                                         </h1>
                                         <p className="text-sm text-gray-600 mb-4">
-                                            {card.supplement_detail}
+                                            {card?.supplement_detail}
                                         </p>
                                         {/* <div
                                             onClick={() => {
@@ -135,6 +132,8 @@ export default function SupplementPage() {
                     </div>
                 </div>
             </div>
+
+            <Footer />
         </>
     )
 }
