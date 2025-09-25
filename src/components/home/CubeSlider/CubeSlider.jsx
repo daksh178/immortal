@@ -156,7 +156,24 @@ const CubicSlider = () => {
       </div>
       {/* Responsive Cube Container */}
       <div className="min-h-[150vh]">
-        <div className="w-[90vw] sm:w-[80vw] md:w-[700px] max-w-[90vw] h-[80vh] md:h-[500px] max-h-[600px] z-10 mx-auto relative">
+        <div
+          className="
+            w-[90vw] 
+            sm:w-[80vw] 
+            md:w-[700px] 
+            lg:w-[700px] 
+            xl:w-[700px] 
+            2xl:w-[800px] 
+            max-w-[90vw] 
+            h-[60vh] 
+            md:h-[500px] 
+            lg:h-[600px] 
+            xl:h-[700px] 
+            2xl:h-[800px] 
+            max-h-[90vh] 
+            z-10 mx-auto relative
+          "
+        >
           <div
             ref={cubeRef}
             className="cube w-full h-full absolute transition-transform duration-700"
@@ -243,7 +260,18 @@ const CubicSlider = () => {
                       <h1 className="text-sm sm:text-lg md:text-2xl font-bold text-black">
                         {bio.user_name}
                       </h1>
-                      <p className="text-gray-700 text-[10px] sm:text-[20px] mt-2 whitespace-pre-line">
+                      <p className="
+                        text-gray-700 
+                        text-[10px] 
+                        sm:text-[14px] 
+                        md:text-[16px] 
+                        lg:text-[18px] 
+                        xl:text-[20px] 
+                        2xl:text-[32px] 
+                        mt-2 
+                        whitespace-pre-line
+                      ">
+
                         {bio.user_detail.substring(0, 250)}...
                         <Link className="text-[#0db5e4] font-bold cursor-pointer" to={"/bio"}>
                           read more
