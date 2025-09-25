@@ -117,19 +117,19 @@ export default function RoadmapPage() {
                                                     const rotateY = ((x - centerX) / centerX) * 10;
 
                                                     cardEl.style.transform = `
-                          perspective(1000px)
-                          rotateX(${-rotateX}deg)
-                          rotateY(${rotateY}deg)
-                          scale3d(1.02, 1.02, 1.02)
-                        `;
+                                                    perspective(1000px)
+                                                    rotateX(${-rotateX}deg)
+                                                    rotateY(${rotateY}deg)
+                                                    scale3d(1.02, 1.02, 1.02)
+                                                    `;
                                                 }}
                                                 onMouseLeave={(e) => {
                                                     e.currentTarget.style.transform = `
-                          perspective(1000px)
-                          rotateX(0deg)
-                          rotateY(0deg)
-                          scale3d(1,1,1)
-                        `;
+                                                    perspective(1000px)
+                                                    rotateX(0deg)
+                                                    rotateY(0deg)
+                                                    scale3d(1,1,1)
+                                                    `;
                                                     e.currentTarget.style.transition = "transform 0.2s ease";
                                                     setTimeout(() => {
                                                         e.currentTarget.style.transition = "";
@@ -197,7 +197,7 @@ export default function RoadmapPage() {
                                                             {card?.title}
                                                         </h6>
                                                         <p className="text-[14px] font-normal leading-[140%] text-[#434343] min-h-[90px] pointer-events-none">
-                                                            {card?.description}
+                                                            {card?.short_description}
                                                         </p>
                                                     </div>
                                                 </div>
