@@ -100,59 +100,145 @@ const ThreeJsComponentMobile = () => {
       {/* Swipeable Cards Section */}
       <div
         ref={scrollContainerRef}
-        className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 py-6 scroll-smooth no-scrollbar"
+        className="
+            flex 
+            justify-center
+            overflow-x-auto 
+            snap-x snap-mandatory 
+            gap-6 px-4 py-4 scroll-smooth 
+            no-scrollbar
+          "
       >
-        {leftCardData.length === 0 ? (
-          // ⏳ Show placeholder skeleton cards while loading
-          Array(3)
+        {leftCardData.length === 0
+          ? Array(3)
             .fill(null)
             .map((_, index) => (
               <div
                 key={index}
-                className="flex flex-col h-[470px] w-[378px] bg-gray-200 rounded-[20px] animate-pulse"
+                className="
+              flex-shrink-0 
+              w-[80%]
+              aspect-[9/11] 
+              bg-gray-200 rounded-[20px] animate-pulse snap-center
+            "
               >
-                {/* Example skeleton structure */}
-                <div className="h-[174px] w-[174px] bg-gray-300 rounded-full mt-[40px] mx-auto" />
-                <div className="px-8 mt-6 space-y-4">
+                {/* Skeleton */}
+                <div className="w-3/5 aspect-square bg-gray-300 rounded-full mt-10 mx-auto" />
+                <div className="px-6 mt-6 space-y-4">
                   <div className="h-6 bg-gray-300 rounded w-2/3" />
                   <div className="h-4 bg-gray-300 rounded w-full" />
                   <div className="h-4 bg-gray-300 rounded w-4/5" />
                 </div>
               </div>
             ))
-        ) : (
-          leftCardData.map((card) => (
+          : leftCardData.map((card) => (
             <div
-              onClick={() => Navigate(`/protocols/${card?.id}`)}
               key={card.id}
-              className="relative cursor-pointer flex-shrink-0 w-full max-w-[350px] h-[510px] bg-[url('/card.png')] bg-no-repeat bg-contain bg-center border border-white/20 backdrop-blur-md flex flex-col p-4 snap-center"
-            >
-              <img
-                src="/donut.png"
-                alt=""
-                className="h-[120px] w-[120px] mx-auto mt-4"
-              />
-              <h6 className="text-black text-lg font-semibold leading-tight mt-10">
-                {card?.title}
-              </h6>
-              <p className="mt-2 text-[14px] text-[#434343]">{card?.short_description}</p>
+              onMouseMove={(e) => {
+                const cardEl = e.currentTarget;
+                const rect = cardEl.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * 10;
+                const rotateY = ((x - centerX) / centerX) * 10;
 
-              {/* <div
-                className="absolute bottom-10 left-4 w-[140px] h-[40px] rounded-full flex items-center justify-between px-3 bg-white shadow-md mb-4"
-                onClick={() => {
-                  Navigate("/protocols/1");
+                cardEl.style.transform = `
+              perspective(1000px)
+              rotateX(${-rotateX}deg)
+              rotateY(${rotateY}deg)
+              scale3d(1.02, 1.02, 1.02)
+            `;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = `
+              perspective(1000px)
+              rotateX(0deg)
+              rotateY(0deg)
+              scale3d(1,1,1)
+            `;
+                e.currentTarget.style.transition = "transform 0.2s ease";
+                setTimeout(() => {
+                  e.currentTarget.style.transition = "";
+                }, 200);
+              }}
+              className="
+            relative 
+            flex-shrink-0 
+            w-[80%]
+            h-[500px]
+            aspect-[9/11] 
+            cursor-pointer 
+            duration-150 
+            will-change-transform 
+            snap-center
+          "
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {/* Decorative left bar */}
+              <div
+                className="absolute h-1/3 w-[6px]"
+                style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  clipPath:
+                    "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
+                  left: -8,
+                  bottom: "15%",
+                }}
+              ></div>
+
+              {/* Decorative right bar */}
+              <div
+                className="absolute h-1/3 w-[6px]"
+                style={{
+                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                  clipPath:
+                    "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
+                  right: -8,
+                  bottom: "40%",
+                }}
+              ></div>
+
+              {/* Border layer */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(169.06deg, rgba(0, 54, 112, 0) 4.42%, #0DB5E4 91.9%)",
+                  clipPath:
+                    "polygon(3% 0, 97% 0, 100% 3%, 100% 97%, 97% 100%, 3% 100%, 0 97%, 0 3%)",
+                }}
+              />
+
+              {/* Inner background */}
+              <div
+                onClick={() => Navigate(`/protocols/${card?.id}`)}
+                className="absolute inset-[0.8%] flex flex-col bg-white"
+                style={{
+                  clipPath:
+                    "polygon(2% 0, 98% 0, 100% 2%, 100% 98%, 98% 100%, 2% 100%, 0 98%, 0 2%)",
                 }}
               >
-                <h6 className="text-sm font-bold bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
-                  View More
-                </h6>
-                <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center bg-[#F9F9F9] shadow-inner">
-                  <img src="/view_more.svg" alt="" className="h-4 w-4" />
+                {/* Image */}
+                <img
+                  src={card?.roadmap_image}
+                  alt=""
+                  className="w-3/5 aspect-square mt-10 mx-auto pointer-events-none"
+                />
+
+                {/* Content */}
+                <div className="flex flex-col flex-1 px-6 mt-4">
+                  <h6 className="text-black text-lg sm:text-xl md:text-2xl font-semibold leading-tight min-h-[4rem] pointer-events-none">
+                    {card?.title}
+                  </h6>
+                  <p className="text-sm sm:text-[14px] md:text-[16px] mb-10 font-normal leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
+                    {card?.short_description}
+                  </p>
                 </div>
-              </div> */}
+              </div>
             </div>
-          ))
-        )}
+          ))}
       </div>
 
       {/* Dots */}

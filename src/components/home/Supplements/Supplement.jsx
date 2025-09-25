@@ -197,7 +197,7 @@ export default function Supplement() {
               <div className="col-img col-img-1">
                 <div className="col-img-wrapper">
                   <img
-                    src="/team-1.jpg"
+                    src={suplimentDta.length > 0 && suplimentDta[0]?.supplement_image}
                     alt=""
                     fill
                     style={{ objectFit: "cover" }}
@@ -207,7 +207,7 @@ export default function Supplement() {
               <div className="col-img col-img-2">
                 <div className="col-img-wrapper">
                   <img
-                    src="/team-2.jpg"
+                    src={suplimentDta.length > 0 && suplimentDta[1]?.supplement_image}
                     alt=""
                     fill
                     style={{ objectFit: "cover" }}
@@ -256,7 +256,7 @@ export default function Supplement() {
               <div className="col-img">
                 <div className="col-img-wrapper">
                   <img
-                    src="/team-3.jpg"
+                    src={suplimentDta.length > 0 && suplimentDta[2].supplement_image}
                     alt=""
                     fill
                     style={{ objectFit: "cover" }}

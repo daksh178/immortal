@@ -294,7 +294,7 @@ const ThreeJsComponent = () => {
                       >
                         {/* Image */}
                         <img
-                          src="/donut.png"
+                          src={card?.roadmap_image}
                           alt=""
                           className="w-3/5 aspect-square mt-10 mx-auto pointer-events-none"
                         />

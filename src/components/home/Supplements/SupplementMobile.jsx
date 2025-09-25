@@ -42,7 +42,7 @@ export default function SupplementMobile() {
             className="relative w-[90%] max-w-full mx-auto flex flex-col justify-between p-4 mb-8 rounded-2xl border border-gray-200 shadow-sm bg-white"
           >
             <img
-              src={`/team-${i + 1}.jpg`}
+              src={card?.supplement_image}
               alt={card.title}
               className="w-full h-48 object-cover rounded-xl mb-4"
             />

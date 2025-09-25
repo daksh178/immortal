@@ -86,8 +86,8 @@ export default function SupplementPage() {
                                     className="relative flex flex-col p-4 rounded-2xl border border-gray-200 shadow-sm bg-white"
                                 >
                                     <img
-                                        src={`/team-${i + 1}.jpg`}
-                                        alt={card.title}
+                                        src={card?.supplement_image}
+                                        alt={card?.supplement_name}
                                         className="w-full h-48 object-cover rounded-xl mb-4"
                                     />
 

@@ -189,8 +189,8 @@ export default function RoadmapPage() {
                                                 >
                                                     {/* Image */}
                                                     <img
-                                                        src="/donut.png"
-                                                        alt=""
+                                                        src={card?.roadmap_image}
+                                                        alt={card?.title}
                                                         className="h-[174px] w-[174px] mt-[40px] mx-auto pointer-events-none"
                                                     />
 
