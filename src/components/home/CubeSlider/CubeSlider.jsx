@@ -256,8 +256,15 @@ const CubicSlider = () => {
               >
                 {bioData?.length > 0 ? (
                   bioData.map((bio) => (
-                    <div key={bio.id} className="mb-4 p-5">
-                      <h1 className="text-sm sm:text-lg md:text-2xl font-bold text-black">
+                    <div key={bio.id} className="p-5">
+                      <h1 className=" text-[10px] 
+                        sm:text-[14px] 
+                        md:text-[16px] 
+                        lg:text-[26px] 
+                        xl:text-[36px] 
+                        2xl:text-[40px]
+                        font-bold
+                         text-black">
                         {bio.user_name}
                       </h1>
                       <p className="
@@ -265,14 +272,14 @@ const CubicSlider = () => {
                         text-[10px] 
                         sm:text-[14px] 
                         md:text-[16px] 
-                        lg:text-[18px] 
-                        xl:text-[20px] 
-                        2xl:text-[32px] 
+                        lg:text-[20px] 
+                        xl:text-[22px] 
+                        2xl:text-[28px] 
                         mt-2 
                         whitespace-pre-line
                       ">
 
-                        {bio.user_detail.substring(0, 250)}...
+                        {bio.user_detail.substring(0, 300)}...
                         <Link className="text-[#0db5e4] font-bold cursor-pointer" to={"/bio"}>
                           read more
                         </Link>
