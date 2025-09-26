@@ -58,7 +58,7 @@ export default function SupplementMobile() {
                       {card?.supplement_detail?.substring(0, 200)}...
                       <Link
                         className="text-[#0db5e4] font-bold cursor-pointer"
-                        to={`/protocols/${card?.id}`}
+                        to={`/supplements/${card?.id}`}
                       >
                         read more
                       </Link>

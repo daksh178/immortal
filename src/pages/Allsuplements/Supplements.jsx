@@ -89,7 +89,7 @@ export default function Supplements() {
                 <div
                     className="mx-auto mt-12 w-[80%] flex flex-col items-center py-4 bg-center bg-contain bg-no-repeat"
                     style={{
-                        backgroundImage: "url('/Protocols/cardBg.png')",
+                        // backgroundImage: "url('/Protocols/cardBg.png')",
                         backgroundSize: "100% 100%",
                     }}
                 >
