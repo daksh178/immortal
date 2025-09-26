@@ -59,7 +59,7 @@ export default function RoadmapPage() {
                     onClick={() => navigate("/")}
                     className="absolute top-4 left-4 xl:left-8 cursor-pointer z-50"
                 >
-                    <img src="/logo.svg" className="w-[200px] cursor-pointer" />
+                    <img src="/logo.svg" className="w-[150px] sm:w-[200px] cursor-pointer" />
                 </div>
                 {/* Navbar Overlay */}
                 {isMobile ? (
@@ -85,7 +85,7 @@ export default function RoadmapPage() {
                             </h1>
 
                             {/* Roadmap Cards */}
-                            <div className="flex flex-wrap justify-center gap-10 px-6 mt-5">
+                            <div className="flex flex-wrap justify-center gap-6 px-6 mt-5">
                                 {leftCardData.length === 0 ? (
                                     Array(3)
                                         .fill(null)
@@ -106,8 +106,8 @@ export default function RoadmapPage() {
                                 ) : (
                                     <div
                                         className={`${leftCardData.length < 3
-                                            ? "flex flex-wrap justify-center gap-15"
-                                            : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center"
+                                            ? "flex flex-wrap justify-center gap-10"
+                                            : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  justify-center"
                                             } items-center`}
                                     >
 
@@ -144,7 +144,7 @@ export default function RoadmapPage() {
                                                         e.currentTarget.style.transition = "";
                                                     }, 200);
                                                 }}
-                                                className="relative h-[470px] w-[378px] cursor-pointer duration-150 will-change-transform"
+                                                className="relative h-[350px] w-[350px] cursor-pointer duration-150 will-change-transform"
                                                 style={{ transformStyle: "preserve-3d" }}
                                             >
 
@@ -157,7 +157,7 @@ export default function RoadmapPage() {
                                                         clipPath:
                                                             "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
                                                         left: -8,
-                                                        bottom: 54,
+                                                        bottom: 30,
                                                     }}
                                                 ></div>
 
@@ -169,7 +169,7 @@ export default function RoadmapPage() {
                                                         clipPath:
                                                             "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
                                                         right: -8,
-                                                        bottom: 200,
+                                                        bottom: 150,
                                                     }}
                                                 ></div>
 
@@ -197,7 +197,7 @@ export default function RoadmapPage() {
                                                     <img
                                                         src={card?.roadmap_image}
                                                         alt={card?.title}
-                                                        className="h-[174px] w-[174px] mt-[40px] mx-auto pointer-events-none"
+                                                        className="h-[100px] w-[100px] mt-[40px] mx-auto pointer-events-none"
                                                     />
 
                                                     {/* Content */}
@@ -206,10 +206,10 @@ export default function RoadmapPage() {
                                                             {card?.title}
                                                         </h6>
                                                         <p className="text-[14px] font-normal leading-[140%] text-[#434343] min-h-[90px] pointer-events-none">
-                                                            {card?.short_description?.length > 250
+                                                            {card?.short_description?.length > 150
                                                                 ? (
                                                                     <>
-                                                                        {card?.short_description?.substring(0, 250)}...
+                                                                        {card?.short_description?.substring(0, 150)}...
                                                                         <Link
                                                                             className="text-[#0db5e4] font-bold cursor-pointer"
                                                                             to={`/protocols/${card?.id}`}

@@ -61,7 +61,7 @@ export default function Supplements() {
                             font-sf-ui-semibold 
                             z-10 flex flex-col items-center justify-center h-full
                             px-4 sm:px-6 lg:px-8
-                            pt-20 sm:pt-28 md:pt-36 lg:pt-40 xl:pt-44 2xl:pt-[156px]
+                            pt-28 sm:pt-28 md:pt-36 lg:pt-40 xl:pt-44 2xl:pt-[156px]
                             ">
                         <h1
                             className="
@@ -77,7 +77,7 @@ export default function Supplements() {
       z-50 text-center
       mt-6 sm:mt-10 md:mt-16 lg:mt-20 xl:mt-28 2xl:mt-[120px]
       max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl
-      text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
+      text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl
     "
                         >
                             {getSupplementdata?.supplement_detail}

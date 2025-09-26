@@ -105,7 +105,7 @@ const ThreeJsComponentMobile = () => {
             justify-center
             overflow-x-auto 
             snap-x snap-mandatory 
-            gap-6 px-4 py-4 scroll-smooth 
+            gap-10 px-4 py-4 scroll-smooth 
             no-scrollbar
           "
       >
@@ -165,10 +165,9 @@ const ThreeJsComponentMobile = () => {
               }}
               className="
             relative 
-            flex-shrink-0 
+            flex-shrink-0         
             w-[80%]
-            h-[500px]
-            aspect-[9/11] 
+            h-[300px]
             cursor-pointer 
             duration-150 
             will-change-transform 
@@ -224,19 +223,19 @@ const ThreeJsComponentMobile = () => {
                 <img
                   src={card?.roadmap_image}
                   alt=""
-                  className="w-3/5 aspect-square mt-10 mx-auto pointer-events-none"
+                  className="w-[100px] h-[100px] aspect-square mt-10 mx-auto pointer-events-none"
                 />
 
                 {/* Content */}
-                <div className="flex flex-col flex-1 px-6 mt-4">
-                  <h6 className="text-black text-lg sm:text-xl md:text-2xl font-semibold leading-tight min-h-[4rem] pointer-events-none">
+                <div className="flex flex-col items-center flex-1 px-6 mt-4">
+                  <h6 className="text-black text-lg sm:text-xl md:text-2xl font-semibold leading-tight min-h-[2rem] pointer-events-none">
                     {card?.title}
                   </h6>
-                  <p className="text-sm sm:text-[14px] md:text-[16px] mb-10 font-normal leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
-                    {card?.short_description?.length > 250
+                  <p className="text-sm sm:text-[14px] md:text-[16px] mb-10 font-normal text-center leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
+                    {card?.short_description?.length > 100
                       ? (
                         <>
-                          {card?.short_description?.substring(0, 250)}...
+                          {card?.short_description?.substring(0, 100)}...
                           <Link
                             className="text-[#0db5e4] font-bold cursor-pointer"
                             to={`/protocols/${card?.id}`}

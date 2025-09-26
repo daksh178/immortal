@@ -46,7 +46,7 @@ export default function ProtocolPage() {
         onClick={() => navigate("/")}
         className="absolute top-4 left-4 xl:left-8 cursor-pointer z-50"
       >
-        <img src="/logo.svg" className="w-[200px] cursor-pointer" />
+        <img src="/logo.svg" className="w-[150px] sm:w-[200px] cursor-pointer" />
       </div>
       <Overlay isProtocolPage={true} />
 
@@ -60,22 +60,23 @@ export default function ProtocolPage() {
             className="absolute top-0 left-0 w-full h-[1080px] bg-cover bg-center z-0"
           ></div>
 
-          <div className="text-7xl  2xl:text-8xl font-sf-ui-semibold z-10 flex flex-col items-center pt-[156px] h-full">
-            {/* <h1
-              style={{
-                background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                WebkitTextFillColor: "transparent",
-              }}
-              className="text-transparent"
-            >
-              Protocol
-            </h1> */}
-            <h1 className="font-sf-ui-medium z-50">{getRoadMapdata?.title}</h1>
+          <div className="
+                            font-sf-ui-semibold 
+                            z-10 flex flex-col items-center justify-center h-full
+                            px-4 sm:px-6 lg:px-8
+                            pt-28 sm:pt-28 md:pt-36 lg:pt-40 xl:pt-44 2xl:pt-[156px]
+                            ">
+            <h1 className="
+                    font-sf-ui-medium z-50 text-center
+                    text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl
+                  ">{getRoadMapdata?.title}</h1>
 
-            <p className="protocolDescription max-w-6xl mt-[120px] z-50">
+            <p className="
+                    z-50 text-center
+                    mt-6 sm:mt-10 md:mt-16 lg:mt-20 xl:mt-28 2xl:mt-[120px]
+                    max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl
+                    text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl
+                  ">
               {getRoadMapdata?.short_description}
             </p>
           </div>
@@ -100,7 +101,7 @@ export default function ProtocolPage() {
               : getRoadMapdata?.medicine_detail?.map((medicine, index) => (
                 <div key={index} className="mt-12 flex flex-col items-center">
                   {/* Description */}
-                  <p className="text-2xl font-sf-ui-light mx-auto max-w-4xl text-center">
+                  <p className="px-5 text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl font-sf-ui-light mx-auto max-w-4xl text-center">
                     {medicine.description}
                   </p>
 
