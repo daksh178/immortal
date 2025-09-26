@@ -233,7 +233,19 @@ const ThreeJsComponentMobile = () => {
                     {card?.title}
                   </h6>
                   <p className="text-sm sm:text-[14px] md:text-[16px] mb-10 font-normal leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
-                    {card?.short_description}
+                    {card?.short_description?.length > 250
+                      ? (
+                        <>
+                          {card?.short_description?.substring(0, 250)}...
+                          <Link
+                            className="text-[#0db5e4] font-bold cursor-pointer"
+                            to={`/protocols/${card?.id}`}
+                          >
+                            read more
+                          </Link>
+                        </>
+                      )
+                      : card?.short_description}
                   </p>
                 </div>
               </div>

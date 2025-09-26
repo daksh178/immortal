@@ -50,6 +50,9 @@ const CubicSlider = () => {
       rightFaceRef.current &&
       backFaceRef.current
     ) {
+      const cubeWidth = cubeRef.current.offsetWidth;
+      const depth = cubeWidth / 2; // Half width for translateZ
+
       ctx = gsap.context(() => {
         ScrollTrigger.create({
           trigger: sectionRef.current,
@@ -59,89 +62,59 @@ const CubicSlider = () => {
           scrub: true,
           anticipatePin: 1,
           onUpdate: (self) => {
-            const progress = self.progress; // 0..1
-
-            // --- CUBE ROTATION PHASES ---
-            const phase1Start = 0.0;
-            const phase1End = 0.5;
-            const phase2Start = 0.5;
-            const phase2End = 1.0;
-            const phase1DelayBack = 0;
-            const phase2DelayBack = 0;
-
-            function getPhaseProgress(progress, start, end) {
-              return Math.min(
-                Math.max((progress - start) / (end - start), 0),
-                1
-              );
-            }
+            const progress = self.progress;
 
             let videoFaceRotateY = 0;
             let rightFaceRotateY = 90;
             let backFaceRotateY = 180;
 
-            if (progress < phase1End) {
-              const p1 = getPhaseProgress(progress, phase1Start, phase1End);
-
-              // Face 1 (video): 0 -> -90
-              videoFaceRotateY = 0 - 90 * p1;
-              // Face 2 (right): 90 -> 0
-              rightFaceRotateY = 90 - 90 * p1;
-              // Face 3 (back): 180 -> 90
-              let p1back = getPhaseProgress(p1, phase1DelayBack, 1);
-              backFaceRotateY = 180 - 90 * p1back;
-            } else {
-              const p2 = getPhaseProgress(progress, phase2Start, phase2End);
-
-              // Face 1 (video): -90 -> -180
-              videoFaceRotateY = -90 - 90 * p2;
-              // Face 2 (right): 0 -> -90
-              rightFaceRotateY = 0 - 90 * p2;
-              // Face 3 (back): 90 -> 0
-              let p2back = getPhaseProgress(p2, phase2DelayBack, 1);
-              backFaceRotateY = 90 - 90 * p2back;
-            }
-
-            // Opacity for back face
-            let backFaceOpacity = 1;
             if (progress < 0.5) {
-              backFaceOpacity = 0;
+              const p1 = (progress - 0.0) / (0.5 - 0.0);
+
+              videoFaceRotateY = 0 - 90 * p1;
+              rightFaceRotateY = 90 - 90 * p1;
+              backFaceRotateY = 180 - 90 * p1;
             } else {
-              // Fade in from 0.5 to 1
-              backFaceOpacity = (progress - 0.5) / 0.5;
+              const p2 = (progress - 0.5) / (1.0 - 0.5);
+
+              videoFaceRotateY = -90 - 90 * p2;
+              rightFaceRotateY = 0 - 90 * p2;
+              backFaceRotateY = 90 - 90 * p2;
             }
 
-            // Apply transforms
+            let backFaceOpacity = progress < 0.5 ? 0 : (progress - 0.5) / 0.5;
+
             gsap.set(videoFaceRef.current, {
-              transform: `rotateY(${videoFaceRotateY}deg) translateZ(200px)`,
+              transform: `rotateY(${videoFaceRotateY}deg) translateZ(${depth}px)`,
               opacity: 1,
             });
             gsap.set(rightFaceRef.current, {
-              transform: `rotateY(${rightFaceRotateY}deg) translateZ(200px)`,
+              transform: `rotateY(${rightFaceRotateY}deg) translateZ(${depth}px)`,
             });
             gsap.set(backFaceRef.current, {
-              transform: `rotateY(${backFaceRotateY}deg) translateZ(200px)`,
-              opacity: backFaceOpacity, // <--- use the calculated opacity here
+              transform: `rotateY(${backFaceRotateY}deg) translateZ(${depth}px)`,
+              opacity: backFaceOpacity,
             });
           },
         });
 
         // Initial orientation
         gsap.set(videoFaceRef.current, {
-          transform: "rotateY(0deg) translateZ(200px)",
+          transform: `rotateY(0deg) translateZ(${depth}px)`,
           opacity: 1,
         });
         gsap.set(rightFaceRef.current, {
-          transform: "rotateY(90deg) translateZ(200px)",
+          transform: `rotateY(90deg) translateZ(${depth}px)`,
         });
         gsap.set(backFaceRef.current, {
-          transform: "rotateY(180deg) translateZ(200px)",
+          transform: `rotateY(180deg) translateZ(${depth}px)`,
         });
       }, sectionRef);
 
       return () => ctx && ctx.revert();
     }
   }, []);
+
 
   return (
     <section

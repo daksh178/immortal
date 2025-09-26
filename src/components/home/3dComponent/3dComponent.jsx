@@ -193,7 +193,10 @@ const ThreeJsComponent = () => {
             <div className="w-full max-w-[1300px] mx-auto">
               {/* Cards Section */}
               <div
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center"
+                className={`${leftCardData.length < 3
+                  ? "flex flex-wrap justify-center gap-15"
+                  : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center"
+                  } items-center`}
               >
                 {leftCardData.length === 0
                   ? Array(3)
@@ -244,7 +247,7 @@ const ThreeJsComponent = () => {
                           e.currentTarget.style.transition = "";
                         }, 200);
                       }}
-                      className="relative w-full h-[500px] max-w-[380px] aspect-[9/11] cursor-pointer duration-150 will-change-transform"
+                      className="relative w-full h-[500px] max-w-[380px] aspect-[9/11] flex items-center justify-center cursor-pointer duration-150 will-change-transform"
                       style={{ transformStyle: "preserve-3d" }}
                     >
                       {/* Decorative left bar */}
@@ -294,7 +297,7 @@ const ThreeJsComponent = () => {
                       >
                         {/* Image */}
                         <img
-                          src={card?.roadmap_image}
+                          src={card?.roadmap_image || './donut.png'}
                           alt=""
                           className="w-3/5 aspect-square mt-10 mx-auto pointer-events-none"
                         />
@@ -305,8 +308,21 @@ const ThreeJsComponent = () => {
                             {card?.title}
                           </h6>
                           <p className="text-sm md:text-[14px] mb-10 font-normal leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
-                            {card?.short_description}
+                            {card?.short_description?.length > 250
+                              ? (
+                                <>
+                                  {card?.short_description?.substring(0, 250)}...
+                                  <Link
+                                    className="text-[#0db5e4] font-bold cursor-pointer"
+                                    to={`/protocols/${card?.id}`}
+                                  >
+                                    read more
+                                  </Link>
+                                </>
+                              )
+                              : card?.short_description}
                           </p>
+
                         </div>
                       </div>
                     </div>
