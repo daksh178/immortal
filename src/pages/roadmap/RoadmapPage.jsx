@@ -5,6 +5,7 @@ import Footer from "../../components/home/Footer/Footer";
 import OverlayMobile from "../../components/home/Navbar/OverlayMobile";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function RoadmapPage() {
     const navigate = useNavigate();
@@ -103,7 +104,12 @@ export default function RoadmapPage() {
                                             </div>
                                         ))
                                 ) : (
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div
+                                        className={`${leftCardData.length < 3
+                                            ? "flex flex-wrap justify-center gap-15"
+                                            : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center"
+                                            } items-center`}
+                                    >
 
                                         {leftCardData.map((card) => (
                                             <div
@@ -200,7 +206,19 @@ export default function RoadmapPage() {
                                                             {card?.title}
                                                         </h6>
                                                         <p className="text-[14px] font-normal leading-[140%] text-[#434343] min-h-[90px] pointer-events-none">
-                                                            {card?.short_description}
+                                                            {card?.short_description?.length > 250
+                                                                ? (
+                                                                    <>
+                                                                        {card?.short_description?.substring(0, 250)}...
+                                                                        <Link
+                                                                            className="text-[#0db5e4] font-bold cursor-pointer"
+                                                                            to={`/protocols/${card?.id}`}
+                                                                        >
+                                                                            read more
+                                                                        </Link>
+                                                                    </>
+                                                                )
+                                                                : card?.short_description}
                                                         </p>
                                                     </div>
                                                 </div>
