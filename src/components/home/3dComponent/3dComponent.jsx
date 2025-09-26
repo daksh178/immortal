@@ -1,25 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import Second from "./Second";
-import { Canvas } from "@react-three/fiber";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const ThreeJsComponent = () => {
   const mainRef = useRef(null);
-  const sceneRef = useRef(null);
-  const [progress, setProgress] = useState(0);
   const Navigate = useNavigate();
-  // Refs for card animations
-  const leftCardsRef = useRef([]);
-  const rightCardsRef = useRef([]);
   const textRef = useRef(null);
-  const splitInstance = useRef(null);
 
   const [leftCardData, setLeftCardData] = useState([]);
 
@@ -42,124 +29,11 @@ const ThreeJsComponent = () => {
     fetchRoadmap();
   }, []);
 
-  useGSAP(() => {
-    const cardCount = leftCardsRef.current.length;
-
-    // Responsive scale values
-    const isSmall = window.innerWidth < 1400;
-    const scaleFrom = isSmall ? 0.5 : 0.6;
-    const scaleTo = isSmall ? 0.6 : 0.8;
-
-    ScrollTrigger.create({
-      trigger: mainRef.current,
-      start: "top top",
-      end: "bottom bottom",
-      toggleClass: {
-        targets: sceneRef.current,
-        className: "show",
-      },
-      pin: sceneRef.current,
-      pinSpacing: false,
-      // markers: true,
-    });
-
-    // Toggle left card visibility
-    ScrollTrigger.create({
-      trigger: mainRef.current,
-      start: "top top",
-      end: "bottom bottom",
-      toggleClass: { targets: ".leftCardDiv", className: "show-card" },
-    });
-
-    // Toggle right card visibility
-    ScrollTrigger.create({
-      trigger: mainRef.current,
-      start: "top top",
-      end: "bottom bottom",
-      toggleClass: { targets: ".rightCardDiv", className: "show-card" },
-    });
-
-    // === Timeline for 3D and cards ===
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: mainRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-        // markers: true,
-        onUpdate: (self) => setProgress(self.progress),
-      },
-    });
-
-    tl.fromTo(sceneRef.current, { x: "-50vw" }, { x: "0vw", ease: "none" });
-
-    for (let i = 0; i < cardCount; i++) {
-      const cardStart = "+=0";
-      const cardDuration = 0.5;
-
-      tl.fromTo(
-        [leftCardsRef.current[i], rightCardsRef.current[i]],
-        {
-          y: 100,
-          opacity: 0,
-          scale: scaleFrom,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: scaleTo,
-          ease: "power1.inOut",
-          duration: cardDuration,
-        },
-        cardStart
-      ).to(
-        [leftCardsRef.current[i], rightCardsRef.current[i]],
-        {
-          y: 300,
-          opacity: 0,
-          scale: scaleFrom,
-          ease: "power1.inOut",
-          duration: cardDuration,
-        },
-        `>${cardDuration}`
-      );
-    }
-
-    tl.to(sceneRef.current, { x: "-25vw", ease: "none" });
-
-    if (!textRef.current) return;
-
-    // Split the text into characters
-    splitInstance.current = new SplitText(textRef.current, {
-      type: "chars",
-    });
-
-    // Animation timeline
-    gsap.from(splitInstance.current.chars, {
-      opacity: 0.5,
-      ease: "linear",
-      stagger: 0.05,
-      scrollTrigger: {
-        trigger: textRef.current,
-        start: "-10% 60%",
-        end: "30% 0%",
-        scrub: true,
-        // markers: true,
-      },
-    });
-
-    return () => {
-      tl.kill();
-      splitInstance.current.revert();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
-
   return (
     <div
       ref={mainRef}
       id="about"
-      className="h-[430vh] 2xl:h-[350vh] w-full bg-white text-black overflow-hidden flex flex-col"
+      className="w-full bg-white text-black overflow-hidden flex flex-col"
     >
       <section ref={mainRef} id="about" className="relative w-full">
         <div className="relative flex justify-center items-center flex-col">

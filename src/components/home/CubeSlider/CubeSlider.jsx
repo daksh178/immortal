@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
@@ -119,16 +119,16 @@ const CubicSlider = () => {
   return (
     <section
       ref={sectionRef}
-      // id="bio"
-      className="relative w-full flex flex-col justify-center overflow-visible"
+      id="bio"
+      className="relative h-[120vh] w-full flex flex-col justify-center overflow-visible"
     >
       <div className="text-gray-300 text-left w-[1080px] mx-auto">
-        <p className="font-sf-ui-semibold md:text-[170px] lg:text-[200px] xl:text-[180px] opacity-10 text-[#2C5789]">
+        <p className="font-sf-ui-semibold text-[200px] opacity-10 text-[#2C5789]">
           Bio
         </p>
       </div>
       {/* Responsive Cube Container */}
-      <div className="h-[150vh]">
+      <div className="h-full">
         <div
           className="
             w-[90vw] 
