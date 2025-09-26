@@ -11,7 +11,7 @@ export default function HeroMobile() {
           Unlock
           Longevity
         </div>
-        <div className="text-[30px] sm:text-[45px] md:text-[70px] 2xl:text-[110px] font-semibold leading-none tracking-normal bg-black bg-clip-text text-transparent">
+        <div className="text-[30px] sm:text-[45px] md:text-[70px] 2xl:text-[110px] font-semibold leading-none tracking-normal">
           Through
           Science & Spirit
         </div>
