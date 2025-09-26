@@ -73,7 +73,7 @@ const Home = () => {
       </section>
 
       {/* Cube Slider */}
-      <section id="slider" className="pt-20">
+      <section id="slider">
         {isMobile ? <MobileCubeSlider /> : <CubicSlider />}
       </section>
 

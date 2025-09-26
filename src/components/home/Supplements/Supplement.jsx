@@ -187,7 +187,7 @@ export default function Supplement() {
                     {suplimentDta.length > 0 && suplimentDta[0].supplement_detail}
                   </p>
                   <div className=" w-[170px] absolute bottom-4  z-50">
-                    <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" onClick={() => Navigate(`/supplements/${suplimentDta[0]?.id}`)} />
+                    <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" onClick={() => Navigate(`/protocols/${suplimentDta[0]?.id}`)} />
                   </div>
                 </div>
               </div>
@@ -236,7 +236,7 @@ export default function Supplement() {
                   {suplimentDta.length > 0 && suplimentDta[1].supplement_detail}
                 </p>
                 <div className=" w-[170px] absolute bottom-4  z-50">
-                  <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" onClick={() => Navigate(`/supplements/${suplimentDta[1]?.id}`)} />
+                  <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" onClick={() => Navigate(`/protocols/${suplimentDta[1]?.id}`)} />
                 </div>
               </div>
               <div className="col-content-wrapper-2 relative">
@@ -249,9 +249,6 @@ export default function Supplement() {
                 <p className="absolute text-lg 2xl:text-xl bottom-30">
                   {suplimentDta.length > 0 && suplimentDta[2].supplement_detail}
                 </p>
-                <div className=" w-[170px] absolute bottom-4  z-50">
-                  <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" onClick={() => Navigate(`/supplements/${suplimentDta[2]?.id}`)} />
-                </div>
               </div>
             </div>
 

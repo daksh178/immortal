@@ -36,7 +36,7 @@ export default function SupplementMobile() {
         suplimentDta?.map((card, i) => (
           <section
             onClick={() => {
-              Navigate("/protocols/1");
+              Navigate(`/supplements/${suplimentDta?.id}`);
             }}
             key={i}
             className="relative w-[90%] max-w-full mx-auto flex flex-col justify-between p-4 mb-8 rounded-2xl border border-gray-200 shadow-sm bg-white"
