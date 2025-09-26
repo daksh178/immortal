@@ -19,6 +19,7 @@ export default function Supplement() {
           headers: { "ngrok-skip-browser-warning": "true" },
         });
         if (response?.data) {
+          // Sorts by ID and takes the first 3 elements
           setsuplimentDta(response.data.data.sort((a, b) => a.id - b.id).slice(0, 3));
         }
       } catch (error) {
@@ -134,6 +135,7 @@ export default function Supplement() {
   useEffect(() => {
     if (suplimentDta.length === 0) return;
 
+    // Apply SplitText to the content of col-3 for the text animation
     const textElements = document.querySelectorAll(".col-3 h1, .col-3 p");
 
     textElements.forEach((element) => {
@@ -166,6 +168,7 @@ export default function Supplement() {
 
         <section className="sticky-cols">
           <div className="sticky-cols-wrapper">
+            {/* Supplement 1: Visible by default (col-1) */}
             <div
               className="col col-1"
               style={{
@@ -187,12 +190,19 @@ export default function Supplement() {
                     {suplimentDta.length > 0 && suplimentDta[0].supplement_detail}
                   </p>
                   <div className=" w-[170px] absolute bottom-4  z-50">
-                    <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" />
+                    {/* CORRECTED: Navigating to the correct ID (index 0) */}
+                    <img
+                      src="/seeMore.png"
+                      className="object-cover cursor-pointer"
+                      alt="See More"
+                      onClick={() => Navigate(`/supplements/${suplimentDta[0]?.id}`)}
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
+            {/* Images for Supplement 1 & 2 (col-2) */}
             <div className="col col-2">
               <div className="col-img col-img-1">
                 <div className="col-img-wrapper">
@@ -216,6 +226,7 @@ export default function Supplement() {
               </div>
             </div>
 
+            {/* Supplement 2 & 3 Content (col-3) - Card 2 shows first, Card 3 animates in */}
             <div
               style={{
                 backgroundImage: "url('/card2.png')",
@@ -225,6 +236,7 @@ export default function Supplement() {
               }}
               className="col col-3 bg-white clip-polygon2-8"
             >
+              {/* Content for Supplement 2 (index 1) */}
               <div className="col-content-wrapper relative">
                 <h1 className="text-4xl 2xl:text-5xl">
                   {suplimentDta.length > 0 && suplimentDta[1].supplement_name}
@@ -236,9 +248,17 @@ export default function Supplement() {
                   {suplimentDta.length > 0 && suplimentDta[1].supplement_detail}
                 </p>
                 <div className=" w-[170px] absolute bottom-4  z-50">
-                  <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" />
+                  {/* "See More" button for Supplement 2 (index 1) */}
+                  <img
+                    src="/seeMore.png"
+                    className="object-cover cursor-pointer"
+                    alt="See More"
+                    onClick={() => Navigate(`/supplements/${suplimentDta[1]?.id}`)}
+                  />
                 </div>
               </div>
+
+              {/* Content for Supplement 3 (index 2) - This content slides in */}
               <div className="col-content-wrapper-2 relative">
                 <h1 className="text-4xl 2xl:text-5xl">
                   {suplimentDta.length > 0 && suplimentDta[2].supplement_name}
@@ -249,9 +269,19 @@ export default function Supplement() {
                 <p className="absolute text-lg 2xl:text-xl bottom-30">
                   {suplimentDta.length > 0 && suplimentDta[2].supplement_detail}
                 </p>
+                {/* ADDED: "See More" button for Supplement 3 (index 2) */}
+                <div className=" w-[170px] absolute bottom-4  z-50">
+                  <img
+                    src="/seeMore.png"
+                    className="object-cover cursor-pointer"
+                    alt="See More"
+                    onClick={() => Navigate(`/supplements/${suplimentDta[2]?.id}`)}
+                  />
+                </div>
               </div>
             </div>
 
+            {/* Image for Supplement 3 (col-4) */}
             <div className="col col-4">
               <div className="col-img">
                 <div className="col-img-wrapper">

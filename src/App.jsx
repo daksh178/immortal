@@ -8,6 +8,7 @@ import Bio from "./pages/bio/BioPage";
 import Protocol from "./pages/protocol/ProtocolPage";
 import RoadmapPage from "./pages/roadmap/RoadmapPage";
 import SupplementPage from "./pages/Supplement/SupplementPage";
+import Supplements from "./pages/Allsuplements/Supplements";
 import Loader from "./components/Loader";
 import { useGLTF } from "@react-three/drei";
 
@@ -80,6 +81,8 @@ function App() {
           <Route path="/bio" element={<Bio />} />
           <Route path="/roadmap" element={<RoadmapPage />} />
           <Route path="/supplement" element={<SupplementPage />} />
+          <Route path="/supplements/:supplementname" element={<Supplements />} />
+
         </Routes>
       </Router>
 
