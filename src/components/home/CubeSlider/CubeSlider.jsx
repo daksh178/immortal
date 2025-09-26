@@ -1,8 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,27 +18,6 @@ const CubicSlider = () => {
   const rightFaceRef = useRef(null);
   const backFaceRef = useRef(null);
   const sectionRef = useRef(null);
-
-  const [bioData, setbioData] = useState([]);
-
-  useEffect(() => {
-    const fetchRoadmap = async () => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_MAIN_API}/get-bio`, {
-          headers: {
-            'ngrok-skip-browser-warning': 'true'
-          }
-        });
-        if (response?.data) {
-          setbioData(response.data?.data?.sort((a, b) => a.id - b.id)?.slice(0, 2));
-        }
-      } catch (error) {
-        console.error("Error fetching roadmap:", error);
-      }
-    };
-
-    fetchRoadmap();
-  }, []);
 
   useEffect(() => {
     let ctx;
@@ -142,21 +120,16 @@ const CubicSlider = () => {
       return () => ctx && ctx.revert();
     }
   }, []);
-
-
   return (
     <section
       ref={sectionRef}
       id="bio"
       className="relative w-full h-[150vh]  pb-24 flex justify-center items-center overflow-visible"
     >
-      <div className="absolute -top-20 left-70 z-0  pl-4 text-gray-300">
-        <h1
-          id="roadmap"
-          className="text-[#2C5789] opacity-10 w-full text-[250px] font-sf-ui-semibold text-center"
-        >
+      <div className="absolute top-0 left-20 z-0  pl-4 text-gray-300">
+        <p className="font-sf-ui-semibold md:text-[170px] lg:text-[200px] xl:text-[180px] lg:mt-24 xl:mt-0 opacity-10 text-[#2C5789]">
           Bio
-        </h1>
+        </p>
       </div>
       <div className="w-[400px] scale-150 xl:translate-x-[20%] -translate-y-[30%] z-10 h-[300px] mx-auto relative">
         {/* The cube itself (all faces inside) */}
@@ -240,31 +213,40 @@ const CubicSlider = () => {
                 backgroundColor: "white",
               }}
             >
-              {bioData?.length > 0 ? (
-                bioData.map((bio) => (
-                  <div key={bio.id} className="p-1">
-                    <h1 className="text-xl font-bold text-black">
-                      {bio.user_name}
-                    </h1>
-                    <p className="text-gray-700 text-[12px] mt-2">
-                      {bio.user_detail.substring(0, 250)}...
-                      <Link className="text-[#0db5e4] font-bold cursor-pointer" to={"/bio"}>
-                        read more
-                      </Link>
-                    </p>
-                  </div>
-                ))
-              ) : (
-                <div className="relative w-full max-w-md h-[400px] p-6">
-                  {/* Skeleton content */}
-                  <div className="animate-pulse space-y-4">
-                    <div className="h-5 w-2/3 bg-gray-200/80 rounded"></div>
-                    <div className="h-3 w-full bg-gray-50 rounded"></div>
-                    <div className="h-3 w-5/6 bg-gray-50 rounded"></div>
-                    <div className="h-3 w-4/6 bg-gray-50 rounded"></div>
-                  </div>
-                </div>
-              )}
+              <h1 className="text-2xl font-bold text-black">Kim Wheeler</h1>
+              <p className="text-gray-700 text-[12px] mt-2">
+                Studied Exercise Physiology and Kinesiology (Cardiac
+                Rehabilitation emphasis) for 4 years at Texas Woman’s
+                University, and then continued her education in law. Kim spent
+                much of{" "}
+                <Link className="underline" to={"/bio"}>
+                  read more
+                </Link>
+              </p>
+
+              <h1 className="text-2xl mt-4 font-bold text-black">
+                Dan Wheeler
+              </h1>
+              <p className="text-gray-700 text-[12px] mt-2">
+                Retired 20 year Air Force Veteran, who has over 35 years of
+                Bodybuilding experience and personal training. Dan spent years
+                honing his Bodybuilding craft, going from a skinny boy{" "}
+                <Link className="underline" to={"/bio"}>
+                  read more
+                </Link>
+              </p>
+              {/* Special left vertical bar - always on top
+  <div
+    className="h-[130px] w-[6px] absolute  !z-[999]"
+    style={{
+      background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+      clipPath:
+        "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
+      left: -2,
+      top: 120,
+      pointerEvents: "none", // optional: so it doesn't block clicks
+    }}
+  ></div> */}
             </div>
           </div>
         </div>
