@@ -159,7 +159,7 @@ const ThreeJsComponent = () => {
     <div
       ref={mainRef}
       id="about"
-      className="w-full bg-white text-black overflow-hidden flex flex-col"
+      className="h-[430vh] 2xl:h-[350vh] w-full bg-white text-black overflow-hidden flex flex-col"
     >
       <section ref={mainRef} id="about" className="relative w-full">
         <div className="relative flex justify-center items-center flex-col">
