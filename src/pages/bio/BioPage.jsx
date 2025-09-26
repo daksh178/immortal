@@ -51,7 +51,8 @@ const Bio = () => {
         onClick={() => navigate("/")}
         className="absolute top-4 left-4 xl:left-8 cursor-pointer z-50"
       >
-        <img src="/logo.svg" className="w-[200px] cursor-pointer" />
+        <img src="/logo.svg" className="w-[120px] sm:w-[200px] cursor-pointer" />
+
       </div>
 
       {isMobile ? (

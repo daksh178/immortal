@@ -81,7 +81,10 @@ export default function SupplementPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 w-[90%] mx-auto cursor-pointer">
                         {suplimentDta && suplimentDta.length > 0 ? (
                             suplimentDta?.map((card, i) => (
-                                <section
+                                <div
+                                    onClick={() => {
+                                        navigate(`/supplements/${card?.id}`);
+                                    }}
                                     key={i}
                                     className="relative flex flex-col p-4 rounded-2xl border border-gray-200 shadow-sm bg-white"
                                 >
@@ -110,7 +113,7 @@ export default function SupplementPage() {
                                             />
                                         </div> */}
                                     </div>
-                                </section>
+                                </div>
                             ))
                         ) : (
                             // Skeleton Loader

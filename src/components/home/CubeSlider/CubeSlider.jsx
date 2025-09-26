@@ -120,7 +120,7 @@ const CubicSlider = () => {
     <section
       ref={sectionRef}
       id="bio"
-      className="relative h-[120vh] w-full flex flex-col justify-center overflow-visible"
+      className="relative h-[130vh] w-full flex flex-col justify-center overflow-visible"
     >
       <div className="text-gray-300 text-left w-[1080px] mx-auto">
         <p className="font-sf-ui-semibold text-[200px] opacity-10 text-[#2C5789]">
