@@ -49,7 +49,7 @@ const Bio = () => {
       <ScrollToTop />
       <div
         onClick={() => navigate("/")}
-        className="absolute top-4 left-4 xl:left-8 cursor-pointer z-50"
+        className="absolute top-6 left-4 xl:left-8 cursor-pointer z-999"
       >
         <img src="/logo.svg" className="w-[120px] sm:w-[200px] cursor-pointer" />
 
@@ -152,7 +152,7 @@ const Bio = () => {
               <div className="flex lg:flex-row gap-8 items-end">
                 <div className="lg:w-3/5 text-center lg:text-left">
                   <h1
-                    className="text-5xl sm:text-6xl xl:text-8xl font-sf-ui-semibold text-transparent mb-2"
+                    className="text-3xl sm:text-6xl xl:text-8xl font-sf-ui-semibold text-transparent mb-2"
                     style={{
                       background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
                       backgroundClip: "text",
@@ -168,7 +168,7 @@ const Bio = () => {
                   <img
                     src={bio?.user_photo}
                     alt={bio?.user_name}
-                    className="w-[200px] h-[250px] max-w-xs sm:max-w-sm mx-auto relative z-10"
+                    className="w-[150px] h-[200px] max-w-xs sm:max-w-sm mx-auto relative z-10"
                   />
                   <div
                     className="absolute bottom-0 left-0 w-full h-16 z-20 pointer-events-none"

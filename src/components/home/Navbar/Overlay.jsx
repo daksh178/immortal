@@ -78,7 +78,7 @@ const Overlay = ({ isProtocolPage }) => {
   return (
     <>
       {/* Top Navbar */}
-      <div className="fixed inter-bold top-0 left-0 w-full h-[80px] bg-transparent text-white flex justify-end items-center px-6 z-30">
+      <div className="fixed inter-bold top-0 left-0 w-full h-[80px] bg-transparent text-white flex justify-end items-center px-6 z-99">
         {!isOpen &&
           (isProtocolPage ? (
             <button
@@ -106,7 +106,7 @@ const Overlay = ({ isProtocolPage }) => {
       {/* Fullscreen Overlay */}
       <div
         ref={overlayRef}
-        className="fixed opacity-0 top-0 left-0 w-full h-full bg-[url('/menuBg.png')] bg-cover bg-white   flex flex-col items-center justify-center gap-6 z-40"
+        className="fixed opacity-0 top-0 left-0 w-full h-full bg-[url('/menuBg.png')] bg-cover bg-white   flex flex-col items-center justify-center gap-6 z-99"
       >
         <img
           src="/tree.svg"

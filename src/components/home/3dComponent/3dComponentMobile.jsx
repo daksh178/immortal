@@ -167,7 +167,7 @@ const ThreeJsComponentMobile = () => {
             relative 
             flex-shrink-0         
             w-[80%]
-            h-[300px]
+            h-[320px]
             cursor-pointer 
             duration-150 
             will-change-transform 

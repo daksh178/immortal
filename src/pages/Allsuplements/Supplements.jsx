@@ -1,5 +1,6 @@
 import Footer from "../../components/home/Footer/Footer.jsx";
 import Overlay from "../../components/home/Navbar/Overlay.jsx";
+import OverlayMobile from "../../components/home/Navbar/OverlayMobile";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop.jsx";
@@ -8,6 +9,16 @@ import axios from "axios";
 
 export default function Supplements() {
     const navigate = useNavigate();
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 1280);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const { supplementname } = useParams();
 
@@ -42,12 +53,19 @@ export default function Supplements() {
             <ScrollToTop />
             <div
                 onClick={() => navigate("/")}
-                className="absolute top-4 left-4 xl:left-8 cursor-pointer z-50"
+                className="absolute top-6 left-4 xl:left-8 cursor-pointer z-999"
             >
                 <img src="/logo.svg" className="w-[120px] sm:w-[200px] cursor-pointer" />
             </div>
-            <Overlay isProtocolPage={true} />
-            <div className="max-h-screen">
+
+            {isMobile ? (
+                <OverlayMobile isBioPage={true} />
+            ) : (
+                <Overlay isProtocolPage={true} />
+            )}
+
+
+            <div className="h-auto">
                 <div className="relative w-full text-black">
                     {/* Background layer (140vh) */}
                     <div
@@ -65,7 +83,7 @@ export default function Supplements() {
                             ">
                         <h1
                             className="
-      font-sf-ui-medium z-50 text-center
+      font-sf-ui-medium md:z-50 text-center
       text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl
     "
                         >
@@ -74,7 +92,7 @@ export default function Supplements() {
 
                         <p
                             className="
-      z-50 text-center
+      md:z-50 text-center
       mt-6 sm:mt-10 md:mt-16 lg:mt-20 xl:mt-28 2xl:mt-[120px]
       max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl
       text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl
@@ -101,7 +119,7 @@ export default function Supplements() {
                             </div>
                         ))
                         : getSupplementdata?.medicine_detail?.map((medicine, index) => (
-                            <div key={index} className="z-50 bgmt-12 flex flex-col items-center">
+                            <div key={index} className="md:z-50 bgmt-12 flex flex-col items-center">
                                 {/* Description */}
                                 <p className="text-2xl font-sf-ui-light mx-auto max-w-4xl text-center">
                                     {medicine.description}
