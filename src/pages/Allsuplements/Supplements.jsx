@@ -121,21 +121,51 @@ export default function Supplements() {
                         : getSupplementdata?.medicine_detail?.map((medicine, index) => (
                             <div key={index} className="md:z-50 bgmt-12 flex flex-col items-center">
                                 {/* Description */}
-                                <p className="text-2xl font-sf-ui-light mx-auto max-w-4xl text-center">
+                                <p className="px-5 text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl font-sf-ui-light mx-auto max-w-4xl text-center">
                                     {medicine.description}
                                 </p>
 
                                 {/* Button with link */}
+                                {/* Button with link */}
                                 <div
-                                    className="cursor-pointer w-[230px] h-[60px] rounded-[40px] flex items-center justify-start gap-4 py-[19px] pl-5 mt-5"
+                                    className="                    
+    cursor-pointer 
+    w-[150px] h-[40px] 
+    rounded-[40px] 
+    flex items-center justify-start gap-1
+    py-[10px] pl-3 mt-5
+    sm:w-[180px] sm:h-[50px] sm:gap-3 sm:py-[14px] sm:pl-4 
+    xs:w-[150px] xs:h-[45px] xs:gap-2 xs:py-[10px] xs:pl-3
+  "
                                     style={{ border: "1px solid #03558C" }}
                                     onClick={() => window.open(medicine.link, "_blank")}
                                 >
-                                    <h6 className="flex-1 font-bold text-[20px] leading-[100%] bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
+                                    <h6
+                                        className="
+      flex-1 font-bold 
+      text-[14px] leading-[100%] 
+      bg-gradient-to-b from-[#003670] to-[#0DB5E4] 
+      bg-clip-text text-transparent
+      sm:text-[16px]
+      xs:text-[14px]
+    "
+                                    >
                                         Explore more
                                     </h6>
-                                    <div className="w-[60px] h-[60px] rounded-full flex items-center justify-center bg-gradient-to-b from-[#003670] to-[#0DB5E4]">
-                                        <img src="/rightaero.svg" alt="" className="h-[20px] w-[20px]" />
+                                    <div
+                                        className="
+      w-[40px] h-[40px] rounded-full 
+      flex items-center justify-center 
+      bg-gradient-to-b from-[#003670] to-[#0DB5E4]
+      sm:w-[45px] sm:h-[45px]
+      xs:w-[40px] xs:h-[40px]
+    "
+                                    >
+                                        <img
+                                            src="/rightaero.svg"
+                                            alt=""
+                                            className="h-[20px] w-[20px] sm:h-[16px] sm:w-[16px] xs:h-[14px] xs:w-[14px]"
+                                        />
                                     </div>
                                 </div>
 
