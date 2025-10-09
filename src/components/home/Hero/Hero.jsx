@@ -14,9 +14,8 @@ function getMaskSizes(width) {
     return { min: 60, max: 270 };      // example values for >1024px
   } else if (width > 768 && width <= 1024) {
     return { min: 60, max: 900 };      // example values for 768px–1024px
-  } 
-  else 
-  {
+  }
+  else {
     return { min: 70, max: 900 };      // example values for <768px
   }
 }
@@ -168,7 +167,8 @@ export const Hero = () => {
         <div ref={containerRef} className="w-screen h-[100vh] overflow-hidden">
           <video
             ref={videoRef}
-            src="/assets/video/720p60fps.mp4"
+            // src="/assets/video/720p60fps.mp4"
+            src="/assets/video/Sci_Fi_Evolution_Biohacking_Laboratory.mp4"
             muted
             playsInline
             loop
