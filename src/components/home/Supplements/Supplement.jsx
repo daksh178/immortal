@@ -6,6 +6,9 @@ import Lenis from "lenis";
 import "./supplement.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { IconChevronsDown } from "@tabler/icons-react";
+
 
 export default function Supplement() {
   const Navigate = useNavigate();
@@ -154,7 +157,7 @@ export default function Supplement() {
 
   return (
     <>
-      <div className="supplement2">
+      <div className="supplement2 relative">
         <div
           id="supplement"
           className=" w-full text-center  pl-4 text-gray-300"
@@ -162,6 +165,26 @@ export default function Supplement() {
           <p className="mb-4 supplementTitle font-sf-ui-semibold opacity-10 text-[#2C5789]">
             Supplement
           </p>
+        </div>
+
+        <div className="flex justify-between">
+          <div className="absolute top-10 left-100 hide-in-mobile">
+            <div className="animate-moveDown">
+              <IconChevronsDown size={100} className="text-[#003670]" />
+            </div>
+          </div>
+
+          <div className="absolute top-10 left-1/2 -translate-x-1/2">
+            <div className="animate-moveDown">
+              <IconChevronsDown size={100} className="text-[#003670]" />
+            </div>
+          </div>
+
+          <div className="absolute top-10 right-100 hide-in-mobile">
+            <div className="animate-moveDown">
+              <IconChevronsDown size={100} className="text-[#003670]" />
+            </div>
+          </div>
         </div>
 
         <section className="sticky-cols">
@@ -180,11 +203,23 @@ export default function Supplement() {
                   <h1 className="text-4xl 2xl:text-5xl">
                     {suplimentDta.length > 0 && suplimentDta[0].supplement_name}
                   </h1>
-                  <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
+                  <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[30%] ">
                     01
                   </h1>
                   <p className=" absolute text-lg 2xl:text-xl bottom-30">
-                    {suplimentDta.length > 0 && suplimentDta[0].supplement_detail}
+                    {suplimentDta.length > 0 && suplimentDta[0].supplement_detail.length > 250
+                      ? (
+                        <>
+                          {suplimentDta[0].supplement_detail?.substring(0, 250)}...
+                          <Link
+                            className="text-[#0db5e4] font-bold cursor-pointer"
+                            to={`/supplements/${suplimentDta[0]?.id}`}
+                          >
+                            read more
+                          </Link>
+                        </>
+                      )
+                      : suplimentDta.length > 0 && suplimentDta[0].supplement_detail}
                   </p>
                   <div className=" w-[170px] absolute bottom-4  z-50">
                     <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" onClick={() => Navigate(`/supplements/${suplimentDta[0]?.id}`)} />
@@ -229,11 +264,23 @@ export default function Supplement() {
                 <h1 className="text-4xl 2xl:text-5xl">
                   {suplimentDta.length > 0 && suplimentDta[1].supplement_name}
                 </h1>
-                <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
+                <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[30%] ">
                   02
                 </h1>
                 <p className=" absolute text-lg 2xl:text-xl bottom-30">
-                  {suplimentDta.length > 0 && suplimentDta[1].supplement_detail}
+                  {suplimentDta.length > 0 && suplimentDta[1].supplement_detail.length > 250
+                    ? (
+                      <>
+                        {suplimentDta[1].supplement_detail?.substring(0, 250)}...
+                        <Link
+                          className="text-[#0db5e4] font-bold cursor-pointer"
+                          to={`/supplements/${suplimentDta[1]?.id}`}
+                        >
+                          read more
+                        </Link>
+                      </>
+                    )
+                    : suplimentDta.length > 0 && suplimentDta[1].supplement_detail}
                 </p>
                 <div className=" w-[170px] absolute bottom-4  z-50">
                   <img src="/seeMore.png" className="object-cover cursor-pointer" alt="" onClick={() => Navigate(`/supplements/${suplimentDta[1]?.id}`)} />
@@ -243,11 +290,23 @@ export default function Supplement() {
                 <h1 className="text-4xl 2xl:text-5xl">
                   {suplimentDta.length > 0 && suplimentDta[2].supplement_name}
                 </h1>
-                <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[45%] ">
+                <h1 className="text-[170px] 2xl:text-[250px] font-sf-ui-semibold text-black opacity-[4%] absolute left-4 -translate-y-1/2 top-[30%] ">
                   03
                 </h1>
                 <p className="absolute text-lg 2xl:text-xl bottom-30">
-                  {suplimentDta.length > 0 && suplimentDta[2].supplement_detail}
+                  {suplimentDta.length > 0 && suplimentDta[2].supplement_detail.length > 250
+                    ? (
+                      <>
+                        {suplimentDta[2].supplement_detail?.substring(0, 250)}...
+                        <Link
+                          className="text-[#0db5e4] font-bold cursor-pointer"
+                          to={`/supplements/${suplimentDta[2]?.id}`}
+                        >
+                          read more
+                        </Link>
+                      </>
+                    )
+                    : suplimentDta.length > 0 && suplimentDta[2].supplement_detail}
                 </p>
               </div>
             </div>

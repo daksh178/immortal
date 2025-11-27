@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { IconChevronsDown } from "@tabler/icons-react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -159,7 +160,7 @@ const ThreeJsComponent = () => {
     <div
       ref={mainRef}
       id="about"
-      className="w-full bg-white text-black overflow-hidden flex flex-col"
+      className="w-full bg-white text-black overflow-hidden flex flex-col relative"
     >
       <section ref={mainRef} id="about" className="relative w-full">
         <div className="relative flex justify-center items-center flex-col">
@@ -179,6 +180,26 @@ const ThreeJsComponent = () => {
           </div>
         </div>
       </section>
+
+      <div className="flex justify-between">
+        <div className="absolute top-1/2 left-100 hide-in-mobile">
+          <div className="animate-moveDown">
+            <IconChevronsDown size={100} className="text-[#003670]" />
+          </div>
+        </div>
+
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
+          <div className="animate-moveDown">
+            <IconChevronsDown size={100} className="text-[#003670]" />
+          </div>
+        </div>
+
+        <div className="absolute top-1/2 right-100 hide-in-mobile">
+          <div className="animate-moveDown">
+            <IconChevronsDown size={100} className="text-[#003670]" />
+          </div>
+        </div>
+      </div>
 
       <section id="roadmap" className="mt-[40vh]">
         <div>

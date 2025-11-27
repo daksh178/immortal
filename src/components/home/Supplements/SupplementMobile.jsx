@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { IconChevronsDown } from "@tabler/icons-react";
 
 export default function SupplementMobile() {
   const Navigate = useNavigate();
@@ -24,11 +26,30 @@ export default function SupplementMobile() {
   }, []);
 
   return (
-    <div className="w-full py-4">
+    <div className="w-full py-4 relative">
       <div id="supplement" className="w-full text-center pl-4 text-gray-300">
         <p className="mb-4 text-4xl sm:text-[48px] md:text-[64px] font-semibold text-[#2C5789] opacity-10">
           Supplement
         </p>
+      </div>
+      <div className="flex justify-between">
+        <div className="absolute top-10 left-100 hide-in-mobile">
+          <div className="animate-moveDown">
+            <IconChevronsDown size={100} className="text-[#003670]" />
+          </div>
+        </div>
+
+        <div className="absolute top-10 left-1/2 -translate-x-1/2">
+          <div className="animate-moveDown">
+            <IconChevronsDown size={100} className="text-[#003670]" />
+          </div>
+        </div>
+
+        <div className="absolute top-10 right-100 hide-in-mobile">
+          <div className="animate-moveDown">
+            <IconChevronsDown size={100} className="text-[#003670]" />
+          </div>
+        </div>
       </div>
 
       {/* CARD LIST */}

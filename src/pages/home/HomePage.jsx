@@ -19,6 +19,7 @@ import Supplement from "../../components/home/Supplements/Supplement.jsx";
 import SupplementMobile from "../../components/home/Supplements/SupplementMobile.jsx";
 
 import Footer from "../../components/home/Footer/Footer.jsx";
+import { IconChevronsDown } from "@tabler/icons-react";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -62,8 +63,15 @@ const Home = () => {
         {isMobile ? <OverlayMobile /> : <Overlay />}
       </header>
 
+
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
+        <div className="animate-moveDown">
+          <IconChevronsDown size={88} className="text-[#003670]" />
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section id="hero" className="w-full">
+      <section id="hero" className="w-full ">
         {isMd ? <HeroMobile /> : <Hero />}
       </section>
 
@@ -73,7 +81,29 @@ const Home = () => {
       </section>
 
       {/* Cube Slider */}
-      <section id="slider">
+      <section id="slider" className="relative">
+        <div className="flex justify-between">
+          <div className="absolute -top-20 left-100 hide-in-mobile">
+            <IconChevronsDown
+              size={88}
+              className="text-[#003670] animate-moveDown"
+            />
+          </div>
+
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2">
+            <IconChevronsDown
+              size={88}
+              className="text-[#003670] animate-moveDown"
+            />
+          </div>
+
+          <div className="absolute -top-20 right-100 hide-in-mobile">
+            <IconChevronsDown
+              size={88}
+              className="text-[#003670] animate-moveDown"
+            />
+          </div>
+        </div>
         {isMobile ? <MobileCubeSlider /> : <CubicSlider />}
       </section>
 

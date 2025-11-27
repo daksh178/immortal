@@ -274,3 +274,27 @@ body {
     0 12px
   );
 }
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+.animate-moveDown {
+  animation: moveDown 1s infinite ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .hide-in-mobile {
+    display: none !important;
+  }
+}
