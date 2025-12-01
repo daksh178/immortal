@@ -64,7 +64,7 @@ const Home = () => {
       </header>
 
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
+      <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2">
         <div className="animate-moveDown">
           <IconChevronsDown size={88} className="text-[#003670]" />
         </div>
@@ -82,7 +82,7 @@ const Home = () => {
 
       {/* Cube Slider */}
       <section id="slider" className="relative">
-        <div className="flex justify-between">
+        <div className="hidden md:flex justify-between">
           <div className="absolute -top-20 left-100 hide-in-mobile">
             <IconChevronsDown
               size={88}

@@ -101,13 +101,18 @@ const ThreeJsComponentMobile = () => {
       <div
         ref={scrollContainerRef}
         className="
-            flex 
-            justify-center
-            overflow-x-auto 
-            snap-x snap-mandatory 
-            gap-10 px-4 py-4 scroll-smooth 
-            no-scrollbar
-          "
+                flex
+                flex-col sm:flex-col
+                max-sm:flex-row
+                max-sm:overflow-x-auto
+                max-sm:snap-x
+                max-sm:snap-mandatory
+                items-center
+                sm:justify-center
+                max-sm:justify-start
+                gap-10
+                max-sm:scroll-pl-4
+              "
       >
         {leftCardData.length === 0
           ? Array(3)
@@ -116,11 +121,17 @@ const ThreeJsComponentMobile = () => {
               <div
                 key={index}
                 className="
-              flex-shrink-0 
-              w-[80%]
-              aspect-[9/11] 
-              bg-gray-200 rounded-[20px] animate-pulse snap-center
-            "
+                        relative 
+                        flex-shrink-0
+                        w-[80%]
+                        h-[320px]
+                        cursor-pointer 
+                        duration-150 
+                        will-change-transform
+                        snap-center
+                        max-sm:min-w-[100%]
+                        max-sm:snap-start
+                      "
               >
                 {/* Skeleton */}
                 <div className="w-3/5 aspect-square bg-gray-300 rounded-full mt-10 mx-auto" />
