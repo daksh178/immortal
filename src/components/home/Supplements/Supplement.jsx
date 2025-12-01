@@ -167,7 +167,7 @@ export default function Supplement() {
           </p>
         </div>
 
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <div className="absolute top-10 left-100 hide-in-mobile">
             <div className="animate-moveDown">
               <IconChevronsDown size={100} className="text-[#003670]" />
@@ -185,7 +185,7 @@ export default function Supplement() {
               <IconChevronsDown size={100} className="text-[#003670]" />
             </div>
           </div>
-        </div>
+        </div> */}
 
         <section className="sticky-cols">
           <div className="sticky-cols-wrapper">

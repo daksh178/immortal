@@ -64,11 +64,11 @@ const Home = () => {
       </header>
 
 
-      <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2">
+      {/* <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2">
         <div className="animate-moveDown">
           <IconChevronsDown size={88} className="text-[#003670]" />
         </div>
-      </div>
+      </div> */}
 
       {/* Hero Section */}
       <section id="hero" className="w-full ">
@@ -82,7 +82,7 @@ const Home = () => {
 
       {/* Cube Slider */}
       <section id="slider" className="relative">
-        <div className="hidden md:flex justify-between">
+        {/* <div className="hidden md:flex justify-between">
           <div className="absolute -top-20 left-100 hide-in-mobile">
             <IconChevronsDown
               size={88}
@@ -103,7 +103,7 @@ const Home = () => {
               className="text-[#003670] animate-moveDown"
             />
           </div>
-        </div>
+        </div> */}
         {isMobile ? <MobileCubeSlider /> : <CubicSlider />}
       </section>
 
