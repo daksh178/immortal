@@ -90,7 +90,7 @@ const Home = () => {
             />
           </div>
 
-          <div className="absolute -top-20 left-1/2 -translate-x-1/2">
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2 hide-in-mobile">
             <IconChevronsDown
               size={88}
               className="text-[#003670] animate-moveDown"

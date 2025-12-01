@@ -39,7 +39,7 @@ export default function SupplementMobile() {
           </div>
         </div>
 
-        <div className="absolute top-10 left-1/2 -translate-x-1/2">
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 hide-in-mobile">
           <div className="animate-moveDown">
             <IconChevronsDown size={100} className="text-[#003670]" />
           </div>
