@@ -5,6 +5,7 @@ import Footer from "../../components/home/Footer/Footer";
 import OverlayMobile from "../../components/home/Navbar/OverlayMobile";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function SupplementPage() {
     const navigate = useNavigate();
@@ -98,8 +99,22 @@ export default function SupplementPage() {
                                         <h1 className="text-lg font-semibold text-gray-800 mb-2">
                                             {card?.supplement_name}
                                         </h1>
-                                        <p className="text-sm text-gray-600 mb-4">
-                                            {card?.supplement_detail}
+                                        <p className="text-[14px] text-gray-600 mb-4">
+                                            {/* {card?.supplement_detail} */}
+
+                                            {card?.supplement_detail?.length > 200
+                                                ? (
+                                                    <>
+                                                        {card?.supplement_detail?.substring(0, 200)}...
+                                                        <Link
+                                                            className="text-[#0db5e4]  font-bold cursor-pointer"
+                                                            to={`/supplements/${card?.id}`}
+                                                        >
+                                                            read more
+                                                        </Link>
+                                                    </>
+                                                )
+                                                : card?.supplement_detail}
                                         </p>
                                         {/* <div
                                             onClick={() => {
