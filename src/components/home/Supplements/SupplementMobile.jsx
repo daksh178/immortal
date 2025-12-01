@@ -72,13 +72,13 @@ export default function SupplementMobile() {
               <h1 className="text-lg font-semibold text-gray-800 mb-2">
                 {card.supplement_name}
               </h1>
-              <p>
+              <p className="text-[14px]">
                 {card?.supplement_detail?.length > 200
                   ? (
                     <>
                       {card?.supplement_detail?.substring(0, 200)}...
                       <Link
-                        className="text-[#0db5e4] font-bold cursor-pointer"
+                        className="text-[#0db5e4]  font-bold cursor-pointer"
                         to={`/supplements/${card?.id}`}
                       >
                         read more

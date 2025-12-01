@@ -77,7 +77,7 @@ const ThreeJsComponentMobile = () => {
         About us
       </h1>
 
-      <div className="text-gray-900 text-center px-4 md:text-lg lg:text-xl font-sf-ui-medium tracking-wide">
+      <div className="text-gray-900 text-center text-[14px] px-4 md:text-lg lg:text-xl font-sf-ui-medium tracking-wide">
         <h1 ref={textRef}>
           Biohacking the body to achieve LONGEVITY using science,
           epigenetics and spiritual frameworks. We are cutting edge
@@ -102,6 +102,7 @@ const ThreeJsComponentMobile = () => {
         ref={scrollContainerRef}
         className="
                 flex
+                pl-10 
                 flex-col sm:flex-col
                 max-sm:flex-row
                 max-sm:overflow-x-auto
@@ -122,7 +123,7 @@ const ThreeJsComponentMobile = () => {
                 key={index}
                 className="
                         relative 
-                        flex-shrink-0
+                        flex-shrink-0                      
                         w-[80%]
                         h-[320px]
                         cursor-pointer 
@@ -238,7 +239,7 @@ const ThreeJsComponentMobile = () => {
                 />
 
                 {/* Content */}
-                <div className="flex flex-col items-center flex-1 px-6 mt-4">
+                <div className="flex flex-col items-center flex-1 px-4 mt-4">
                   <h6 className="text-black text-lg sm:text-xl md:text-2xl font-semibold leading-tight min-h-[2rem] pointer-events-none">
                     {card?.title}
                   </h6>
