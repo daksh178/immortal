@@ -32,25 +32,25 @@ export default function SupplementMobile() {
           Supplement
         </p>
       </div>
-      {/* <div className="flex justify-between">
-        <div className="absolute top-10 left-100 hide-in-mobile">
+      <div className="flex justify-between hide-in-mobile">
+        <div className="absolute top-10 left-100">
           <div className="animate-moveDown">
             <IconChevronsDown size={100} className="text-[#003670]" />
           </div>
         </div>
 
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 hide-in-mobile">
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 ">
           <div className="animate-moveDown">
             <IconChevronsDown size={100} className="text-[#003670]" />
           </div>
         </div>
 
-        <div className="absolute top-10 right-100 hide-in-mobile">
+        <div className="absolute top-10 right-100">
           <div className="animate-moveDown">
             <IconChevronsDown size={100} className="text-[#003670]" />
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* CARD LIST */}
       {suplimentDta && suplimentDta.length > 0 ? (

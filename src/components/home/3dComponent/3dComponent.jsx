@@ -181,25 +181,25 @@ const ThreeJsComponent = () => {
         </div>
       </section>
 
-      {/* <div className="flex justify-between">
-        <div className="absolute top-1/2 left-100 hide-in-mobile">
+      <div className="flex justify-between hide-in-mobile">
+        <div className="absolute top-1/2 left-100">
           <div className="animate-moveDown">
             <IconChevronsDown size={100} className="text-[#003670]" />
           </div>
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 hide-in-mobile">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
           <div className="animate-moveDown">
             <IconChevronsDown size={100} className="text-[#003670]" />
           </div>
         </div>
 
-        <div className="absolute top-1/2 right-100 hide-in-mobile">
+        <div className="absolute top-1/2 right-100">
           <div className="animate-moveDown">
             <IconChevronsDown size={100} className="text-[#003670]" />
           </div>
         </div>
-      </div> */}
+      </div>
 
       <section id="roadmap" className="mt-[40vh]">
         <div>

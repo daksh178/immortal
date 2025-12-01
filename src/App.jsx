@@ -13,68 +13,68 @@ import Loader from "./components/Loader";
 import { useGLTF } from "@react-three/drei";
 
 function App() {
-  const lenisRef = useRef();
-  const [isPreloaded, setIsPreloaded] = useState(false);
-  const [showLoader, setShowLoader] = useState(true);
+  // const lenisRef = useRef();
+  // const [isPreloaded, setIsPreloaded] = useState(false);
+  // const [showLoader, setShowLoader] = useState(true);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    const update = (time) => {
-      lenisRef.current?.lenis?.raf(time * 1000);
-    };
-    gsap.ticker.add(update);
-    return () => gsap.ticker.remove(update);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   const update = (time) => {
+  //     lenisRef.current?.lenis?.raf(time * 1000);
+  //   };
+  //   gsap.ticker.add(update);
+  //   return () => gsap.ticker.remove(update);
+  // }, []);
 
-  useEffect(() => {
-    useGLTF.preload("/T-transformed.glb");
+  // useEffect(() => {
+  //   useGLTF.preload("/T-transformed.glb");
 
-    const disableScroll = () => {
-      window.scrollTo(0, 0);
-    };
+  //   const disableScroll = () => {
+  //     window.scrollTo(0, 0);
+  //   };
 
-    const preventDefault = (e) => e.preventDefault();
+  //   const preventDefault = (e) => e.preventDefault();
 
-    const preloadAssets = async () => {
-      // Disable scroll without hiding overflow
-      window.addEventListener("scroll", disableScroll);
-      window.addEventListener("wheel", preventDefault, { passive: false });
-      window.addEventListener("touchmove", preventDefault, { passive: false });
-      window.addEventListener("keydown", preventDefault, { passive: false });
+  //   const preloadAssets = async () => {
+  //     // Disable scroll without hiding overflow
+  //     window.addEventListener("scroll", disableScroll);
+  //     window.addEventListener("wheel", preventDefault, { passive: false });
+  //     window.addEventListener("touchmove", preventDefault, { passive: false });
+  //     window.addEventListener("keydown", preventDefault, { passive: false });
 
-      const videoPromise = new Promise((resolve) => {
-        const video = document.createElement("video");
-        // video.src = "/assets/video/720p60fps.mp4";
-        video.src = "/assets/video/Sci_Fi_Evolution_Biohacking_Laboratory.mp4";
-        video.preload = "auto";
-        video.playsInline = true
-        video.onloadeddata = () => resolve();
-        video.onerror = () => resolve(); // avoid hang
-      });
+  //     const videoPromise = new Promise((resolve) => {
+  //       const video = document.createElement("video");
+  //       // video.src = "/assets/video/720p60fps.mp4";
+  //       video.src = "/assets/video/Sci_Fi_Evolution_Biohacking_Laboratory.mp4";
+  //       video.preload = "auto";
+  //       video.playsInline = true
+  //       video.onloadeddata = () => resolve();
+  //       video.onerror = () => resolve(); // avoid hang
+  //     });
 
-      await videoPromise;
-      setIsPreloaded(true);
+  //     await videoPromise;
+  //     setIsPreloaded(true);
 
-      gsap.to(".loader", {
-        opacity: 0,
-        duration: 1,
-        onComplete: () => {
-          // Enable scroll
-          window.removeEventListener("scroll", disableScroll);
-          window.removeEventListener("wheel", preventDefault);
-          window.removeEventListener("touchmove", preventDefault);
-          window.removeEventListener("keydown", preventDefault);
-          setShowLoader(false);
-        },
-      });
-    };
+  //     gsap.to(".loader", {
+  //       opacity: 0,
+  //       duration: 1,
+  //       onComplete: () => {
+  //         // Enable scroll
+  //         window.removeEventListener("scroll", disableScroll);
+  //         window.removeEventListener("wheel", preventDefault);
+  //         window.removeEventListener("touchmove", preventDefault);
+  //         window.removeEventListener("keydown", preventDefault);
+  //         setShowLoader(false);
+  //       },
+  //     });
+  //   };
 
-    preloadAssets();
-  }, []);
+  //   preloadAssets();
+  // }, []);
 
   return (
     <>
-      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+      {/* <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} /> */}
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -87,7 +87,7 @@ function App() {
         </Routes>
       </Router>
 
-      {showLoader && <Loader />}
+      {/* {showLoader && <Loader />} */}
     </>
   );
 }
