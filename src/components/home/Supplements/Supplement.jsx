@@ -163,7 +163,7 @@ export default function Supplement() {
           className=" w-full text-center  pl-4 text-gray-300"
         >
           <p className="mb-4 supplementTitle font-sf-ui-semibold opacity-10 text-[#2C5789]">
-            Supplement
+            Products
           </p>
         </div>
 

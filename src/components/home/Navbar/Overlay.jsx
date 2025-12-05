@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const navItems = [
   { label: "About Us", targetId: "about" },
-  { label: "Roadmap", targetId: "roadmap" },
-  { label: "Bio", targetId: "bio" },
-  { label: "Supplement", targetId: "supplement" },
+  { label: "Courses", targetId: "roadmap" },
+  { label: "Bios", targetId: "bio" },
+  { label: "Products", targetId: "supplement" },
 ];
 
 const Overlay = ({ isProtocolPage }) => {
@@ -106,9 +106,9 @@ const Overlay = ({ isProtocolPage }) => {
       {/* Fullscreen Overlay */}
       <div
         ref={overlayRef}
-        className="fixed opacity-0 top-0 left-0 w-full h-full bg-[url('/headerbg.png')] bg-cover bg-white   flex flex-col items-center justify-center gap-6 z-99"
+        className="fixed opacity-0 top-0 left-0 w-full h-full bg-[url('/menuBg.png')] bg-cover bg-white   flex flex-col items-center justify-center gap-6 z-99"
       >
-        {/* <img
+        <img
           src="/tree.svg"
           className="absolute left-0 top-0 w-[280px] 2xl:w-[300px]"
           alt="Menu Background"
@@ -117,7 +117,7 @@ const Overlay = ({ isProtocolPage }) => {
           src="/skeleton.png"
           className="absolute right-32 2xl:right-24 top-24 2xl:top-32  h-3/4"
           alt="Menu Background"
-        /> */}
+        />
 
         <button
           onClick={() => setIsOpen(false)}
@@ -130,7 +130,7 @@ const Overlay = ({ isProtocolPage }) => {
           <img src="/closeMenu.png" className="w-4/5 "></img>
         </button>
 
-        <div className="translate-x-[100%] 2xl:translate-x-[-100%] translate-y-[15%] mx-auto flex flex-col gap-12 font-sf-ui-semibold  justify-center items-center">
+        <div className="translate-x-[-50%] 2xl:translate-x-[-100%] translate-y-[15%] mx-auto flex flex-col gap-12 font-sf-ui-semibold  justify-center items-center">
           {navItems.map((item, index) => (
             <div
               key={index}

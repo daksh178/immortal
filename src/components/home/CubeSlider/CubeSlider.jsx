@@ -124,7 +124,7 @@ const CubicSlider = () => {
     >
       <div className="text-gray-300 text-left w-[1080px] mx-auto">
         <p className="font-sf-ui-semibold text-[200px] opacity-10 text-[#2C5789]">
-          Bio
+          Bios
         </p>
       </div>
       {/* Responsive Cube Container */}

@@ -8,9 +8,9 @@ import { IconX } from "@tabler/icons-react";
 
 const navItems = [
   { label: "About Us", targetId: "about" },
-  { label: "Roadmap", targetId: "roadmap" },
-  { label: "Bio", targetId: "bio" },
-  { label: "Supplement", targetId: "supplement" },
+  { label: "Courses", targetId: "roadmap" },
+  { label: "Bios", targetId: "bio" },
+  { label: "Products", targetId: "supplement" },
 ];
 
 const OverlayMobile = ({ isProtocolPage, isBioPage }) => {
@@ -106,9 +106,9 @@ const OverlayMobile = ({ isProtocolPage, isBioPage }) => {
       {/* Fullscreen Overlay */}
       <div
         ref={overlayRef}
-        className="fixed opacity-0 top-0 left-0 w-full h-full bg-[url('/headerbg.png')] bg-cover bg-white   flex flex-col items-center justify-center gap-6 z-99"
+        className="fixed opacity-0 top-0 left-0 w-full h-full bg-[url('/menuBg.png')] bg-cover bg-white   flex flex-col items-center justify-center gap-6 z-99"
       >
-        {/* <img
+        <img
           src="/tree.svg"
           className="absolute left-0 top-0 w-[160px] "
           alt="Menu Background"
@@ -117,7 +117,7 @@ const OverlayMobile = ({ isProtocolPage, isBioPage }) => {
           src="/skeleton.png"
           className="absolute right-8 h-[476px]   translate-x-1/2"
           alt="Menu Background"
-        /> */}
+        />
 
         <button
           onClick={() => setIsOpen(false)}

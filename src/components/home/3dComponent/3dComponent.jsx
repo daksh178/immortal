@@ -207,7 +207,7 @@ const ThreeJsComponent = () => {
             id="roadmap"
             className="text-[#2C5789] opacity-10 w-full text-[250px] font-sf-ui-semibold text-center"
           >
-            Roadmap
+            Courses
           </h1>
 
           <div className="px-6 flex flex-col">

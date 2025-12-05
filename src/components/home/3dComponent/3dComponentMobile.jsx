@@ -94,7 +94,7 @@ const ThreeJsComponentMobile = () => {
         id="roadmap"
         className="text-[#2C5789] text-center mt-10 opacity-10 w-full text-[36px] md:text-[48px] font-sf-ui-semibold"
       >
-        Roadmap
+        Courses
       </h1>
 
       {/* Swipeable Cards Section */}
