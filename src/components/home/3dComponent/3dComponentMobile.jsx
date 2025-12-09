@@ -73,7 +73,7 @@ const ThreeJsComponentMobile = () => {
       className="w-full bg-white text-black overflow-hidden"
     >
       {/* About Section */}
-      <h1 className="text-[#2C5789] text-center mt-10 opacity-10 w-full text-[36px] md:text-[48px] font-sf-ui-semibold">
+      <h1 className="text-[#2C5789] text-center mt-10 opacity-10 w-full text-[48px] md:text-[48px] font-sf-ui-semibold">
         About us
       </h1>
 
@@ -92,7 +92,7 @@ const ThreeJsComponentMobile = () => {
       {/* Roadmap Heading */}
       <h1
         id="roadmap"
-        className="text-[#2C5789] text-center mt-10 opacity-10 w-full text-[36px] md:text-[48px] font-sf-ui-semibold"
+        className="text-[#2C5789] text-center mt-10 opacity-10 w-full text-[48px] md:text-[48px] font-sf-ui-semibold"
       >
         Courses
       </h1>

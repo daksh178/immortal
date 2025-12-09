@@ -74,7 +74,7 @@ export default function SupplementPage() {
                                 WebkitTextFillColor: "transparent",
                             }}
                         >
-                            Supplement
+                            Products
                         </h1>
                     </div>
 

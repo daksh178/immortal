@@ -81,7 +81,7 @@ const Bio = () => {
             Our
           </h1>
           <h1 className="text-2xl sm:text-3xl font-sf-ui-medium mt-2">
-            Personal Bio
+            Personal Bios
           </h1>
 
           <p className="font-sf-ui-semibold text-base sm:text-lg md:text-xl max-w-2xl mt-12">

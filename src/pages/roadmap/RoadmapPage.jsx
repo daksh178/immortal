@@ -81,7 +81,7 @@ export default function RoadmapPage() {
                                     WebkitTextFillColor: "transparent",
                                 }}
                             >
-                                Roadmap
+                                Courses
                             </h1>
 
                             {/* Roadmap Cards */}

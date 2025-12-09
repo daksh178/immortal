@@ -28,7 +28,7 @@ export default function SupplementMobile() {
   return (
     <div className="w-full py-4 relative">
       <div id="supplement" className="w-full text-center pl-4 text-gray-300">
-        <p className="mb-4 text-4xl sm:text-[48px] md:text-[64px] font-semibold text-[#2C5789] opacity-10">
+        <p className="mb-4 text-5xl sm:text-[48px] md:text-[64px] font-semibold text-[#2C5789] opacity-10">
           Products
         </p>
       </div>
