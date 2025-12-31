@@ -59,7 +59,7 @@ export default function RoadmapPage() {
                     onClick={() => navigate("/")}
                     className="absolute top-6 left-4 xl:left-8 cursor-pointer z-999"
                 >
-                    <img src="/logo.svg" className="w-[120px] sm:w-[200px] cursor-pointer" />
+                    <img src="/logo.svg" className=" sm:w-[200px] cursor-pointer" />
                 </div>
                 {/* Navbar Overlay */}
                 {isMobile ? (

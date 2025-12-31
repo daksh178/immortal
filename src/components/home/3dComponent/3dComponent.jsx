@@ -132,20 +132,19 @@ const ThreeJsComponent = () => {
 
     // Split the text into characters
     splitInstance.current = new SplitText(textRef.current, {
-      type: "chars",
+      type: "words",
     });
 
     // Animation timeline
-    gsap.from(splitInstance.current.chars, {
+    gsap.from(splitInstance.current.words, {
       opacity: 0.5,
-      ease: "linear",
+      y: 10,
       stagger: 0.05,
       scrollTrigger: {
         trigger: textRef.current,
         start: "-10% 60%",
         end: "30% 0%",
         scrub: true,
-        // markers: true,
       },
     });
 
@@ -167,17 +166,9 @@ const ThreeJsComponent = () => {
           <h1 className="text-[#2C5789] opacity-10 text-center w-full text-[250px] font-sf-ui-semibold">
             About us
           </h1>
-          <div className="absolute top-60 right-40 wrapper font-sf-ui-medium text-gray-900 text-3xl  tracking-wider  w-[580px] h-[400px]">
-            <h1 ref={textRef} className="">
-              Biohacking the body to achieve <br></br> LONGEVITY using science,
-              epigenetics and spiritual frameworks. We are <br></br> cutting edge
-              biohackers and longevity coaches, who leverage science and <br></br>{" "}
-              revolutionary research to alter/change our genes to bring about a
-              longer, <br></br>healthier, more active life (along with <br></br>
-              employing spiritual connections to <br></br>reveal what's within and
-              to <br></br>supercharge the transformation).
-            </h1>
-          </div>
+          <div className="absolute top-60 right-40 wrapper font-sf-ui-medium text-gray-900 text-3xl tracking-wider w-[580px] h-[400px]"> <h1 ref={textRef} className=""> Biohacking the body to achieve LONGEVITY using science, epigenetics and spiritual frameworks. We are cutting edge biohackers and longevity coaches, who leverage science and {" "} revolutionary research to alter/change our genes to bring about a longer, healthier, more active life (along with employing spiritual connections to reveal what's within and to supercharge the transformation). </h1> </div>
+
+
         </div>
       </section>
 

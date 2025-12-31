@@ -6,13 +6,13 @@ const Footer = () => {
           src="./footerTopGradient.png"
           className="w-full absolute top-0 h-[2px] "
         ></img>
-        <h1 className="footerLineText text-black text-lg">(207) 555-0119</h1>
+        <h1 className="footerLineText text-black text-lg">(469) 387-5026</h1>
         <h1 className="footerLineText text-black text-lg">
-          tim.jennings@example.com
+          kingdomemissary@protonmail.com
         </h1>
-        <h1 className="footerLineText text-black text-lg">
+        {/* <h1 className="footerLineText text-black text-lg">
           3891 Ranchview Dr. Richardson, California 62639
-        </h1>
+        </h1> */}
         <div className="flex socialIconsDiv gap-3 relative z-20 md">
           <img src="/socialIcons/google.svg" className="socialIcon" />
           <img src="/socialIcons/yt.svg" className="socialIcon" />

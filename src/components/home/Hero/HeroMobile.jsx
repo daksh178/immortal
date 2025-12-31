@@ -4,7 +4,7 @@ export default function HeroMobile() {
   return (
     <div className='relative'>
       <div className="absolute top-6 towardFadeDiv left-6 md:left-8">
-        <img src="./logo.svg" className="w-[120px] "></img>
+        <img src="./logo.svg"></img>
       </div>
       <div className='flex flex-col items-center justify-center pt-40'>
         <div className="pb-5 text-center text-[30px] sm:text-[45px] md:text-[70px] 2xl:text-[110px] font-bold leading-none tracking-normal bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
@@ -240,7 +240,7 @@ export default function HeroMobile() {
 //           />
 //         </div>
 //         <div className="absolute top-4 towardFadeDiv left-6 md:left-8">
-//           <img src="./logo.svg" className="w-[120px] "></img>
+//           <img src="./logo.svg" className=""></img>
 //         </div>
 //         <div className="towardFadeDiv  flex flex-col fixed top-[35%] 2xl:left-[2%]  justify-start items-start pl-[30px] sm:pl-[60px] md:pl-[120px] pb-[78px]">
 //           <div className="pb-5 text-[30px] sm:text-[45px] md:text-[70px] 2xl:text-[110px] font-bold leading-none tracking-normal bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">

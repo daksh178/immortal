@@ -39,8 +39,8 @@ const ThreeJsComponentMobile = () => {
 
   useGSAP(() => {
     if (!textRef.current) return;
-    splitInstance.current = new SplitText(textRef.current, { type: "chars" });
-    gsap.from(splitInstance.current.chars, {
+    splitInstance.current = new SplitText(textRef.current, { type: "words" });
+    gsap.from(splitInstance.current.words, {
       opacity: 0.5,
       ease: "power1.inOut",
       stagger: 0.05,

@@ -9,7 +9,7 @@ const Loader = forwardRef((props, ref) => {
       {/* Loading text */}
       <div className="text-center">
         <h1 className="pb-5 text-[24px] font-extrabold leading-none tracking-wide bg-gradient-to-r from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent z-10">
-          ImmortaL LIFE
+          ImmortaLIFE
         </h1>
 
         <p className="mt-2 text-gray-800 tracking-wide z-10 text-sm md:text-base animate-pulse">
