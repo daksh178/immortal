@@ -12,22 +12,28 @@ const ThreeJsComponentMobile = () => {
   const mainRef = useRef(null);
   const textRef = useRef(null);
   const splitInstance = useRef(null);
-  const Navigate = useNavigate();
   const scrollContainerRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const autoSlideRef = useRef(null);
 
+  const navigate = useNavigate();
+
+  const [activeIndex, setActiveIndex] = useState(0);
   const [leftCardData, setLeftCardData] = useState([]);
+
+  /* ================= FETCH DATA ================= */
 
   useEffect(() => {
     const fetchRoadmap = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_MAIN_API}/get-roadmap`, {
-          headers: {
-            'ngrok-skip-browser-warning': 'true'
+        const response = await axios.get(
+          `${import.meta.env.VITE_MAIN_API}/get-roadmap`,
+          {
+            headers: { "ngrok-skip-browser-warning": "true" },
           }
-        });
-        if (response?.data) {
-          setLeftCardData(response?.data?.data.slice(0, 3));
+        );
+
+        if (response?.data?.data) {
+          setLeftCardData(response.data.data.slice(0, 3));
         }
       } catch (error) {
         console.error("Error fetching roadmap:", error);
@@ -37,13 +43,17 @@ const ThreeJsComponentMobile = () => {
     fetchRoadmap();
   }, []);
 
+  /* ================= TEXT ANIMATION ================= */
+
   useGSAP(() => {
     if (!textRef.current) return;
+
     splitInstance.current = new SplitText(textRef.current, { type: "words" });
+
     gsap.from(splitInstance.current.words, {
       opacity: 0.5,
-      ease: "power1.inOut",
       stagger: 0.05,
+      ease: "power1.inOut",
       scrollTrigger: {
         trigger: textRef.current,
         start: "top 70%",
@@ -53,15 +63,50 @@ const ThreeJsComponentMobile = () => {
     });
   }, []);
 
-  // Track active card index on scroll
+  /* ================= SCROLL TO INDEX ================= */
+
+  const scrollToIndex = (index) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const width = container.offsetWidth;
+
+    container.scrollTo({
+      left: width * index,
+      behavior: "smooth",
+    });
+
+    setActiveIndex(index);
+  };
+
+  /* ================= AUTO SLIDE (MOBILE) ================= */
+
+  useEffect(() => {
+    if (!leftCardData.length) return;
+
+    autoSlideRef.current = setInterval(() => {
+      setActiveIndex((prev) => {
+        const next = (prev + 1) % leftCardData.length;
+        scrollToIndex(next);
+        return next;
+      });
+    }, 5000);
+
+    return () => clearInterval(autoSlideRef.current);
+  }, [leftCardData]);
+
+  /* ================= SYNC SCROLL INDEX ================= */
+
   useEffect(() => {
     const container = scrollContainerRef.current;
+    if (!container) return;
+
     const onScroll = () => {
-      const scrollLeft = container.scrollLeft;
       const width = container.offsetWidth;
-      const index = Math.round(scrollLeft / width);
+      const index = Math.round(container.scrollLeft / width);
       setActiveIndex(index);
     };
+
     container.addEventListener("scroll", onScroll);
     return () => container.removeEventListener("scroll", onScroll);
   }, []);
@@ -72,221 +117,151 @@ const ThreeJsComponentMobile = () => {
       id="about"
       className="w-full bg-white text-black overflow-hidden"
     >
-      {/* About Section */}
-      <h1 className="text-[#2C5789] text-center mt-10 opacity-10 w-full text-[48px] md:text-[48px] font-sf-ui-semibold">
+      {/* ================= ABOUT ================= */}
+      <h1 className="text-[#2C5789] text-center mt-10 opacity-10 text-[48px] font-sf-ui-semibold">
         About us
       </h1>
 
-      <div className="text-gray-900 text-center text-[14px] px-4 md:text-lg lg:text-xl font-sf-ui-medium tracking-wide">
+      <div className="text-center text-[14px] px-4 font-sf-ui-medium">
         <h1 ref={textRef}>
-          Biohacking the body to achieve LONGEVITY using science,
-          epigenetics and spiritual frameworks. We are cutting edge
-          biohackers and longevity coaches, who leverage science and
-          revolutionary research to alter/change our genes to bring about a
-          longer, healthier, more active life (along with
-          employing spiritual connections to reveal what's within and
-          to supercharge the transformation).
+          Biohacking the body to achieve LONGEVITY using science, epigenetics and spiritual frameworks. We are cutting edge biohackers and longevity coaches, who leverage science and revolutionary research to alter/change our genes to bring about a longer, healthier, more active life (along with employing spiritual connections to reveal what's within and to supercharge the transformation).
         </h1>
       </div>
 
-      {/* Roadmap Heading */}
+      {/* ================= COURSES ================= */}
       <h1
         id="roadmap"
-        className="text-[#2C5789] text-center mt-10 opacity-10 w-full text-[48px] md:text-[48px] font-sf-ui-semibold"
+        className="text-[#2C5789] text-center mt-10 opacity-10 text-[48px] font-sf-ui-semibold"
       >
         Courses
       </h1>
 
-      {/* Swipeable Cards Section */}
+      {/* ================= SLIDER ================= */}
       <div
         ref={scrollContainerRef}
         className="
-                flex
-                pl-10 
-                flex-col sm:flex-col
-                max-sm:flex-row
-                max-sm:overflow-x-auto
-                max-sm:snap-x
-                max-sm:snap-mandatory
-                items-center
-                sm:justify-center
-                max-sm:justify-start
-                gap-10
-                max-sm:scroll-pl-4
-              "
+          flex
+          max-sm:flex-row
+          max-sm:overflow-x-auto
+          max-sm:snap-x
+          max-sm:snap-mandatory
+          max-sm:scroll-smooth
+           max-sm:px-8       
+          sm:flex-col
+          items-center
+          gap-10
+        "
       >
-        {leftCardData.length === 0
-          ? Array(3)
-            .fill(null)
-            .map((_, index) => (
-              <div
-                key={index}
-                className="
-                        relative 
-                        flex-shrink-0                      
-                        w-[80%]
-                        h-[320px]
-                        cursor-pointer 
-                        duration-150 
-                        will-change-transform
-                        snap-center
-                        max-sm:min-w-[100%]
-                        max-sm:snap-start
-                      "
-              >
-                {/* Skeleton */}
-                <div className="w-3/5 aspect-square bg-gray-300 rounded-full mt-10 mx-auto" />
-                <div className="px-6 mt-6 space-y-4">
-                  <div className="h-6 bg-gray-300 rounded w-2/3" />
-                  <div className="h-4 bg-gray-300 rounded w-full" />
-                  <div className="h-4 bg-gray-300 rounded w-4/5" />
-                </div>
-              </div>
-            ))
-          : leftCardData.map((card) => (
+        {leftCardData.map((card) => (
+          <div
+            key={card.id}
+            className="
+              relative
+              flex-shrink-0
+              w-[80%]
+              max-sm:w-full
+              max-sm:min-w-full
+              h-[320px]
+              snap-center
+              cursor-pointer
+              will-change-transform
+            "
+          >
+            {/* LEFT BAR */}
             <div
-              key={card.id}
-              onMouseMove={(e) => {
-                const cardEl = e.currentTarget;
-                const rect = cardEl.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * 10;
-                const rotateY = ((x - centerX) / centerX) * 10;
+              className="absolute h-1/3 w-[6px]"
+              style={{
+                background:
+                  "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                clipPath:
+                  "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
+                left: -8,
+                bottom: "15%",
+              }}
+            />
 
-                cardEl.style.transform = `
-              perspective(1000px)
-              rotateX(${-rotateX}deg)
-              rotateY(${rotateY}deg)
-              scale3d(1.02, 1.02, 1.02)
-            `;
+            {/* RIGHT BAR */}
+            <div
+              className="absolute h-1/3 w-[6px]"
+              style={{
+                background:
+                  "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
+                clipPath:
+                  "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
+                right: -8,
+                bottom: "40%",
               }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = `
-              perspective(1000px)
-              rotateX(0deg)
-              rotateY(0deg)
-              scale3d(1,1,1)
-            `;
-                e.currentTarget.style.transition = "transform 0.2s ease";
-                setTimeout(() => {
-                  e.currentTarget.style.transition = "";
-                }, 200);
+            />
+
+            {/* BORDER */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(169deg, rgba(0,54,112,0) 5%, #0DB5E4 95%)",
+                clipPath:
+                  "polygon(3% 0, 97% 0, 100% 3%, 100% 97%, 97% 100%, 3% 100%, 0 97%, 0 3%)",
               }}
-              className="
-            relative 
-            flex-shrink-0         
-            w-[80%]
-            h-[320px]
-            cursor-pointer 
-            duration-150 
-            will-change-transform 
-            snap-center
-          "
-              style={{ transformStyle: "preserve-3d" }}
+            />
+
+            {/* CARD */}
+            <div
+              onClick={() => navigate(`/protocols/${card.id}`)}
+              className="absolute inset-[1%] bg-white flex flex-col"
+              style={{
+                clipPath:
+                  "polygon(2% 0, 98% 0, 100% 2%, 100% 98%, 98% 100%, 2% 100%, 0 98%, 0 2%)",
+              }}
             >
-              {/* Decorative left bar */}
-              <div
-                className="absolute h-1/3 w-[6px]"
-                style={{
-                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                  clipPath:
-                    "polygon(6px 0, 100% 0, 100% 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)",
-                  left: -8,
-                  bottom: "15%",
-                }}
-              ></div>
-
-              {/* Decorative right bar */}
-              <div
-                className="absolute h-1/3 w-[6px]"
-                style={{
-                  background: "linear-gradient(180deg, #003670 0%, #0DB5E4 100%)",
-                  clipPath:
-                    "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
-                  right: -8,
-                  bottom: "40%",
-                }}
-              ></div>
-
-              {/* Border layer */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(169.06deg, rgba(0, 54, 112, 0) 4.42%, #0DB5E4 91.9%)",
-                  clipPath:
-                    "polygon(3% 0, 97% 0, 100% 3%, 100% 97%, 97% 100%, 3% 100%, 0 97%, 0 3%)",
-                }}
+              <img
+                src={card.roadmap_image}
+                alt=""
+                className="w-[100px] h-[100px] mt-10 mx-auto"
               />
 
-              {/* Inner background */}
-              <div
-                onClick={() => Navigate(`/protocols/${card?.id}`)}
-                className="absolute inset-[0.8%] flex flex-col bg-white"
-                style={{
-                  clipPath:
-                    "polygon(2% 0, 98% 0, 100% 2%, 100% 98%, 98% 100%, 2% 100%, 0 98%, 0 2%)",
-                }}
-              >
-                {/* Image */}
-                <img
-                  src={card?.roadmap_image}
-                  alt=""
-                  className="w-[100px] h-[100px] aspect-square mt-10 mx-auto pointer-events-none"
-                />
+              <div className="px-4 text-center mt-4">
+                <h6 className="text-lg font-semibold">{card.title}</h6>
 
-                {/* Content */}
-                <div className="flex flex-col items-center flex-1 px-4 mt-4">
-                  <h6 className="text-black text-lg sm:text-xl md:text-2xl font-semibold leading-tight min-h-[2rem] pointer-events-none">
-                    {card?.title}
-                  </h6>
-                  <p className="text-sm sm:text-[14px] md:text-[16px] mb-10 font-normal text-center leading-relaxed text-[#434343] min-h-[5rem] pointer-events-none">
-                    {card?.short_description?.length > 100
-                      ? (
-                        <>
-                          {card?.short_description?.substring(0, 100)}...
-                          <Link
-                            className="text-[#0db5e4] font-bold cursor-pointer"
-                            to={`/protocols/${card?.id}`}
-                          >
-                            read more
-                          </Link>
-                        </>
-                      )
-                      : card?.short_description}
-                  </p>
-                </div>
+                <p className="text-sm text-[#434343] mt-2">
+                  {card.short_description?.substring(0, 100)}...
+                  <Link
+                    to={`/protocols/${card.id}`}
+                    className="text-[#0db5e4] font-bold ml-1"
+                  >
+                    read more
+                  </Link>
+                </p>
               </div>
             </div>
-          ))}
+          </div>
+        ))}
       </div>
 
-      {/* Dots */}
+      {/* ================= DOTS ================= */}
       <div className="flex justify-center gap-2 mt-4">
         {leftCardData.map((_, i) => (
           <span
             key={i}
-            className={`w-2 h-2 rounded-full ${activeIndex === i ? "bg-[#2C5789]" : "bg-gray-300"
+            onClick={() => scrollToIndex(i)}
+            className={`w-2 h-2 rounded-full cursor-pointer transition ${activeIndex === i ? "bg-[#2C5789]" : "bg-gray-300"
               }`}
-          ></span>
+          />
         ))}
       </div>
 
-      <div className="flex mt-5 items-center justify-center gap-3 px-6">
+      {/* ================= VIEW ALL ================= */}
+      <div className="flex mt-5 items-center justify-center gap-3">
         <span
-          className="contactText inter-bold cursor-pointer"
-          onClick={() => Navigate("/roadmap")}
+          className="cursor-pointer font-semibold"
+          onClick={() => navigate("/roadmap")}
         >
           View All
         </span>
         <img
           src="/view_more.svg"
           alt=""
-          className="h-[20px] w-[20px] cursor-pointer"
-          onClick={() => Navigate("/roadmap")}
+          className="h-5 w-5 cursor-pointer"
+          onClick={() => navigate("/roadmap")}
         />
       </div>
     </div>

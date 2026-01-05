@@ -1,24 +1,51 @@
-import React from 'react'
+import React from "react";
 
 export default function HeroMobile() {
   return (
-    <div className='relative'>
-      <div className="absolute top-6 towardFadeDiv left-6 md:left-8">
-        <img src="./logo.svg"></img>
+    <div className="relative w-full h-screen overflow-hidden">
+
+      {/* ===== BACKGROUND VIDEO ===== */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        webkit-playsinline="true"
+        preload="auto"
+      >
+        <source
+          src="/assets/video/Sci_Fi_Evolution_Biohacking_Laboratory.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+
+      {/* ===== DARK OVERLAY (READABILITY) ===== */}
+      <div className="absolute inset-0 bg-black/30" />
+
+      {/* ===== LOGO ===== */}
+      <div className="absolute top-6 left-6 md:left-8 z-20">
+        <img src="/logo.svg" alt="Logo" />
       </div>
-      <div className='flex flex-col items-center justify-center pt-40'>
-        <div className="pb-5 text-center text-[30px] sm:text-[45px] md:text-[70px] 2xl:text-[110px] font-bold leading-none tracking-normal bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
-          Unlock
+
+      {/* ===== TEXT CONTENT ===== */}
+      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
+
+        <div className="pb-5 text-[30px] sm:text-[45px] md:text-[70px] 2xl:text-[110px] font-bold leading-none bg-gradient-to-b from-[#003670] to-[#0DB5E4] bg-clip-text text-transparent">
+          Unlock <br />
           Longevity
         </div>
-        <div className="text-[30px] sm:text-[45px] md:text-[70px] 2xl:text-[110px] font-semibold leading-none tracking-normal">
-          Through
+
+        <div className="text-[30px] sm:text-[45px] md:text-[70px] 2xl:text-[110px] font-semibold leading-none text-white">
+          Through <br />
           Science & Spirit
         </div>
       </div>
     </div>
-  )
+  );
 }
+
 
 // import React, { useRef, useEffect } from "react";
 // import gsap from "gsap";
