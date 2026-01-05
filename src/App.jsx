@@ -42,17 +42,6 @@ function App() {
       window.addEventListener("touchmove", preventDefault, { passive: false });
       window.addEventListener("keydown", preventDefault, { passive: false });
 
-      const videoPromise = new Promise((resolve) => {
-        const video = document.createElement("video");
-        // video.src = "/assets/video/720p60fps.mp4";
-        video.src = "/assets/video/Sci_Fi_Evolution_Biohacking_Laboratory.mp4";
-        video.preload = "auto";
-        video.playsInline = true
-        video.onloadeddata = () => resolve();
-        video.onerror = () => resolve(); // avoid hang
-      });
-
-      await videoPromise;
       setIsPreloaded(true);
 
       gsap.to(".loader", {
