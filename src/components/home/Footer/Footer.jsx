@@ -6,7 +6,15 @@ const Footer = () => {
           src="./footerTopGradient.png"
           className="w-full absolute top-0 h-[2px] "
         ></img>
-        <h1 className="footerLineText text-black text-lg">(469) 387-5026</h1>
+        <h1 className="footerLineText text-black text-lg">
+          <a
+            href="tel:+14693875026"
+            className="footerLineText text-black text-lg block"
+          >
+            +1 (469) 387-5026
+          </a>
+
+        </h1>
         <h1 className="footerLineText text-black text-lg">
           kingdomemissary@protonmail.com
         </h1>

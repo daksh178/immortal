@@ -180,14 +180,30 @@ const Bio = () => {
                 </div>
               </div>
               <p className="mt-8 text-base sm:text-lg md:text-xl font-sf-ui-semibold leading-relaxed text-justify">
-                {bio?.user_detail
-                  ?.split(".")
-                  .filter((sentence) => sentence.trim() !== "")
-                  .map((sentence, index) => (
-                    <p key={index} className="mb-1">
-                      {sentence.trim()}.
-                    </p>
-                  ))}
+                {bio?.user_detail && (
+                  <div className="mt-8 space-y-3 text-base sm:text-lg md:text-xl font-sf-ui-semibold leading-relaxed text-justify">
+                    {bio.user_detail
+                      .split(/\r?\n+/)
+                      .map((line, index) => {
+                        const text = line.trim();
+                        if (!text) return null;
+
+                        const isTitle =
+                          text.length < 80 && !text.endsWith("."); // title heuristic
+
+                        return isTitle ? (
+                          <h3
+                            key={index}
+                            className="font-bold text-lg sm:text-xl md:text-2xl mt-6 mb-2 text-black underline"
+                          >
+                            {text}
+                          </h3>
+                        ) : (
+                          <p key={index}>{text}</p>
+                        );
+                      })}
+                  </div>
+                )}
               </p>
             </div>
           ))
