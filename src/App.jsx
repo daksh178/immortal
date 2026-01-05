@@ -48,12 +48,16 @@ function App() {
         opacity: 0,
         duration: 1,
         onComplete: () => {
-          // Enable scroll
-          window.removeEventListener("scroll", disableScroll);
-          window.removeEventListener("wheel", preventDefault);
-          window.removeEventListener("touchmove", preventDefault);
-          window.removeEventListener("keydown", preventDefault);
-          setShowLoader(false);
+          // ⏱ Wait 2 seconds AFTER fade out
+          gsap.delayedCall(2, () => {
+            // Enable scroll
+            window.removeEventListener("scroll", disableScroll);
+            window.removeEventListener("wheel", preventDefault);
+            window.removeEventListener("touchmove", preventDefault);
+            window.removeEventListener("keydown", preventDefault);
+
+            setShowLoader(false);
+          });
         },
       });
     };
