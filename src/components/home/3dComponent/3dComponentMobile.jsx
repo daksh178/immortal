@@ -122,10 +122,29 @@ const ThreeJsComponentMobile = () => {
         About us
       </h1>
 
-      <div className="text-center text-[14px] px-4 font-sf-ui-medium">
+      {/* <div className="text-center text-[14px] px-4 font-sf-ui-medium">
         <h1 ref={textRef}>
           Biohacking the body to achieve LONGEVITY using science, epigenetics and spiritual frameworks. We are cutting edge biohackers and longevity coaches, who leverage science and revolutionary research to alter/change our genes to bring about a longer, healthier, more active life (along with employing spiritual connections to reveal what's within and to supercharge the transformation).
         </h1>
+      </div> */}
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <div className="text-center text-[14px] px-4 font-sf-ui-medium">
+          <h1 ref={textRef}>
+            Biohacking the body to achieve LONGEVITY using science, epigenetics and spiritual frameworks. We are cutting edge biohackers and longevity coaches, who leverage science and revolutionary research to alter/change our genes to bring about a longer, healthier, more active life (along with employing spiritual connections to reveal what's within and to supercharge the transformation).
+          </h1>
+        </div>
+
+        {/* Image */}
+        <div className="flex justify-center lg:justify-end px-5">
+          <img
+            src="./headerbg-1.png"
+            alt="Founder speaking"
+            className="w-full max-w-[520px] h-[520px] object-cover rounded-3xl shadow-xl "
+          />
+        </div>
+
       </div>
 
       {/* ================= COURSES ================= */}

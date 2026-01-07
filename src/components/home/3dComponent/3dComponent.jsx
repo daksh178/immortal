@@ -166,8 +166,30 @@ const ThreeJsComponent = () => {
           <h1 className="text-[#2C5789] opacity-10 text-center w-full text-[250px] font-sf-ui-semibold">
             About us
           </h1>
-          <div className="absolute top-60 right-40 wrapper font-sf-ui-medium text-gray-900 text-3xl tracking-wider w-[580px] h-[400px]"> <h1 ref={textRef} className=""> Biohacking the body to achieve LONGEVITY using science, epigenetics and spiritual frameworks. We are cutting edge biohackers and longevity coaches, who leverage science and {" "} revolutionary research to alter/change our genes to bring about a longer, healthier, more active life (along with employing spiritual connections to reveal what's within and to supercharge the transformation). </h1> </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
+            {/* Text */}
+            <div className="font-sf-ui-medium text-gray-900 text-3xl tracking-wider max-w-[580px]">
+              <h1 ref={textRef}>
+                Biohacking the body to achieve <strong>LONGEVITY</strong> using science,
+                epigenetics and spiritual frameworks. We are cutting edge biohackers and
+                longevity coaches, who leverage science and revolutionary research to
+                alter/change our genes to bring about a longer, healthier, more active life
+                (along with employing spiritual connections to reveal what's within and
+                to supercharge the transformation).
+              </h1>
+            </div>
+
+            {/* Image */}
+            <div className="flex justify-center lg:justify-end">
+              <img
+                src="./headerbg-1.png"
+                alt="Founder speaking"
+                className="w-full max-w-[520px] h-[520px] object-cover rounded-3xl shadow-xl"
+              />
+            </div>
+
+          </div>
 
         </div>
       </section>
