@@ -1,4 +1,5 @@
 import React from "react";
+import { IconChevronsDown } from "@tabler/icons-react";
 
 export default function HeroMobile() {
   return (
@@ -41,6 +42,13 @@ export default function HeroMobile() {
           Through <br />
           Science & Spirit
         </div>
+      </div>
+
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2  z-20">
+        <IconChevronsDown
+          size={88}
+          className="text-[#003670] animate-moveDown"
+        />
       </div>
     </div>
   );

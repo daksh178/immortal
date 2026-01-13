@@ -27,6 +27,12 @@ export default function SupplementMobile() {
 
   return (
     <div className="w-full py-4 relative">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10">
+        <IconChevronsDown
+          size={88}
+          className="text-[#003670] animate-moveDown"
+        />
+      </div>
       <div id="supplement" className="w-full text-center pl-4 text-gray-300">
         <p className="mb-4 text-5xl sm:text-[48px] md:text-[64px] font-semibold text-[#2C5789] opacity-10">
           Products

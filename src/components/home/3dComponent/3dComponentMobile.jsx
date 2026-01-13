@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { IconChevronsDown } from "@tabler/icons-react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -115,7 +116,7 @@ const ThreeJsComponentMobile = () => {
     <div
       ref={mainRef}
       id="about"
-      className="w-full bg-white text-black overflow-hidden"
+      className="w-full relative bg-white text-black overflow-hidden"
     >
       {/* ================= ABOUT ================= */}
       <h1 className="text-[#2C5789] text-center mt-10 opacity-10 text-[48px] font-sf-ui-semibold">
@@ -145,6 +146,13 @@ const ThreeJsComponentMobile = () => {
           />
         </div>
 
+      </div>
+
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
+        <IconChevronsDown
+          size={88}
+          className="text-[#003670] animate-moveDown"
+        />
       </div>
 
       {/* ================= COURSES ================= */}
